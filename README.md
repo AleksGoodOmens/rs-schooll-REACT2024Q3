@@ -44,6 +44,7 @@ Application Requirements
     When user modifies the Search input and clicks on "Search" button, application makes a call to an api with the newly provided search term (search term should not have any trailing spaces, process the input) to get the results (only first page).
 
     The provided search term should be saved to the LS, if the value exists overwrite it.
+
     Wrap application to an error boundary to catch errors. Report an error to a console and show fallback UI (use respective methods for this). Create a button which will throw an error on click to test the functionality.
 
 Use class components to get access to lifecycle events or state. Using hooks is forbidden at this stage. Patience, it won't last long.

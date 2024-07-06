@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 interface IEmptyProp {
 	props: Record<string, never>
 }
@@ -38,6 +40,23 @@ interface IResultProps {
 	data: IPeopleItem[]
 }
 
+interface IErrorTriggerState {
+	isError: boolean
+	button: 'Wrong button' | 'Throw an error'
+}
+
+interface IErrorBoundaryProps {
+	children: ReactNode
+}
+
+interface IErrorBoundaryState {
+	hasError: boolean
+}
+
+interface IErrorFallBackState {
+	hasError: boolean
+}
+
 export type {
 	IEmptyProp,
 	IPeopleItem,
@@ -47,4 +66,8 @@ export type {
 	ISearchBarProp,
 	ApiResponse,
 	IResultProps,
+	IErrorTriggerState,
+	IErrorBoundaryProps,
+	IErrorBoundaryState,
+	IErrorFallBackState,
 }

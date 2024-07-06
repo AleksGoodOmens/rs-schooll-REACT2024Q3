@@ -4,6 +4,8 @@ import { IEmptyProp, IAppState } from '../../interfaces/interfaces'
 import getData from '../../utils/getData'
 import SearchBar from '../searchBar/SearchBar'
 import SearchResults from '../searchResults/SearchResults'
+import ErrorTrigger from '../error/errorTrigger/ErrorTrigger'
+import Loader from '../loader/Loader'
 
 class App extends Component<IEmptyProp, IAppState> {
 	constructor(props: IEmptyProp) {
@@ -56,16 +58,25 @@ class App extends Component<IEmptyProp, IAppState> {
 		return (
 			<div className="wrapper">
 				<section>
+					<ErrorTrigger props={{}} />
 					<SearchBar
 						searchValue={searchValue}
 						changeItems={this.changeItems}
 					/>
 				</section>
 				<section>
-					<SearchResults
-						fade={fade}
-						data={data}
-					/>
+					{this.state.isLoading && <Loader props={{}} />}
+
+					{!this.state.isLoading && this.state.data.length === 0 && (
+						<h2>No data</h2>
+					)}
+
+					{!this.state.isLoading && this.state.data.length > 0 && (
+						<SearchResults
+							fade={fade}
+							data={data}
+						/>
+					)}
 				</section>
 			</div>
 		)

@@ -1,0 +1,16 @@
+.box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+	padding: 3rem 0;
+	& h1 {
+		margin: 0;
+	}
+
+	& button {
+		&:hover {
+			background-color: rgb(172, 51, 51);
+		}
+	}
+}
