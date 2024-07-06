@@ -1,60 +1,60 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import { IEmptyProp, IAppState } from '../../interfaces/interfaces'
-import getData from '../../utils/getData'
-import SearchBar from '../searchBar/SearchBar'
-import SearchResults from '../searchResults/SearchResults'
-import ErrorTrigger from '../error/errorTrigger/ErrorTrigger'
-import Loader from '../loader/Loader'
+import { IEmptyProp, IAppState } from '../../interfaces/interfaces';
+import getData from '../../utils/getData';
+import SearchBar from '../searchBar/SearchBar';
+import SearchResults from '../searchResults/SearchResults';
+import ErrorTrigger from '../error/errorTrigger/ErrorTrigger';
+import Loader from '../loader/Loader';
 
 class App extends Component<IEmptyProp, IAppState> {
 	constructor(props: IEmptyProp) {
-		super(props)
+		super(props);
 		this.state = {
 			data: [],
 			searchValue: '',
 			isLoading: true,
 			fade: '',
-		}
+		};
 	}
 	async componentDidMount(): Promise<void> {
-		const prevSearch = await window.localStorage.getItem('searchValue')
+		const prevSearch = await window.localStorage.getItem('searchValue');
 
 		if (prevSearch) {
-			this.setState({ searchValue: prevSearch })
+			this.setState({ searchValue: prevSearch });
 		}
-		const data = await getData(prevSearch || this.state.searchValue)
+		const data = await getData(prevSearch || this.state.searchValue);
 
 		this.setState({
 			data: data,
 			isLoading: false,
 			searchValue: prevSearch || '',
 			fade: 'fadeIn',
-		})
+		});
 	}
 
 	changeItems = async (value: string) => {
 		try {
-			this.setState({ fade: 'fadeOut' })
+			this.setState({ fade: 'fadeOut' });
 
 			setTimeout(async () => {
-				this.setState({ isLoading: true, fade: '' })
-				const data = await getData(value)
+				this.setState({ isLoading: true, fade: '' });
+				const data = await getData(value);
 				this.setState({
 					searchValue: value,
 					data,
 					isLoading: false,
 					fade: 'fadeIn',
-				})
-			}, 500) // Wait for fade out animation to complete
+				});
+			}, 500); // Wait for fade out animation to complete
 		} catch (error) {
-			console.error('Error fetching data:', error)
-			this.setState({ isLoading: false, fade: 'fadeIn' })
+			console.error('Error fetching data:', error);
+			this.setState({ isLoading: false, fade: 'fadeIn' });
 		}
-	}
+	};
 
 	render() {
-		const { searchValue, fade, data } = this.state
+		const { searchValue, fade, data } = this.state;
 		return (
 			<div className="wrapper">
 				<section>
@@ -79,8 +79,8 @@ class App extends Component<IEmptyProp, IAppState> {
 					)}
 				</section>
 			</div>
-		)
+		);
 	}
 }
 
-export default App
+export default App;

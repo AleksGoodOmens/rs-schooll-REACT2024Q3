@@ -1,9 +1,7 @@
 {
-	"plugins": ["prettier-plugin-css-order"],
-	"trailingComma": "es5",
 	"useTabs": true,
 	"tabWidth": 2,
-	"semi": false,
 	"singleQuote": true,
-	"singleAttributePerLine": true
+	"singleAttributePerLine": true,
+	"plugins": ["prettier-plugin-css-order"]
 }

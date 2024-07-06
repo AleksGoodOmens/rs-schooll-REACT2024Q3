@@ -1,41 +1,41 @@
-import { ChangeEvent, Component, FormEvent } from 'react'
+import { ChangeEvent, Component, FormEvent } from 'react';
 
-import styles from './styles.module.css'
-import { ISearchBarProp, ISearchBarState } from '../../interfaces/interfaces'
+import styles from './styles.module.css';
+import { ISearchBarProp, ISearchBarState } from '../../interfaces/interfaces';
 
 export default class SearchBar extends Component<
 	ISearchBarProp,
 	ISearchBarState
 > {
 	constructor(props: ISearchBarProp) {
-		super(props)
+		super(props);
 		this.state = {
 			searchValue: props.searchValue,
-		}
+		};
 	}
 
 	componentDidUpdate(prevProps: ISearchBarProp) {
 		if (this.props.searchValue !== prevProps.searchValue) {
-			this.setState({ searchValue: this.props.searchValue })
+			this.setState({ searchValue: this.props.searchValue });
 		}
 	}
 
 	handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget) {
-			this.setState({ searchValue: e.currentTarget.value })
+			this.setState({ searchValue: e.currentTarget.value });
 		}
-	}
+	};
 
 	handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
+		e.preventDefault();
 
-		const { searchValue } = this.state
+		const { searchValue } = this.state;
 
-		const clearSearchValue = searchValue.trim()
+		const clearSearchValue = searchValue.trim();
 
-		window.localStorage.setItem('searchValue', clearSearchValue)
-		this.props.changeItems(clearSearchValue)
-	}
+		window.localStorage.setItem('searchValue', clearSearchValue);
+		this.props.changeItems(clearSearchValue);
+	};
 	render() {
 		return (
 			<form
@@ -53,6 +53,6 @@ export default class SearchBar extends Component<
 
 				<button type="submit">Search</button>
 			</form>
-		)
+		);
 	}
 }

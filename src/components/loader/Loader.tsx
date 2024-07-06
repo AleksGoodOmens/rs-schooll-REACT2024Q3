@@ -1,11 +1,11 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import styles from './styles.module.css'
-import { IEmptyProp } from '../../interfaces/interfaces'
+import styles from './styles.module.css';
+import { IEmptyProp } from '../../interfaces/interfaces';
 
 class Loader extends Component<IEmptyProp> {
 	constructor(props: IEmptyProp) {
-		super(props)
+		super(props);
 	}
 
 	render() {
@@ -14,8 +14,8 @@ class Loader extends Component<IEmptyProp> {
 				<h2>Loading...</h2>
 				<div className={styles.img}></div>
 			</div>
-		)
+		);
 	}
 }
 
-export default Loader
+export default Loader;

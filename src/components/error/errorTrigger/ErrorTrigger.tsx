@@ -1,28 +1,28 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import styles from './styles.module.css'
-import { IEmptyProp, IErrorTriggerState } from '../../../interfaces/interfaces'
+import styles from './styles.module.css';
+import { IEmptyProp, IErrorTriggerState } from '../../../interfaces/interfaces';
 
 class ErrorTrigger extends Component<IEmptyProp, IErrorTriggerState> {
 	constructor(props: IEmptyProp) {
-		super(props)
-		this.state = { isError: false, button: 'Wrong button' }
+		super(props);
+		this.state = { isError: false, button: 'Wrong button' };
 	}
 	throwError = () => {
-		this.setState({ isError: !this.state.isError })
-	}
+		this.setState({ isError: !this.state.isError });
+	};
 
 	changeTextMouseEnter = () => {
-		this.setState({ isError: false, button: 'Throw an error' })
-	}
+		this.setState({ isError: false, button: 'Throw an error' });
+	};
 
 	changeTextMouseLeave = () => {
-		this.setState({ isError: false, button: 'Wrong button' })
-	}
+		this.setState({ isError: false, button: 'Wrong button' });
+	};
 
 	render() {
 		if (this.state.isError) {
-			throw new Error('Triggered error')
+			throw new Error('Triggered error');
 		}
 
 		return (
@@ -36,8 +36,8 @@ class ErrorTrigger extends Component<IEmptyProp, IErrorTriggerState> {
 					{this.state.button}
 				</button>
 			</div>
-		)
+		);
 	}
 }
 
-export default ErrorTrigger
+export default ErrorTrigger;

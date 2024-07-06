@@ -1,12 +1,12 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import styles from './styles.module.css'
-import PeopleItem from '../peopleItem/PeopleItem'
-import { IResultProps } from '../../interfaces/interfaces'
+import styles from './styles.module.css';
+import PeopleItem from '../peopleItem/PeopleItem';
+import { IResultProps } from '../../interfaces/interfaces';
 
 class SearchResults extends Component<IResultProps> {
 	constructor(props: IResultProps) {
-		super(props)
+		super(props);
 	}
 
 	render() {
@@ -23,8 +23,8 @@ class SearchResults extends Component<IResultProps> {
 					))}
 				</div>
 			</>
-		)
+		);
 	}
 }
 
-export default SearchResults
+export default SearchResults;

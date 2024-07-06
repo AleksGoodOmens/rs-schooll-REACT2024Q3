@@ -1,12 +1,12 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import { IPeopleItem } from '../../interfaces/interfaces'
+import { IPeopleItem } from '../../interfaces/interfaces';
 
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 class PeopleItem extends Component<IPeopleItem> {
 	constructor(props: IPeopleItem) {
-		super(props)
+		super(props);
 	}
 
 	render() {
@@ -27,8 +27,8 @@ class PeopleItem extends Component<IPeopleItem> {
 					<dd>mass: {this.props.mass}</dd>
 				</dl>
 			</article>
-		)
+		);
 	}
 }
 
-export default PeopleItem
+export default PeopleItem;

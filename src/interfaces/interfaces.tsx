@@ -1,60 +1,60 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 interface IEmptyProp {
-	props: Record<string, never>
+	props: Record<string, never>;
 }
 interface IPeopleItem {
-	name: string
-	height: string
-	mass: string
-	hair_color: string
-	skin_color: string
-	eye_color: string
-	birth_year: string
-	gender: string
+	name: string;
+	height: string;
+	mass: string;
+	hair_color: string;
+	skin_color: string;
+	eye_color: string;
+	birth_year: string;
+	gender: string;
 }
 
 interface IAppState {
-	data: IPeopleItem[]
-	searchValue: string
-	isLoading: boolean
-	fade: Animations
+	data: IPeopleItem[];
+	searchValue: string;
+	isLoading: boolean;
+	fade: Animations;
 }
 
-type Animations = 'fadeIn' | 'fadeOut' | ''
+type Animations = 'fadeIn' | 'fadeOut' | '';
 
 interface ISearchBarState {
-	searchValue: string
+	searchValue: string;
 }
 
 interface ISearchBarProp extends ISearchBarState {
-	changeItems: (value: string) => Promise<void>
+	changeItems: (value: string) => Promise<void>;
 }
 
 interface ApiResponse {
-	results: IPeopleItem[]
+	results: IPeopleItem[];
 }
 
 interface IResultProps {
-	fade: Animations
-	data: IPeopleItem[]
+	fade: Animations;
+	data: IPeopleItem[];
 }
 
 interface IErrorTriggerState {
-	isError: boolean
-	button: 'Wrong button' | 'Throw an error'
+	isError: boolean;
+	button: 'Wrong button' | 'Throw an error';
 }
 
 interface IErrorBoundaryProps {
-	children: ReactNode
+	children: ReactNode;
 }
 
 interface IErrorBoundaryState {
-	hasError: boolean
+	hasError: boolean;
 }
 
 interface IErrorFallBackState {
-	hasError: boolean
+	hasError: boolean;
 }
 
 export type {
@@ -70,4 +70,4 @@ export type {
 	IErrorBoundaryProps,
 	IErrorBoundaryState,
 	IErrorFallBackState,
-}
+};

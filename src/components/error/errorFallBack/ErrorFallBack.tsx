@@ -1,16 +1,19 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import styles from './styles.module.css'
-import { IEmptyProp, IErrorFallBackState } from '../../../interfaces/interfaces'
+import styles from './styles.module.css';
+import {
+	IEmptyProp,
+	IErrorFallBackState,
+} from '../../../interfaces/interfaces';
 
 class ErrorFallBack extends Component<IEmptyProp, IErrorFallBackState> {
 	constructor(props: IEmptyProp) {
-		super(props)
+		super(props);
 	}
 
 	handleReload = () => {
-		window.location.reload()
-	}
+		window.location.reload();
+	};
 
 	render() {
 		return (
@@ -29,8 +32,8 @@ class ErrorFallBack extends Component<IEmptyProp, IErrorFallBackState> {
 				</div>
 				<button onClick={this.handleReload}>Reload APP</button>
 			</div>
-		)
+		);
 	}
 }
 
-export default ErrorFallBack
+export default ErrorFallBack;
