@@ -24,5 +24,4 @@ module.exports = {
 		],
 		'react-compiler/react-compiler': 'error',
 	},
-	
 }
