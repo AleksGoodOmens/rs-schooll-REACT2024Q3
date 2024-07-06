@@ -29,12 +29,14 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
-  Pick a RESTfull api which supports search and pagination (pagination might be reffered as offset and limit params). E.g. https://pokeapi.co/, for Star Wars fans https://swapi.dev/api, for Star Trek fans https://stapi.co/api-documentation (OpenApi spec can be checked here https://editor.swagger.io/?url=https://stapi.co/api/v1/rest/common/download/stapi.yaml), or you can select another one complying with the requirements.
-
 Application Requirements
 
     Create a page comprised of 2 horizontal sections (a smaller top one, and a bigger bottom one).
-    On the top section put Search input and the "Search" button. Search component should look for a previously saved search term in the local storage (LS), if there isn't any - leave the input empty.
+
+    On the top section put Search input and the "Search" button.
+
+    	Search component should look for a previously saved search term in the local storage (LS), if there isn't any - leave the input empty.
+
     Bottom section should be used for displaying search results (name and a small description).
     By default application makes a call to the selected api to get the list of the items with the search term from the input (only first page). If the input is empty make a call to get all the items.
     When user modifies the Search input and clicks on "Search" button, application makes a call to an api with the newly provided search term (search term should not have any trailing spaces, process the input) to get the results (only first page).
