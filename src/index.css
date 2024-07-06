@@ -2,8 +2,10 @@
 
 :root {
 	--color-dark: #242424;
+	--color-light: blanchedalmond;
 	--color-white: white;
 	--color-black: black;
+	--color-warning: rgb(172, 51, 51);
 
 	background-color: var(--color-dark);
 	color: var(--color-white);

@@ -7,9 +7,9 @@
 
 	& label {
 		border-radius: 8px;
-		background-color: blanchedalmond;
+		background-color: var(--color-light);
 		padding: 0.5rem 1rem;
-		color: black;
+		color: var(--color-black);
 	}
 
 	& input {

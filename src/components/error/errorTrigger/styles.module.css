@@ -10,7 +10,7 @@
 
 	& button {
 		&:hover {
-			background-color: rgb(172, 51, 51);
+			background-color: var(--color-warning);
 		}
 	}
 }
