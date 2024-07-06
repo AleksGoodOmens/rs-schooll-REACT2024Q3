@@ -33,6 +33,11 @@ interface ApiResponse {
 	results: IPeopleItem[]
 }
 
+interface IResultProps {
+	fade: Animations
+	data: IPeopleItem[]
+}
+
 export type {
 	IEmptyProp,
 	IPeopleItem,
@@ -41,4 +46,5 @@ export type {
 	ISearchBarState,
 	ISearchBarProp,
 	ApiResponse,
+	IResultProps,
 }

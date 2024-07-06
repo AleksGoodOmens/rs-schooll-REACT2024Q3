@@ -1,0 +1,13 @@
+h1,
+h2 {
+	margin-bottom: 4rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+}

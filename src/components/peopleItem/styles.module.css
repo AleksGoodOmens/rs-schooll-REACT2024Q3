@@ -1,0 +1,25 @@
+.box {
+	border: 1px solid black;
+	border-radius: 1rem;
+	background-color: blanchedalmond;
+	padding: 1rem 2rem;
+	max-width: 320px;
+	color: black;
+
+	& h2 {
+		text-align: center;
+	}
+
+	& dl {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		& dt {
+			margin-bottom: 1rem;
+			width: 100%;
+		}
+		& dd {
+			flex-basis: 70px;
+		}
+	}
+}

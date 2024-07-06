@@ -3,6 +3,7 @@ import { Component } from 'react'
 import { IEmptyProp, IAppState } from '../../interfaces/interfaces'
 import getData from '../../utils/getData'
 import SearchBar from '../searchBar/SearchBar'
+import SearchResults from '../searchResults/SearchResults'
 
 class App extends Component<IEmptyProp, IAppState> {
 	constructor(props: IEmptyProp) {
@@ -51,7 +52,7 @@ class App extends Component<IEmptyProp, IAppState> {
 	}
 
 	render() {
-		const { searchValue } = this.state
+		const { searchValue, fade, data } = this.state
 		return (
 			<div className="wrapper">
 				<section>
@@ -60,7 +61,12 @@ class App extends Component<IEmptyProp, IAppState> {
 						changeItems={this.changeItems}
 					/>
 				</section>
-				<section></section>
+				<section>
+					<SearchResults
+						fade={fade}
+						data={data}
+					/>
+				</section>
 			</div>
 		)
 	}
