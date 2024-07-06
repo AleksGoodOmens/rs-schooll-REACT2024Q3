@@ -10,11 +10,15 @@
 		"format": "prettier . -c",
 		"format:fix": "prettier . -w",
 		"preview": "vite preview",
-		"prepare": "husky"
+		"prepare": "husky",
+		"precommit": "lint-staged"
 	},
 	"lint-staged": {
-		"*.{ts, tsx}": "npm run lint",
-		"*": "npm run format:fix"
+		"*.{ts,tsx,js,jsx, css}": [
+			"eslint --fix",
+			"prettier --write",
+			"echo 'Lint-staged finished'"
+		]
 	},
 	"dependencies": {
 		"prettier-plugin-css-order": "^2.1.2",
