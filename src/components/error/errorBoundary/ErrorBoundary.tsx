@@ -26,7 +26,7 @@ class ErrorBoundary extends Component<
 
 	render() {
 		if (this.state.hasError) {
-			return <IErrorFallBack />
+			return <IErrorFallBack props={{}} />
 		}
 
 		return this.props.children
