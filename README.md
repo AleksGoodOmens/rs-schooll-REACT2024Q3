@@ -29,19 +29,7 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
-  Create a separate branch for this task. Branch name: "class-components".
-  Language Requirement
-  Use TypeScript for the project.
-  Project Setup
-  Initialize the project using Vite with the react-ts template.
 
-  Code Quality Tools
-
-  ESLint
-  Set up ESLint to throw errors if TypeScript's any type is used.
-  Set up eslint-plugin-react-compiler to throw errors if React rules are violated.
-  Prettier
-  Integrate Prettier for code formatting.
   Husky
   Add Husky and configure it to run linting on pre-commit.
   package.json commands
