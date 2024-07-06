@@ -1,0 +1,23 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin: 0 auto;
+	max-width: 600px;
+
+	& label {
+		border-radius: 8px;
+		background-color: blanchedalmond;
+		padding: 0.5rem 1rem;
+		color: black;
+	}
+
+	& input {
+		border-radius: 8px;
+		padding: 1rem 1rem;
+	}
+
+	& button {
+		align-self: center;
+	}
+}
