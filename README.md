@@ -1,52 +1,25 @@
-# React + TypeScript + Vite
+# Theory 📖
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## HOOKS
 
-Currently, two official plugins are available:
+### Introduction to Hooks:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-[x] Introducing Hooks
 
-## Expanding the ESLint configuration
+### Basic Hooks:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-[x] Using the State Hook 
+-[x] Using the Effect Hook
+-[] Context in Hooks
+-[] Ref in Hooks
 
-- Configure the top-level `parserOptions` property like this:
+### Advanced Hooks:
 
-```js
-export default {
-	// other rules...
-	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-		project: ['./tsconfig.json', './tsconfig.node.json'],
-		tsconfigRootDir: __dirname,
-	},
-};
-```
+-[] Using the Reducer Hook
+-[] Memoization in Hooks
+-[] Cache a function in Hooks
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Custom Hooks:
 
-Application Requirements
-
-    Create a page comprised of 2 horizontal sections (a smaller top one, and a bigger bottom one).
-
-    On the top section put Search input and the "Search" button.
-
-    	Search component should look for a previously saved search term in the local storage (LS), if there isn't any - leave the input empty.
-
-    Bottom section should be used for displaying search results (name and a small description).
-
-    By default application makes a call to the selected api to get the list of the items with the search term from the input (only first page). If the input is empty make a call to get all the items.
-
-    When user modifies the Search input and clicks on "Search" button, application makes a call to an api with the newly provided search term (search term should not have any trailing spaces, process the input) to get the results (only first page).
-
-    The provided search term should be saved to the LS, if the value exists overwrite it.
-
-    Wrap application to an error boundary to catch errors. Report an error to a console and show fallback UI (use respective methods for this). Create a button which will throw an error on click to test the functionality.
-
-Use class components to get access to lifecycle events or state. Using hooks is forbidden at this stage. Patience, it won't last long.
-
-All logical parts should be set into separate components.
+-[] Building Your Own Hooks
+-[] React Custom Hooks Examples
