@@ -1,58 +1,50 @@
-import { ChangeEvent, Component, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
-import { ISearchBarProp, ISearchBarState } from '../../interfaces/interfaces';
 
-export default class SearchBar extends Component<
-	ISearchBarProp,
-	ISearchBarState
-> {
-	constructor(props: ISearchBarProp) {
-		super(props);
-		this.state = {
-			searchValue: props.searchValue,
-		};
-	}
+interface IProps {
+	searchValue: string;
+	setSearchValue: (s: string) => void;
+}
 
-	componentDidUpdate(prevProps: ISearchBarProp) {
-		if (this.props.searchValue !== prevProps.searchValue) {
-			this.setState({ searchValue: this.props.searchValue });
-		}
-	}
+const SearchBar = ({ searchValue, setSearchValue }: IProps) => {
+	const [search, setSearch] = useState<string>(searchValue);
 
-	handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
+	useEffect(() => {
+		setSearch(searchValue);
+	}, [searchValue]);
+
+	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget) {
-			this.setState({ searchValue: e.currentTarget.value });
+			setSearch(e.currentTarget.value);
 		}
 	};
 
-	handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const { searchValue } = this.state;
+		const clearSearch = search.trim();
 
-		const clearSearchValue = searchValue.trim();
-
-		window.localStorage.setItem('searchValue', clearSearchValue);
-		this.props.changeItems(clearSearchValue);
+		window.localStorage.setItem('searchValue', clearSearch);
+		setSearchValue(clearSearch);
 	};
-	render() {
-		return (
-			<form
-				className={styles.form}
-				onSubmit={this.handleSubmit}
-			>
-				<label htmlFor="search"> Search characters by name:</label>
-				<input
-					onChange={this.handleChangeInputValue}
-					value={this.state.searchValue}
-					type="search"
-					name="search"
-					id="search"
-				/>
+	return (
+		<form
+			className={styles.form}
+			onSubmit={handleSubmit}
+		>
+			<label htmlFor="search"> Search characters by name:</label>
+			<input
+				onChange={handleChangeInputValue}
+				value={search}
+				type="search"
+				name="search"
+				id="search"
+			/>
 
-				<button type="submit">Search</button>
-			</form>
-		);
-	}
-}
+			<button type="submit">Search</button>
+		</form>
+	);
+};
+
+export default SearchBar;

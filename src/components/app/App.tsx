@@ -1,86 +1,77 @@
-import { Component } from 'react';
+// import { useEffect, useState } from 'react';
+// import useGetData from '../../hooks/useGetData';
+// import Loader from '../loader/loader';
+// import ErrorTrigger from '../error/errorTrigger/ErrorTrigger';
+// import SearchBar from '../searchBar/SearchBar';
+// // import SearchResults from '../searchResults/SearchResults';
+// import { Animations } from '../../interfaces/interfaces';
+// import Tabs from '../tabs/Tabs';
 
-import { IEmptyProp, IAppState } from '../../interfaces/interfaces';
-import getData from '../../utils/getData';
-import SearchBar from '../searchBar/SearchBar';
-import SearchResults from '../searchResults/SearchResults';
-import ErrorTrigger from '../error/errorTrigger/ErrorTrigger';
-import Loader from '../loader/Loader';
+// const App = () => {
+// 	const { data, isLoading, fetchData } = useGetData();
+// 	const [searchValue, setSearchValue] = useState<string>('');
+// 	// const [fade, setFade] = useState<Animations>('');
+// 	const [list, setList] = useState<string[]>([]);
 
-class App extends Component<IEmptyProp, IAppState> {
-	constructor(props: IEmptyProp) {
-		super(props);
-		this.state = {
-			data: [],
-			searchValue: '',
-			isLoading: true,
-			fade: '',
-		};
-	}
-	async componentDidMount(): Promise<void> {
-		const prevSearch = await window.localStorage.getItem('searchValue');
+// 	useEffect(() => {
+// 		const changeItems = () => {
+// 			try {
+// 				setFade('fadeOut');
+// 				setTimeout(() => {
+// 					setFade('');
+// 					fetchData();
+// 				}, 500); // Wait for fade out animation to complete
+// 			} catch (error) {
+// 				console.error('Error fetching data:', error);
+// 				setFade('fadeIn');
+// 			}
+// 		};
+// 		changeItems();
+// 	}, [fetchData, searchValue]);
 
-		if (prevSearch) {
-			this.setState({ searchValue: prevSearch });
-		}
-		const data = await getData(prevSearch || this.state.searchValue);
+// 	useEffect(() => {
+// 		const listFromObject = Object.keys(data);
+// 		setList(listFromObject);
+// 	}, [data, isLoading]);
 
-		this.setState({
-			data: data,
-			isLoading: false,
-			searchValue: prevSearch || '',
-			fade: 'fadeIn',
-		});
-	}
+// 	console.log(list);
+// 	return (
+// 		<>
+// 			<div className="wrapper">
+// 				<section>
+// 					<ErrorTrigger />
+// 					<SearchBar
+// 						searchValue={searchValue}
+// 						setSearchValue={setSearchValue}
+// 					/>
+// 					<Tabs />
+// 				</section>
+// 				<section>
+// 					{isLoading && <Loader />}
 
-	changeItems = async (value: string) => {
-		try {
-			this.setState({ fade: 'fadeOut' });
+// 					{!isLoading && data.length === 0 && <h2>No data</h2>}
 
-			setTimeout(async () => {
-				this.setState({ isLoading: true, fade: '' });
-				const data = await getData(value);
-				this.setState({
-					searchValue: value,
-					data,
-					isLoading: false,
-					fade: 'fadeIn',
-				});
-			}, 500); // Wait for fade out animation to complete
-		} catch (error) {
-			console.error('Error fetching data:', error);
-			this.setState({ isLoading: false, fade: 'fadeIn' });
-		}
-	};
+// 					{/* {!isLoading && data.length > 0 && (
+// 						<SearchResults
+// 							fade={fade}
+// 							data={data}
+// 						/>
+// 					)} */}
+// 				</section>
+// 			</div>
+// 		</>
+// 	);
+// };
 
-	render() {
-		const { searchValue, fade, data } = this.state;
-		return (
-			<div className="wrapper">
-				<section>
-					<ErrorTrigger props={{}} />
-					<SearchBar
-						searchValue={searchValue}
-						changeItems={this.changeItems}
-					/>
-				</section>
-				<section>
-					{this.state.isLoading && <Loader props={{}} />}
+// export default App;
 
-					{!this.state.isLoading && this.state.data.length === 0 && (
-						<h2>No data</h2>
-					)}
+// // const [searchValue, setSearchValue] = useState("")
+// // const [fade, setFade] = useState("fadeIn")
 
-					{!this.state.isLoading && this.state.data.length > 0 && (
-						<SearchResults
-							fade={fade}
-							data={data}
-						/>
-					)}
-				</section>
-			</div>
-		);
-	}
-}
+// // useEffect(() => {
+// // 	const prevSearch = window.localStorage.getItem('searchValue');
 
-export default App;
+// // 	if (prevSearch) {
+// // 		setSearchValue(prevSearch);
+// // 	}
+// // }, []);

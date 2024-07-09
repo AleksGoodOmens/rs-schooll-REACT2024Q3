@@ -1,6 +1,7 @@
-const BASE_URL = 'https://swapi.dev/api/people';
+// const BASE_URL = 'https://swapi.dev/api/people';
 
 import { IPeopleItem, ApiResponse } from '../interfaces/interfaces';
+const BASE_URL = 'https://swapi.dev/api';
 
 const getData = async (searchQuery: string = ''): Promise<IPeopleItem[]> => {
 	try {
