@@ -1,0 +1,10 @@
+.flex {
+	display: flex;
+	gap: 1rem;
+	text-transform: uppercase;
+	& a {
+		border-radius: 8px;
+		background-color: var(--color-accent);
+		padding: 1rem;
+	}
+}

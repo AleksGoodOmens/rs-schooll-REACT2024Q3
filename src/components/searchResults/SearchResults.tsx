@@ -1,26 +1,36 @@
 import styles from './styles.module.css';
-import PeopleItem from '../peopleItem/PeopleItem';
 import { IPeopleItem } from '../../interfaces/interfaces';
+import useGetData from '../../hooks/useGetData';
+import { useEffect } from 'react';
+import PeopleItem from '../peopleItem/PeopleItem';
+import Loader from '../loader/loader';
+import { Outlet, useParams } from 'react-router-dom';
 
-interface IProps {
-	fade: string;
-	data: IPeopleItem[];
-}
+const SearchResults = () => {
+	const { data, isLoading, fetchData } = useGetData<IPeopleItem>();
+	const { category } = useParams();
 
-const SearchResults = ({ fade, data }: IProps) => {
+	useEffect(() => {
+		fetchData({ path: category });
+	}, [category, fetchData]);
+	console.log(category);
 	return (
-		<>
-			<h2>Search results</h2>
-
-			<div className={`${styles.flex} ${fade}`}>
-				{data.map((item) => (
-					<PeopleItem
-						key={item.name}
-						{...item}
-					/>
-				))}
+		<div>
+			<div className={`${styles.flex}`}>
+				{isLoading && <Loader />}
+				{!isLoading &&
+					data &&
+					category &&
+					data.map((item) => (
+						<PeopleItem
+							category={category}
+							key={item.name}
+							item={item}
+						/>
+					))}
 			</div>
-		</>
+			<Outlet />
+		</div>
 	);
 };
 

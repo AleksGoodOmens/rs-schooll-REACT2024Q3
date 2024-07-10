@@ -1,18 +1,14 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 import styles from './styles.module.css';
 
-interface IProps {
+interface ISearchBarProps {
 	searchValue: string;
-	setSearchValue: (s: string) => void;
+	updateLocalStorage: (key: string, value: string) => void;
 }
 
-const SearchBar = ({ searchValue, setSearchValue }: IProps) => {
-	const [search, setSearch] = useState<string>(searchValue);
-
-	useEffect(() => {
-		setSearch(searchValue);
-	}, [searchValue]);
+const SearchBar = (props: ISearchBarProps) => {
+	const [search, setSearch] = useState(props.searchValue);
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget) {
@@ -23,10 +19,7 @@ const SearchBar = ({ searchValue, setSearchValue }: IProps) => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const clearSearch = search.trim();
-
-		window.localStorage.setItem('searchValue', clearSearch);
-		setSearchValue(clearSearch);
+		props.updateLocalStorage('searchValue', search);
 	};
 	return (
 		<form

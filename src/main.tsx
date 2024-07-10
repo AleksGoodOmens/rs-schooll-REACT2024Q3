@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import App from './components/app/App.tsx';
 import './index.css';
 import ErrorBoundary from './components/error/errorBoundary/ErrorBoundary.tsx';
-import MainPage from './pages/main/MainPage.tsx';
+import { RouterProvider } from 'react-router-dom';
+import AppRoutes from './router/AppRouter.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<ErrorBoundary>
-			{/* <App /> */}
-			<MainPage />
+			<RouterProvider router={AppRoutes} />
 		</ErrorBoundary>
 	</React.StrictMode>,
 );

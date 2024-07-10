@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const UseLocalStorage = (v: string) => {
-	const [lStorage, setLStorage] = useState('');
+type UseLocalStorageReturnType = [string, (key: string, value: string) => void];
 
-	useEffect(() => {
-		getDataFromLocalStorage(v);
-	}, [v]);
-
-	const getDataFromLocalStorage = async (value: string) => {
-		const res = await window.localStorage.getItem(value);
-
+function useLocalStorage(initialKey: string): UseLocalStorageReturnType {
+	const getDataFromLocalStorage = (): string => {
+		const res = window.localStorage.getItem(initialKey);
 		if (res) {
-			setLStorage(res);
-			return;
+			return res;
 		}
-		return;
+		return '';
 	};
 
-	const setDataToLocalStorage = (value: string, key: string) => {
-		window.localStorage.setItem(value, key);
+	const [storage, setStorage] = useState<string>(getDataFromLocalStorage);
+
+	const setDataToLocalStorage = (key: string, value: string): void => {
+		const clearValue = value.trim().toLowerCase();
+		setStorage(clearValue);
+		window.localStorage.setItem(key, clearValue);
 	};
 
-	return { lStorage, setDataToLocalStorage, getDataFromLocalStorage };
-};
+	return [storage, setDataToLocalStorage];
+}
 
-export default UseLocalStorage;
+export default useLocalStorage;
