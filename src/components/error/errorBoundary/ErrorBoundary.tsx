@@ -3,7 +3,7 @@ import IErrorFallBack from '../errorFallBack/ErrorFallBack';
 import {
 	IErrorBoundaryProps,
 	IErrorBoundaryState,
-} from '../../../interfaces/interfaces';
+} from '../../../utils/interfaces/interfaces';
 
 class ErrorBoundary extends Component<
 	IErrorBoundaryProps,
@@ -26,7 +26,7 @@ class ErrorBoundary extends Component<
 
 	render() {
 		if (this.state.hasError) {
-			return <IErrorFallBack props={{}} />;
+			return <IErrorFallBack />;
 		}
 
 		return this.props.children;
