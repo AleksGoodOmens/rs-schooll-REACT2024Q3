@@ -1,31 +1,34 @@
-import { useEffect } from 'react';
-import useGetData from '../../hooks/useGetData';
 import { NavLink } from 'react-router-dom';
 
 import styles from './styles.module.css';
+import useGetTabs from '../../utils/hooks/useGetTabs';
+import { FunctionComponent } from 'react';
 
-const Tabs = () => {
-	const { isLoading, data, fetchData } = useGetData<string>();
+interface TabsProps {
+	setCategory: (value: string) => void;
+}
 
-	useEffect(() => {
-		fetchData({});
-	}, [fetchData]);
+const Tabs: FunctionComponent<TabsProps> = ({ setCategory }) => {
+	const { isLoading, data } = useGetTabs();
 
 	return (
 		<>
-			{isLoading && <div>tabs Loading...</div>}
-			{data && (
-				<nav className={styles['flex']}>
-					{data.map((link) => (
+			<nav className={styles['flex']}>
+				{isLoading && <div>tabs Loading...</div>}
+				{data &&
+					data.map((link) => (
 						<NavLink
+							onClick={() => setCategory(link)}
+							className={({ isActive }) =>
+								`${styles['link']} ${isActive ? styles['active'] : ''}`
+							}
 							key={link}
-							to={`/${link}`}
+							to={`categories/${link}/`}
 						>
 							{link}
 						</NavLink>
 					))}
-				</nav>
-			)}
+			</nav>
 		</>
 	);
 };
