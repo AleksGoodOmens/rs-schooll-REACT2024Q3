@@ -8,7 +8,7 @@ const Footer = () => {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Developed by GoodOmen
+				Developed by AmensGood
 			</a>
 			<span>2024</span> <span>RS-School</span>
 		</footer>
