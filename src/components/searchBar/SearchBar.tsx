@@ -1,14 +1,27 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import {
+	ChangeEvent,
+	FormEvent,
+	FunctionComponent,
+	useEffect,
+	useState,
+} from 'react';
 
 import styles from './styles.module.css';
+import { useNavigate } from 'react-router-dom';
 
-interface ISearchBarProps {
+interface SearchBarProps {
 	searchValue: string;
-	updateLocalStorage: (key: string, value: string) => void;
+	category: string;
+	setSearchValue: (value: string) => void;
 }
 
-const SearchBar = (props: ISearchBarProps) => {
-	const [search, setSearch] = useState(props.searchValue);
+const SearchBar: FunctionComponent<SearchBarProps> = ({
+	category,
+	searchValue,
+	setSearchValue,
+}) => {
+	const [search, setSearch] = useState(searchValue);
+	const navigate = useNavigate();
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget) {
@@ -18,15 +31,26 @@ const SearchBar = (props: ISearchBarProps) => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		const trimLowerCaseValue = search.trim().toLowerCase();
+		setSearchValue(trimLowerCaseValue);
 
-		props.updateLocalStorage('searchValue', search);
+		if (trimLowerCaseValue) {
+			navigate(`categories/${category}/?search=${trimLowerCaseValue}`);
+		} else {
+			navigate(`categories/${category}/`);
+		}
 	};
+
+	useEffect(() => {
+		setSearch(searchValue);
+	}, [searchValue]);
+
 	return (
 		<form
-			className={styles.form}
+			className={`${styles.form} `}
 			onSubmit={handleSubmit}
 		>
-			<label htmlFor="search"> Search characters by name:</label>
+			<label htmlFor="search"> Search by name:</label>
 			<input
 				onChange={handleChangeInputValue}
 				value={search}
