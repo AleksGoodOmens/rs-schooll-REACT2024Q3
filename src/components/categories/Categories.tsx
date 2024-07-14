@@ -73,11 +73,13 @@ const Categories = () => {
 							disabledPrev={!data.previous || isLoading}
 							handleChangePageNumber={handleChangePageNumber}
 						/>
-						{data && (
+						{data && data.results.length ? (
 							<Cards
 								results={data.results}
 								dynamicCategory={dynamicCategory}
 							/>
+						) : (
+							<div>no data to show</div>
 						)}
 					</div>
 				)}
