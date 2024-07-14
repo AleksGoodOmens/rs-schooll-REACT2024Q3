@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Loader from './loader';
 
 describe('loader', () => {
-	it('should render loader component with next - Loading...', () => {
+	it('Should render loader component with next text - "Loading..."', () => {
 		render(<Loader />);
 
 		const loadingText = screen.getByText('Loading...');
