@@ -1,0 +1,25 @@
+.form {
+	display: flex;
+	gap: 1rem;
+	margin: 0 auto;
+	padding: 0 2rem;
+
+	& label {
+		display: grid;
+		place-content: center;
+		border-radius: 8px;
+		background-color: var(--color-light);
+		padding: 0.5rem 1rem;
+		color: var(--color-black);
+	}
+
+	& input {
+		flex-grow: 1;
+		border-radius: 8px;
+		padding: 1rem 1rem;
+	}
+
+	& button {
+		align-self: center;
+	}
+}
