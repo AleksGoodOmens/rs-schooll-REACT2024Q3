@@ -1,24 +1,7 @@
 .header {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	border-bottom: 1px solid var(--color-accent);
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	border-bottom: 1px solid var(--accent-800);
 	padding: 1rem 0;
-}
-
-.logo {
-	color: var(--color-accent);
-}
-
-.grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
-	justify-content: end;
-
-	& a {
-		transition: 0.5s;
-		&:hover,
-		&:active {
-			color: var(--color-accent);
-		}
-	}
 }

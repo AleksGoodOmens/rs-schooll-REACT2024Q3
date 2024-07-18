@@ -14,7 +14,7 @@ interface CardsProps {
 	dynamicCategory: string | undefined;
 }
 
-const Cards: FunctionComponent<CardsProps> = ({ results, dynamicCategory }) => {
+const Cards: FunctionComponent<CardsProps> = ({ results }) => {
 	const getId = (s: string) => {
 		const regex = /\/(\d+)\/$/;
 		const found = s.match(regex);
@@ -24,22 +24,20 @@ const Cards: FunctionComponent<CardsProps> = ({ results, dynamicCategory }) => {
 	};
 
 	return (
-		<div className={styles['container']}>
-			<div className={styles['category']}>
-				{results.map((item) => {
-					return (
-						<NavLink
-							className={({ isActive }) =>
-								` ${styles['item']} ${isActive ? styles['active'] : ''}`
-							}
-							key={item.url}
-							to={`${dynamicCategory}/${getId(item.url)}`}
-						>
-							{item.name || item.title}
-						</NavLink>
-					);
-				})}
-			</div>
+		<div className={styles['category']}>
+			{results.map((item) => {
+				return (
+					<NavLink
+						className={({ isActive }) =>
+							` ${styles['item']} ${isActive ? styles['active'] : ''}`
+						}
+						key={item.url}
+						to={`${getId(item.url)}`}
+					>
+						{item.name || item.title}
+					</NavLink>
+				);
+			})}
 		</div>
 	);
 };

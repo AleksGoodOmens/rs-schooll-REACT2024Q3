@@ -1,95 +1,55 @@
-import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-import useSearchData from '../../utils/hooks/useSearchData';
 import Loader from '../loader/loader';
 import Cards from '../cards/Cards';
 import Pagination from '../pagination/Pagination';
 
-import { IPerson } from '../../utils/interfaces/interfaces';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { useGetCategoryQuery } from '../../store/services/starWarsApi';
+import { changePage } from '../../store/slices/slices';
+import { Outlet } from 'react-router-dom';
 
 import styles from './styles.module.css';
 
 const Categories = () => {
-	const { dynamicCategory, id } = useParams();
+	const dispatch = useAppDispatch();
 
-	const navigate = useNavigate();
+	const { activeCategory, page, searchValue } = useAppSelector(
+		(state) => state.categoriesReducer,
+	);
 
-	const location = useLocation();
-	const { data, isLoading, fetchData } = useSearchData<IPerson>();
-
-	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [currentCategory, setCurrentCategory] = useState(dynamicCategory);
-
-	useEffect(() => {
-		let search: string | undefined;
-		if (location.search) {
-			search = location.search.split('=')[1];
-			setCurrentPage(1);
-		}
-
-		if (id) {
-			return;
-		}
-
-		if (dynamicCategory !== currentCategory) {
-			setCurrentCategory(dynamicCategory);
-			setCurrentPage(1);
-			return;
-		}
-
-		if (dynamicCategory)
-			fetchData({
-				path: dynamicCategory,
-				search: search,
-				page: currentPage,
-			});
-		return;
-	}, [dynamicCategory, fetchData, currentCategory, location, currentPage, id]);
+	const { isLoading, isError, data } = useGetCategoryQuery({
+		category: activeCategory,
+		page: page,
+		searchValue: searchValue,
+	});
 
 	const handleChangePageNumber = (v: number) => {
-		setCurrentPage((prev) => prev + v);
+		dispatch(changePage(v));
 	};
 
-	const handleUnfreeze = () => {
-		if (id) {
-			navigate(`${currentCategory}/`);
-		}
-	};
+	if (isLoading) return <Loader />;
 
-	return (
-		<div>
-			{!dynamicCategory && <h3>Please chose any category</h3>}
-			<div
-				className={id && styles['swap']}
-				onClick={handleUnfreeze}
-			>
-				{data && (
-					<div>
-						<Pagination
-							count={data.count}
-							currentPage={currentPage}
-							disabledNext={!data.next || isLoading}
-							disabledPrev={!data.previous || isLoading}
-							handleChangePageNumber={handleChangePageNumber}
-						/>
-						{data && data.results.length ? (
-							<Cards
-								results={data.results}
-								dynamicCategory={dynamicCategory}
-							/>
-						) : (
-							<div>no data to show</div>
-						)}
-					</div>
-				)}
+	if (isError) return <div>something go wrong</div>;
 
-				{id && <Outlet />}
+	if (data)
+		return (
+			<div>
+				<Pagination
+					count={data.count}
+					currentPage={page}
+					disabledNext={!data.next || isLoading}
+					disabledPrev={!data.previous || isLoading}
+					handleChangePageNumber={handleChangePageNumber}
+				/>
+
+				<section className={`fadeIn ${styles['flex']}`}>
+					<Cards
+						results={data.results}
+						dynamicCategory={activeCategory}
+					/>
+					<Outlet />
+				</section>
 			</div>
-
-			{isLoading && <Loader />}
-		</div>
-	);
+		);
 };
 
 export default Categories;

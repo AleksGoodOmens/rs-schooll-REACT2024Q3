@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 :root {
-	--color-dark: #242424;
-	--color-light: blanchedalmond;
-	--color-white: white;
-	--color-black: black;
-	--color-warning: rgb(172, 51, 51);
-	--color-accent: rgb(243, 57, 57);
+	color-scheme: dark;
+	--primary: #242424;
+	--primary-800: black;
 
-	background-color: var(--color-dark);
-	color: var(--color-white);
+	--secondary-400: white;
+	--secondary-600: blanchedalmond;
 
-	color-scheme: light dark;
+	--accent-400: rgb(243, 57, 57);
+	--accent-800: rgb(172, 51, 51);
+
+	background-color: var(--secondary-600);
+	color: var(--secondary-400);
+
 	font-weight: 400;
 	line-height: 1.5;
 	font-family: 'JetBrains Mono', monospace;
@@ -21,6 +23,48 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+.Light {
+	color-scheme: light;
+	--primary: blanchedalmond;
+	--primary-800: white;
+
+	--secondary-400: black;
+	--secondary-600: #242424;
+
+	--accent-400: rgb(172, 51, 51);
+	--accent-800: rgb(243, 57, 57);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--primary: blanchedalmond;
+		--primary-800: white;
+		--secondary-400: black;
+		--secondary-600: #242424;
+		--accent-400: rgb(172, 51, 51);
+		--accent-800: rgb(243, 57, 57);
+
+		background-color: var(--primary);
+		color: var(--secondary-400);
+	}
+}
+
+/* Стили для тёмной схемы */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary: #242424;
+		--primary-800: black;
+		--secondary-400: white;
+		--secondary-600: blanchedalmond;
+		--accent-400: rgb(243, 57, 57);
+		--accent-800: rgb(172, 51, 51);
+
+		background-color: var(--secondary-600);
+		color: var(--secondary-400);
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -47,6 +91,12 @@ body {
 	min-height: 100vh;
 }
 
+.Dark,
+.Light {
+	background-color: var(--primary);
+	color: var(--secondary-400);
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -68,7 +118,7 @@ button {
 	transition: all 0.5s;
 	cursor: pointer;
 	border-radius: 1rem;
-	padding: 1rem 2rem;
+	padding: 1rem;
 }
 
 .fadeIn {

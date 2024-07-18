@@ -1,27 +1,20 @@
-import {
-	ChangeEvent,
-	FormEvent,
-	FunctionComponent,
-	useEffect,
-	useState,
-} from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { setActiveItem, setSearchValue } from '../../store/slices/slices';
 import { useNavigate } from 'react-router-dom';
 
-interface SearchBarProps {
-	searchValue: string;
-	category: string;
-	setSearchValue: (value: string) => void;
-}
+const SearchBar = () => {
+	const { searchValue, activeCategory } = useAppSelector(
+		(state) => state.categoriesReducer,
+	);
 
-const SearchBar: FunctionComponent<SearchBarProps> = ({
-	category,
-	searchValue,
-	setSearchValue,
-}) => {
-	const [search, setSearch] = useState(searchValue);
 	const navigate = useNavigate();
+
+	const dispatch = useAppDispatch();
+
+	const [search, setSearch] = useState(searchValue);
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget) {
@@ -32,13 +25,9 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const trimLowerCaseValue = search.trim().toLowerCase();
-		setSearchValue(trimLowerCaseValue);
-
-		if (trimLowerCaseValue) {
-			navigate(`categories/${category}/?search=${trimLowerCaseValue}`);
-		} else {
-			navigate(`categories/${category}/`);
-		}
+		dispatch(setSearchValue(trimLowerCaseValue));
+		dispatch(setActiveItem(undefined));
+		navigate(`${activeCategory}/?=search=${trimLowerCaseValue}`);
 	};
 
 	useEffect(() => {

@@ -8,7 +8,7 @@
 
 .img {
 	margin: 0 auto;
-	box-shadow: inset 0px 0px 40px 60px var(--color-dark);
+	box-shadow: inset 0px 0px 40px 60px var(--primary);
 	background-image: url('/demo.gif');
 	background-position: center;
 	background-size: cover;

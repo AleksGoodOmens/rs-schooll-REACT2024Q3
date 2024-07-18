@@ -1,6 +1,5 @@
-.swap {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+.flex {
+	display: flex;
 	justify-content: center;
-	justify-items: center;
+	gap: 1rem;
 }

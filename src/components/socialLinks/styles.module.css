@@ -1,0 +1,13 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+	justify-content: end;
+
+	& a {
+		transition: 0.5s;
+		&:hover,
+		&:active {
+			color: var(--accent-800);
+		}
+	}
+}

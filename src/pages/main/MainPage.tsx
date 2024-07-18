@@ -5,38 +5,19 @@ import Header from '../../components/layout/header/Header';
 import SearchBar from '../../components/searchBar/SearchBar';
 import Tabs from '../../components/tabs/Tabs';
 
-import useLocalStorage from '../../utils/hooks/useLocalStorage';
-
 import styles from './styles.module.css';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { useEffect } from 'react';
 
 const MainPage = () => {
-	const [localStorage, setLocalStorage] = useLocalStorage();
-
 	const navigate = useNavigate();
-
+	const { activeCategory } = useAppSelector((state) => state.categoriesReducer);
 	useEffect(() => {
-		if (localStorage.category) {
-			navigate(
-				`categories/${localStorage.category}/${localStorage.searchValue && '?search=' + localStorage.searchValue}`,
-			);
+		if (!activeCategory) {
+			navigate('/');
+			return;
 		}
-	}, [localStorage, navigate]);
-
-	const { searchValue, category } = localStorage;
-
-	const updateSearchValue = (value: string) => {
-		setLocalStorage({
-			...localStorage,
-			searchValue: value,
-		});
-	};
-	const updateCategoryValue = (value: string) => {
-		setLocalStorage({
-			searchValue: '',
-			category: value,
-		});
-	};
+	}, [activeCategory, navigate]);
 
 	return (
 		<div className="wrapper">
@@ -46,19 +27,13 @@ const MainPage = () => {
 					<div className={styles['box']}>
 						<h1>Welcome to Star wars - wiki</h1>
 
-						{!category && (
+						{!activeCategory && (
 							<h2>To start your expedition please choose category below</h2>
 						)}
 					</div>
-					<Tabs setCategory={updateCategoryValue} />
+					<Tabs />
 
-					{category && (
-						<SearchBar
-							searchValue={searchValue}
-							category={category}
-							setSearchValue={updateSearchValue}
-						/>
-					)}
+					{activeCategory && <SearchBar />}
 					<Outlet />
 				</section>
 			</main>

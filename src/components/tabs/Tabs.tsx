@@ -1,36 +1,50 @@
 import { NavLink } from 'react-router-dom';
 
+import { useGetCategoriesQuery } from '../../store/services/starWarsApi';
+import { useAppDispatch } from '../../store/hooks/hooks';
+import {
+	resetPage,
+	setActiveCategory,
+	setSearchValue,
+} from '../../store/slices/slices';
+
 import styles from './styles.module.css';
-import useGetTabs from '../../utils/hooks/useGetTabs';
-import { FunctionComponent } from 'react';
 
-interface TabsProps {
-	setCategory: (value: string) => void;
-}
+const Tabs = () => {
+	const { data, isError, isLoading } = useGetCategoriesQuery('');
 
-const Tabs: FunctionComponent<TabsProps> = ({ setCategory }) => {
-	const { isLoading, data } = useGetTabs();
+	const dispatch = useAppDispatch();
 
-	return (
-		<>
+	const handleChangeCategory = (link: string) => {
+		dispatch(resetPage());
+		dispatch(setSearchValue(''));
+		dispatch(setActiveCategory(link));
+	};
+
+	if (data) {
+		return (
 			<nav className={styles['flex']}>
-				{isLoading && <div>tabs Loading...</div>}
-				{data &&
-					data.map((link) => (
-						<NavLink
-							onClick={() => setCategory(link)}
-							className={({ isActive }) =>
-								`${styles['link']} ${isActive ? styles['active'] : ''}`
-							}
-							key={link}
-							to={`categories/${link}/`}
-						>
-							{link}
-						</NavLink>
-					))}
+				{data.map((link) => (
+					<NavLink
+						onClick={() => handleChangeCategory(link)}
+						className={({ isActive }) =>
+							`${styles['link']} ${isActive ? styles['active'] : ''}`
+						}
+						key={link}
+						to={`${link}/`}
+					>
+						{link}
+					</NavLink>
+				))}
 			</nav>
-		</>
-	);
+		);
+	}
+
+	if (isLoading) return <div>tabs Loading...</div>;
+
+	if (isError) return <div>something go wrong</div>;
+
+	if (!data) return <div>Server have problem, please come back soon</div>;
 };
 
 export default Tabs;

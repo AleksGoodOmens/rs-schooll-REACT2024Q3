@@ -8,9 +8,9 @@
 
 .info {
 	border-radius: 8px;
-	background-color: var(--color-light);
+	background-color: var(--primary);
 	padding: 1rem;
-	color: var(--color-dark);
+	color: var(--secondary-600);
 	font-weight: 700;
 	& .info__item {
 		display: flex;
