@@ -1,9 +1,19 @@
 import styles from './styles.module.css';
 const Loader = () => {
 	return (
-		<div className={`${styles.box} `}>
-			<h2>Loading...</h2>
-			<div className={styles.img}></div>
+		<div
+			role="alert"
+			className={styles.box}
+		>
+			<p>Loading...</p>
+			<div className={styles.img}>
+				<img
+					width="260px"
+					height="260px"
+					src="/demo.gif"
+					alt="loading Image"
+				/>
+			</div>
 		</div>
 	);
 };
