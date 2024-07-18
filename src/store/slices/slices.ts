@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-interface IInitialState {
+export interface IInitialState {
 	activeCategory: string;
 	activeItem: number | undefined;
 	searchValue: string;
@@ -31,7 +31,7 @@ export const categoriesSlice = createSlice({
 		resetPage: (state) => {
 			state.page = 1;
 		},
-		changePage: (state, action) => {
+		changePage: (state, action: PayloadAction<number>) => {
 			state.page = state.page + action.payload;
 		},
 	},

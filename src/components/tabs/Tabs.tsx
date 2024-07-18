@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { useGetCategoriesQuery } from '../../store/services/starWarsApi';
+import starWarsApi from '../../store/services/starWarsApi';
 import { useAppDispatch } from '../../store/hooks/hooks';
 import {
 	resetPage,
@@ -9,6 +9,8 @@ import {
 } from '../../store/slices/slices';
 
 import styles from './styles.module.css';
+
+const { useGetCategoriesQuery } = starWarsApi;
 
 const Tabs = () => {
 	const { data, isError, isLoading } = useGetCategoriesQuery('');

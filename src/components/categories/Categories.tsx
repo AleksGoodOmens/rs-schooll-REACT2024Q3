@@ -3,11 +3,13 @@ import Cards from '../cards/Cards';
 import Pagination from '../pagination/Pagination';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { useGetCategoryQuery } from '../../store/services/starWarsApi';
+import starWarsApi from '../../store/services/starWarsApi';
 import { changePage } from '../../store/slices/slices';
 import { Outlet } from 'react-router-dom';
 
 import styles from './styles.module.css';
+
+const { useGetCategoryQuery } = starWarsApi;
 
 const Categories = () => {
 	const dispatch = useAppDispatch();

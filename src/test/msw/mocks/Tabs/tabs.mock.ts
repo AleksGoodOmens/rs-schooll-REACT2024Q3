@@ -1,9 +1,18 @@
-export const tabsMock = {
-	mockTest: 'https://swapi.dev/api/starships/',
+export const tabsMock = [
+	'mockTest',
+	'mockPeople',
+	'mockPlanets',
+	'mockFilms',
+	'mockSpecies',
+	'mockVehicles',
+	'mockStarships',
+];
+
+export const TabsResponse = {
 	mockPeople: 'https://swapi.dev/api/people/',
-	mockPlanets: 'https://swapi.dev/api/planets/',
-	mockFilms: 'https://swapi.dev/api/films/',
-	mockSpecies: 'https://swapi.dev/api/species/',
-	mockVehicles: 'https://swapi.dev/api/vehicles/',
-	mockStarships: 'https://swapi.dev/api/starships/',
+	mockplanets: 'https://swapi.dev/api/planets/',
+	mockfilms: 'https://swapi.dev/api/films/',
+	mockspecies: 'https://swapi.dev/api/species/',
+	mockvehicles: 'https://swapi.dev/api/vehicles/',
+	mockstarships: 'https://swapi.dev/api/starships/',
 };

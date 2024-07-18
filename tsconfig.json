@@ -7,5 +7,9 @@
 		{
 			"path": "./tsconfig.node.json"
 		}
-	]
+	],
+	"compilerOptions": {
+		"types": ["@reduxjs/toolkit", "@reduxjs/toolkit/query/react"],
+		"typeRoots": ["./node_modules/@types", "./custom_typings"]
+	}
 }

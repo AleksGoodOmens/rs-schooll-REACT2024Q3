@@ -1,5 +1,6 @@
 .category {
 	display: grid;
+	grid-auto-rows: max-content;
 	flex-grow: 1;
 	flex-shrink: 0;
 	flex-basis: 40%;

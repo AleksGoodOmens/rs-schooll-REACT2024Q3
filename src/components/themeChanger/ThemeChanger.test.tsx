@@ -1,80 +1,51 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, render, screen } from '@testing-library/react';
-import { createContext, useContext } from 'react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import ThemeChanger from './ThemeChanger';
+import { ThemeContext } from '../app/App';
 import ue from '@testing-library/user-event';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 // Mock the useOutletContext hook
-const setValue = () => 'Light';
 
-const value = setValue();
-
-const mockContext = [value, vi.fn(setValue)];
-const MockOutletContext = createContext(mockContext);
-
-const MockProvider = ({ children }: { children: JSX.Element }) => {
-	return (
-		<MockOutletContext.Provider value={mockContext}>
-			{children}
-		</MockOutletContext.Provider>
-	);
+const mockContext = {
+	value: 'light',
+	change: vi.fn(),
 };
-
-vi.mock('react-router-dom', async (importOriginal) => {
-	const actual = await importOriginal<object>();
-	return {
-		...actual,
-		useOutletContext: () => useContext(MockOutletContext),
-	};
-});
 
 const user = ue.setup();
 
+beforeEach(() => {
+	render(
+		<RouterProvider
+			router={createBrowserRouter([
+				{
+					path: '/',
+					element: (
+						<ThemeContext.Provider value={mockContext}>
+							<ThemeChanger />
+						</ThemeContext.Provider>
+					),
+				},
+			])}
+		/>,
+	);
+});
+
 describe('Theme Changer', () => {
-	afterEach(() => {
-		cleanup();
-	});
 	it('renders a button with correct text', () => {
-		render(
-			<MemoryRouter initialEntries={['/']}>
-				<Routes>
-					<Route
-						path="/"
-						element={
-							<MockProvider>
-								<ThemeChanger />
-							</MockProvider>
-						}
-					/>
-				</Routes>
-			</MemoryRouter>,
-		);
 		const button = screen.getByRole('button');
 
 		expect(button).toBeInTheDocument();
-		expect(button).toHaveTextContent('Now you are on a LightSide');
+		expect(button).toHaveTextContent('Now you are on a lightSide');
 	});
 
 	it('allows user to click the button', async () => {
-		render(
-			<MemoryRouter initialEntries={['/']}>
-				<Routes>
-					<Route
-						path="/"
-						element={
-							<MockProvider>
-								<ThemeChanger />
-							</MockProvider>
-						}
-					/>
-				</Routes>
-			</MemoryRouter>,
-		);
+		screen.debug();
 		const button = screen.getByRole('button');
+		expect(mockContext.change).not.toBeCalled();
 
-		expect(mockContext[1]).not.toBeCalled();
 		await user.click(button);
-		expect(mockContext[1]).toBeCalled();
+
+		expect(mockContext.change).toBeCalled();
 	});
 });

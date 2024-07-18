@@ -7,15 +7,13 @@ const rootReducers = combineReducers({
 	[starWarsApi.reducerPath]: starWarsApi.reducer,
 });
 
-export const AppStore = () =>
+export const setupStore = () =>
 	configureStore({
 		reducer: rootReducers,
 		middleware: (getDefaultMiddleware) =>
 			getDefaultMiddleware().concat(starWarsApi.middleware),
 	});
 
-export type TRootState = ReturnType<typeof rootReducers>;
-export type TAppStore = ReturnType<typeof AppStore>;
-export type TAppDispatch = ReturnType<typeof AppStore>['dispatch'];
-
-export default AppStore;
+export type RootState = ReturnType<typeof rootReducers>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = ReturnType<typeof setupStore>['dispatch'];

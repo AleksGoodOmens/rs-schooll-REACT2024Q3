@@ -3,7 +3,7 @@ import { IDetailedCard } from '../../utils/interfaces/interfaces';
 
 export const BASE_URL = 'https://swapi.dev/api';
 
-interface CategoriesResponse {
+export interface CategoriesResponse {
 	[key: string]: string;
 }
 
@@ -45,5 +45,4 @@ export const starWarsApi = createApi({
 	}),
 });
 
-export const { useGetCategoriesQuery, useGetCategoryQuery, useGetItemQuery } =
-	starWarsApi;
+export default starWarsApi;

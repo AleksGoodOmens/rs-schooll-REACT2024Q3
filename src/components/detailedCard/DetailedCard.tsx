@@ -1,10 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../store/hooks/hooks';
-import { useGetItemQuery } from '../../store/services/starWarsApi';
+import starWarsApi from '../../store/services/starWarsApi';
 import Loader from '../loader/loader';
 
 import styles from './styles.module.css';
+
 import { IDetailedCard } from '../../utils/interfaces/interfaces';
+
+const { useGetItemQuery } = starWarsApi;
 
 const DetailedCard = () => {
 	const { activeCategory } = useAppSelector((state) => state.categoriesReducer);
