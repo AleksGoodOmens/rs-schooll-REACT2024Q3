@@ -1,10 +1,19 @@
 import { createContext, useState } from 'react';
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import AppStore from '../../store/store';
+import { setupStore } from '../../store/store';
+
 type ThemeType = 'Dark' | 'Light' | '';
 
-const AppTheme = createContext<ThemeType>('');
+export const ThemeContext = createContext<{
+	value: string;
+	change: () => void;
+}>({
+	value: 'light',
+	change: () => {},
+});
+
+const store = setupStore();
 
 const App = () => {
 	const [theme, setTheme] = useState<ThemeType>('Light');
@@ -14,13 +23,15 @@ const App = () => {
 	};
 
 	return (
-		<AppTheme.Provider value={theme}>
-			<Provider store={AppStore()}>
+		<Provider store={store}>
+			<ThemeContext.Provider
+				value={{ value: theme, change: handleChangeTheme }}
+			>
 				<div className={theme}>
-					<Outlet context={[theme, handleChangeTheme]} />
+					<Outlet />
 				</div>
-			</Provider>
-		</AppTheme.Provider>
+			</ThemeContext.Provider>
+		</Provider>
 	);
 };
 

@@ -1,16 +1,16 @@
-import { useOutletContext } from 'react-router-dom';
-
 import styles from './styles.module.css';
+import { useContext } from 'react';
+import { ThemeContext } from '../app/App';
 
 const ThemeChanger = () => {
-	const [theme, changeTheme] = useOutletContext<[string, () => void]>();
+	const { value, change } = useContext(ThemeContext);
 
 	return (
 		<button
 			className={styles['button']}
-			onClick={changeTheme}
+			onClick={change}
 		>
-			Now you are on a {theme}Side
+			Now you are on a {value}Side
 		</button>
 	);
 };
