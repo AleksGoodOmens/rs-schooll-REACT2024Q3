@@ -2,9 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import MainPage from '../pages/main/MainPage';
 import NotFoundPage from '../pages/notFound/NotFoundPage';
 import DetailedCard from '../components/detailedCard/DetailedCard';
-import Categories from '../components/categories/Categories';
 import ErrorFallBack from '../components/error/errorFallBack/ErrorFallBack';
 import App from '../components/app/App';
+import Cards from '../components/Cards/Cards';
 
 const AppRoutes = createBrowserRouter([
 	{
@@ -17,14 +17,12 @@ const AppRoutes = createBrowserRouter([
 				element: <MainPage />,
 				children: [
 					{
-						path: ':dynamicCategory',
-						element: <Categories />,
-						children: [
-							{
-								path: ':id',
-								element: <DetailedCard />,
-							},
-						],
+						path: ':activeCategory',
+						element: <Cards />,
+					},
+					{
+						path: ':id',
+						element: <DetailedCard />,
 					},
 				],
 			},

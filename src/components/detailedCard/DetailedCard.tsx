@@ -1,26 +1,25 @@
-import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks/hooks';
-import starWarsApi from '../../store/services/starWarsApi';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import starWarsApi, { TDetailedCard } from '../../store/services/starWarsApi';
+import { setActiveCard } from '../../store/slices/cards.slice';
 import Loader from '../loader/loader';
 
 import styles from './styles.module.css';
 
-import { IDetailedCard } from '../../utils/interfaces/interfaces';
-
 const { useGetItemQuery } = starWarsApi;
 
 const DetailedCard = () => {
-	const { activeCategory } = useAppSelector((state) => state.categoriesReducer);
-	const { id } = useParams();
+	const dispatch = useAppDispatch();
+	const { activeCard } = useAppSelector((state) => state.cards);
+
 	const { isLoading, isError, data } = useGetItemQuery({
-		category: activeCategory,
-		id,
+		category: activeCard?.category,
+		id: activeCard?.id,
 	});
 
 	if (isLoading) return <Loader />;
 	if (isError) return <div>something go wrong</div>;
 
-	const renderData = (data: IDetailedCard) => {
+	const renderData = (data: TDetailedCard) => {
 		const entries = Object.entries(data).filter(([, value]) => value);
 
 		return entries.map(([key, value]) => (
@@ -31,15 +30,18 @@ const DetailedCard = () => {
 	};
 
 	return (
-		<article className={`${styles.box} `}>
-			<h2>
-				{data
-					? data.title
+		<article className={`${styles['box']} `}>
+			<h2 className={styles['header']}>
+				<b>
+					{data
 						? data.title
-						: data.name
-							? data.name
-							: 'name'
-					: 'name'}
+							? data.title
+							: data.name
+								? data.name
+								: 'name'
+						: 'name'}
+				</b>
+				<button onClick={() => dispatch(setActiveCard(null))}>X</button>
 			</h2>
 			<h3>Description</h3>
 			<div className={styles['content']}>{data && renderData(data)}</div>

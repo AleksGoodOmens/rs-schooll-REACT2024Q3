@@ -2,19 +2,15 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { setActiveItem, setSearchValue } from '../../store/slices/slices';
-import { useNavigate } from 'react-router-dom';
+import { setSearchValue } from '../../store/slices/cards.slice';
 
 const SearchBar = () => {
-	const { searchValue, activeCategory } = useAppSelector(
-		(state) => state.categoriesReducer,
-	);
-
-	const navigate = useNavigate();
-
 	const dispatch = useAppDispatch();
 
+	const { searchValue } = useAppSelector((state) => state.cards);
+
 	const [search, setSearch] = useState(searchValue);
+	const [errorMessage, setErrorMessage] = useState(false);
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget) {
@@ -24,15 +20,33 @@ const SearchBar = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const trimLowerCaseValue = search.trim().toLowerCase();
-		dispatch(setSearchValue(trimLowerCaseValue));
-		dispatch(setActiveItem(undefined));
-		navigate(`${activeCategory}/?=search=${trimLowerCaseValue}`);
+
+		if (search) {
+			dispatch(setSearchValue(search));
+			setSearch('');
+			return;
+		}
+		setErrorMessage(true);
 	};
 
 	useEffect(() => {
-		setSearch(searchValue);
-	}, [searchValue]);
+		const autoHideErrorTimer = setTimeout(() => {
+			setErrorMessage(false);
+		}, 2000);
+
+		return () => clearTimeout(autoHideErrorTimer);
+	}, [errorMessage]);
+
+	useEffect(() => {
+		const autoFetchTimeOut = setTimeout(() => {
+			if (search) {
+				dispatch(setSearchValue(search));
+				setSearch('');
+			}
+		}, 3000);
+
+		return () => clearTimeout(autoFetchTimeOut);
+	}, [dispatch, search]);
 
 	return (
 		<form
@@ -46,8 +60,9 @@ const SearchBar = () => {
 				type="search"
 				name="search"
 				id="search"
+				placeholder="Type any name"
 			/>
-
+			{errorMessage && <span>Please enter a search term</span>}
 			<button type="submit">Search</button>
 		</form>
 	);

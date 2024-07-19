@@ -40,7 +40,6 @@ describe('Theme Changer', () => {
 	});
 
 	it('allows user to click the button', async () => {
-		screen.debug();
 		const button = screen.getByRole('button');
 		expect(mockContext.change).not.toBeCalled();
 

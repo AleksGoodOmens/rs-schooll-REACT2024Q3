@@ -1,0 +1,27 @@
+.flex {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.items {
+	display: grid;
+	align-items: center;
+	gap: 1rem;
+	min-width: 280px;
+}
+
+.item {
+	transition: all 0.5s;
+	border: 1px solid var(--secondary-600);
+	border-radius: 1rem;
+	background-color: var(--secondary-600);
+	padding: 1rem 2rem;
+	color: var(--primary);
+}
+
+.active {
+	transition: all 0.5s;
+	background-color: var(--accent-800);
+	text-align: center;
+}

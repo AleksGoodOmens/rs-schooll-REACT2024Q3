@@ -1,43 +1,39 @@
-import { FunctionComponent } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { changePage } from '../../store/slices/cards.slice';
 import styles from './styles.module.css';
 
-interface PaginationProps {
-	disabledPrev: boolean;
-	disabledNext: boolean;
-	handleChangePageNumber: (n: number) => void;
-	currentPage: number;
-	count: number;
-}
+const Pagination = () => {
+	const dispatch = useAppDispatch();
+	const { next, previous, totalPages, page, totalCards } = useAppSelector(
+		(state) => state.cards,
+	);
 
-const Pagination: FunctionComponent<PaginationProps> = ({
-	handleChangePageNumber,
-	disabledNext,
-	disabledPrev,
-	currentPage,
-	count,
-}) => {
 	return (
 		<div className={styles['pagination']}>
 			<button
-				disabled={disabledPrev}
-				onClick={() => handleChangePageNumber(-1)}
+				disabled={!previous}
+				onClick={() => {
+					if (page > 0) dispatch(changePage(-1));
+				}}
 			>
 				prev
 			</button>
 			<div className={styles['info']}>
 				<div className={styles['info__item']}>
-					Total cards: <span>{count}</span>
+					Total cards: <span>{totalCards}</span>
 				</div>
 				<div className={styles['info__item']}>
 					Pages:
 					<span>
-						{currentPage}/{Math.ceil(count / 10)}
+						{page}/{totalPages}
 					</span>
 				</div>
 			</div>
 			<button
-				disabled={disabledNext}
-				onClick={() => handleChangePageNumber(1)}
+				disabled={!next}
+				onClick={() => {
+					if (page < totalPages) dispatch(changePage(1));
+				}}
 			>
 				next
 			</button>

@@ -4,9 +4,7 @@ import { characterNotFound } from './mocks/characterNotFound';
 import { TabsResponse } from './mocks/Tabs/tabs.mock';
 
 export const handlers = [
-	http.get('*', ({ request }) => {
-		// const url = new URL(request.url);
-		console.log(request);
+	http.get('*', () => {
 		return HttpResponse.json(TabsResponse);
 	}),
 	http.get('*/people', ({ request }) => {

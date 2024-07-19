@@ -1,57 +1,56 @@
-import Loader from '../loader/loader';
-import Cards from '../cards/Cards';
-import Pagination from '../pagination/Pagination';
-
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import starWarsApi from '../../store/services/starWarsApi';
-import { changePage } from '../../store/slices/slices';
-import { Outlet } from 'react-router-dom';
 
 import styles from './styles.module.css';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import {
+	setActiveCategory,
+	setCategories,
+} from '../../store/slices/categories.slice';
+import { useEffect } from 'react';
+import { resetPage } from '../../store/slices/cards.slice';
 
-const { useGetCategoryQuery } = starWarsApi;
+const { useGetCategoriesQuery } = starWarsApi;
 
 const Categories = () => {
 	const dispatch = useAppDispatch();
 
-	const { activeCategory, page, searchValue } = useAppSelector(
-		(state) => state.categoriesReducer,
+	const { activeCategory, categories } = useAppSelector(
+		(state) => state.category,
 	);
+	const { data, isError, isLoading } = useGetCategoriesQuery('');
 
-	const { isLoading, isError, data } = useGetCategoryQuery({
-		category: activeCategory,
-		page: page,
-		searchValue: searchValue,
-	});
+	useEffect(() => {
+		if (data) {
+			dispatch(setCategories(data));
+		}
+	}, [data, dispatch]);
 
-	const handleChangePageNumber = (v: number) => {
-		dispatch(changePage(v));
+	const handleChangeCategory = (category: string) => {
+		dispatch(setActiveCategory(category));
+		dispatch(resetPage());
 	};
 
-	if (isLoading) return <Loader />;
+	if (categories.length) {
+		return (
+			<nav className={styles['flex']}>
+				{categories.map((category) => (
+					<button
+						onClick={() => handleChangeCategory(category)}
+						className={`${styles['link']} ${category === activeCategory ? styles['active'] : ''}`}
+						key={category}
+					>
+						{category}
+					</button>
+				))}
+			</nav>
+		);
+	}
+
+	if (isLoading) return <div>tabs Loading...</div>;
 
 	if (isError) return <div>something go wrong</div>;
 
-	if (data)
-		return (
-			<div>
-				<Pagination
-					count={data.count}
-					currentPage={page}
-					disabledNext={!data.next || isLoading}
-					disabledPrev={!data.previous || isLoading}
-					handleChangePageNumber={handleChangePageNumber}
-				/>
-
-				<section className={`fadeIn ${styles['flex']}`}>
-					<Cards
-						results={data.results}
-						dynamicCategory={activeCategory}
-					/>
-					<Outlet />
-				</section>
-			</div>
-		);
+	if (!data) return <div>Server have problem, please come back soon</div>;
 };
 
 export default Categories;
