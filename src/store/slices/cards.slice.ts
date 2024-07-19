@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getCategoryAndIdFromUrl } from '../../utils/getCategoryAndIdFromUrl';
+import { CardsResponse } from '../services/starWarsApi';
 export type Card = {
 	url: string;
 	name?: string;
@@ -39,14 +40,19 @@ const categoriesSlice = createSlice({
 			state.totalCards = action.payload;
 			state.totalPages = Math.ceil(action.payload / 10);
 		},
-		setCards(state, action: PayloadAction<Card[]>) {
-			const transformCard = action.payload.map((card) => {
+		setCards(state, action: PayloadAction<CardsResponse>) {
+			const { results, count, next, previous } = action.payload;
+
+			const transformCard = results.map((card) => {
 				const categoryAndId = getCategoryAndIdFromUrl(card.url);
 
 				return { ...card, ...categoryAndId };
 			});
-
 			state.cards = transformCard;
+			state.next = !!next;
+			state.previous = !!previous;
+			state.totalCards = count;
+			state.totalPages = Math.ceil(count / 10);
 		},
 		setNext(state, action: PayloadAction<boolean>) {
 			state.next = action.payload;

@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { starWarsApi } from './services/starWarsApi';
-import categoriesSlice from './slices/categories.slice';
 import cardsSlice from './slices/cards.slice';
+import categoriesSlice from './slices/categories.slice';
 
 const rootReducers = combineReducers({
 	category: categoriesSlice,

@@ -26,7 +26,10 @@ const SearchBar = () => {
 			setSearch('');
 			return;
 		}
-		setErrorMessage(true);
+
+		if (!searchValue && !search) return setErrorMessage(true);
+
+		dispatch(setSearchValue(''));
 	};
 
 	useEffect(() => {
@@ -49,22 +52,24 @@ const SearchBar = () => {
 	}, [dispatch, search]);
 
 	return (
-		<form
-			className={`${styles.form} `}
-			onSubmit={handleSubmit}
-		>
-			<label htmlFor="search"> Search by name:</label>
-			<input
-				onChange={handleChangeInputValue}
-				value={search}
-				type="search"
-				name="search"
-				id="search"
-				placeholder="Type any name"
-			/>
+		<>
+			<form
+				className={`${styles.form} `}
+				onSubmit={handleSubmit}
+			>
+				<label htmlFor="search"> Search by name:</label>
+				<input
+					onChange={handleChangeInputValue}
+					value={search}
+					type="search"
+					name="search"
+					id="search"
+					placeholder="Type any name"
+				/>
+				<button type="submit">Search</button>
+			</form>
 			{errorMessage && <span>Please enter a search term</span>}
-			<button type="submit">Search</button>
-		</form>
+		</>
 	);
 };
 

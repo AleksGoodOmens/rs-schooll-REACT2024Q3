@@ -11,12 +11,12 @@ const DetailedCard = () => {
 	const dispatch = useAppDispatch();
 	const { activeCard } = useAppSelector((state) => state.cards);
 
-	const { isLoading, isError, data } = useGetItemQuery({
+	const { isLoading, isError, data, isFetching } = useGetItemQuery({
 		category: activeCard?.category,
 		id: activeCard?.id,
 	});
 
-	if (isLoading) return <Loader />;
+	if (isLoading || isFetching) return <Loader />;
 	if (isError) return <div>something go wrong</div>;
 
 	const renderData = (data: TDetailedCard) => {
