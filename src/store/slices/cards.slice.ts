@@ -5,13 +5,14 @@ export type Card = {
 	url: string;
 	name?: string;
 	title?: string;
-	favorite?: boolean;
+	favorite: boolean;
 	id: string;
 	category: string;
 };
 
 type categoriesState = {
 	cards: Card[];
+	favoriteCards: Card[];
 	activeCard: Card | null;
 	totalPages: number;
 	totalCards: number;
@@ -23,6 +24,7 @@ type categoriesState = {
 
 const initialState: categoriesState = {
 	cards: [],
+	favoriteCards: [],
 	activeCard: null,
 	totalPages: 0,
 	totalCards: 0,
@@ -46,7 +48,7 @@ const categoriesSlice = createSlice({
 			const transformCard = results.map((card) => {
 				const categoryAndId = getCategoryAndIdFromUrl(card.url);
 
-				return { ...card, ...categoryAndId };
+				return { ...card, ...categoryAndId, favorite: false };
 			});
 			state.cards = transformCard;
 			state.next = !!next;
@@ -72,11 +74,25 @@ const categoriesSlice = createSlice({
 		setActiveCard(state, action: PayloadAction<Card | null>) {
 			state.activeCard = action.payload;
 		},
+
+		addToFavorite(state, action: PayloadAction<Card>) {
+			state.favoriteCards = [...state.favoriteCards, action.payload];
+		},
+		delFromFavorite(state, action: PayloadAction<string>) {
+			state.favoriteCards = state.favoriteCards.filter(
+				(item) => item.url !== action.payload,
+			);
+		},
+		clearFavoriteCards(state) {
+			state.favoriteCards = [];
+		},
 	},
 });
 
 export const {
 	changePage,
+	addToFavorite,
+	delFromFavorite,
 	resetPage,
 	setCards,
 	setTotalPages,
@@ -84,6 +100,7 @@ export const {
 	setPrevious,
 	setActiveCard,
 	setSearchValue,
+	clearFavoriteCards,
 } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

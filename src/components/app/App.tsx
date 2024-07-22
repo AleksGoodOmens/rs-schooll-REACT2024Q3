@@ -16,7 +16,7 @@ export const ThemeContext = createContext<{
 const store = setupStore();
 
 const App = () => {
-	const [theme, setTheme] = useState<ThemeType>('Light');
+	const [theme, setTheme] = useState<ThemeType>('Dark');
 
 	const handleChangeTheme = () => {
 		setTheme((prevTheme) => (prevTheme === 'Dark' ? 'Light' : 'Dark'));

@@ -7,7 +7,7 @@ import {
 	setCategories,
 } from '../../store/slices/categories.slice';
 import { useEffect } from 'react';
-import { resetPage } from '../../store/slices/cards.slice';
+import { resetPage, setActiveCard } from '../../store/slices/cards.slice';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
@@ -27,6 +27,7 @@ const Categories = () => {
 
 	const handleChangeCategory = (category: string) => {
 		dispatch(setActiveCategory(category));
+		dispatch(setActiveCard(null));
 		dispatch(resetPage());
 	};
 

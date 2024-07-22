@@ -4,7 +4,7 @@ import NotFoundPage from '../pages/notFound/NotFoundPage';
 import DetailedCard from '../components/detailedCard/DetailedCard';
 import ErrorFallBack from '../components/error/errorFallBack/ErrorFallBack';
 import App from '../components/app/App';
-import Cards from '../components/Cards/Cards';
+import Cards from '../components/cards/Cards';
 
 const AppRoutes = createBrowserRouter([
 	{

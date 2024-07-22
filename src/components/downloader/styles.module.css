@@ -1,0 +1,35 @@
+.popup {
+	display: flex;
+	position: fixed;
+	right: -300px;
+	bottom: 3rem;
+	align-items: center;
+	gap: 1rem;
+	z-index: 100;
+	animation: slideIn 0.5s forwards;
+	border-radius: 1rem;
+	background-color: var(--secondary-600);
+	padding: 0.5rem 1rem;
+	color: var(--primary);
+}
+
+.download {
+	transition: all 0.5s;
+	box-shadow: 4px 4px 0 0 var(--primary);
+	border-radius: 1rem;
+	background-color: var(--accent-400);
+	padding: 1rem 0.5rem;
+	color: var(--primary);
+
+	&:hover,
+	&:active {
+		transform: translate(2px, 2px);
+		box-shadow: 0px 0px 0px 2px var(--primary);
+	}
+}
+
+@keyframes slideIn {
+	100% {
+		right: 1rem;
+	}
+}

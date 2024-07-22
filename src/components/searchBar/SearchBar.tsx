@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { setSearchValue } from '../../store/slices/cards.slice';
+import { setActiveCard, setSearchValue } from '../../store/slices/cards.slice';
 
 const SearchBar = () => {
 	const dispatch = useAppDispatch();
@@ -20,6 +20,7 @@ const SearchBar = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		dispatch(setActiveCard(null));
 
 		if (search) {
 			dispatch(setSearchValue(search));

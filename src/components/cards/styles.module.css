@@ -6,18 +6,33 @@
 
 .items {
 	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	align-items: center;
 	gap: 1rem;
 	min-width: 280px;
 }
 
 .item {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 2rem;
 	transition: all 0.5s;
 	border: 1px solid var(--secondary-600);
 	border-radius: 1rem;
 	background-color: var(--secondary-600);
-	padding: 1rem 2rem;
 	color: var(--primary);
+	& button {
+		display: flex;
+		gap: 1rem;
+		border: none;
+		background-color: transparent;
+		color: var(--primary);
+	}
+	& input {
+		position: absolute;
+		opacity: 0;
+	}
 }
 
 .active {
