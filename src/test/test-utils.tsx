@@ -1,31 +1,37 @@
+import React, { PropsWithChildren } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
-import React, { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
+
+import type { AppStore, RootState } from '../store/store';
 import { setupStore } from '../store/store';
-import type { AppStore } from '../store/store';
-import { MemoryRouter } from 'react-router-dom';
+// As a basic setup, import your same slice reducers
 
 // This type interface extends the default options for render from RTL, as well
-// as allows the user to specify other things such as initialState, store. For
-// future dependencies, such as wanting to test with react-router, you can extend
-// this interface to accept a path and route and use those in a <MemoryRouter />
+// as allows the user to specify other things such as initialState, store.
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+	preloadedState?: Partial<RootState>;
 	store?: AppStore;
 }
 
-function renderWithProviders(
+export function renderWithProviders(
 	ui: React.ReactElement,
-	{ store = setupStore(), ...renderOptions }: ExtendedRenderOptions = {},
+	extendedRenderOptions: ExtendedRenderOptions = {},
 ) {
-	function Wrapper({ children }: PropsWithChildren<object>): JSX.Element {
-		return (
-			<Provider store={store}>
-				<MemoryRouter>{children}</MemoryRouter>
-			</Provider>
-		);
-	}
-	return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
-}
+	const {
+		preloadedState = {},
+		// Automatically create a store instance if no store was passed in
+		store = setupStore(preloadedState),
+		...renderOptions
+	} = extendedRenderOptions;
 
-export { renderWithProviders };
+	const Wrapper = ({ children }: PropsWithChildren) => (
+		<Provider store={store}>{children}</Provider>
+	);
+
+	// Return an object with the store and all of RTL's query functions
+	return {
+		store,
+		...render(ui, { wrapper: Wrapper, ...renderOptions }),
+	};
+}

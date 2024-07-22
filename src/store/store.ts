@@ -9,9 +9,10 @@ const rootReducers = combineReducers({
 	[starWarsApi.reducerPath]: starWarsApi.reducer,
 });
 
-export const setupStore = () =>
+export const setupStore = (preloadedState?: Partial<RootState>) =>
 	configureStore({
 		reducer: rootReducers,
+		preloadedState,
 		middleware: (getDefaultMiddleware) =>
 			getDefaultMiddleware().concat(starWarsApi.middleware),
 	});
