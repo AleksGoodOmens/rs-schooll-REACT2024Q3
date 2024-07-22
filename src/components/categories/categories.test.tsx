@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { cleanup, screen } from '@testing-library/react';
 import Categories from './Categories';
 import { renderWithProviders } from '../../test/test-utils';
+import userEvent from '@testing-library/user-event';
 
 describe('Categories', () => {
 	beforeEach(() => {
@@ -21,5 +22,19 @@ describe('Categories', () => {
 		const buttons = await screen.findAllByRole('button', { name: /mock/i });
 
 		expect(buttons.length).toBe(6);
+	});
+
+	it('after click should on first element should add class "active"', async () => {
+		renderWithProviders(<Categories />);
+
+		const buttons = await screen.findAllByRole('button', { name: /mock/i });
+
+		buttons.forEach((button) => {
+			expect(button).not.toHaveClass(/active/i);
+		});
+
+		await userEvent.click(buttons[0]);
+
+		expect(buttons[0]).toHaveClass(/active/i);
 	});
 });
