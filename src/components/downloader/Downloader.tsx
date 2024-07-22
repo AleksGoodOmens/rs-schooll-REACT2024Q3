@@ -16,11 +16,15 @@ const Downloader = () => {
 		<div className={styles['popup']}>
 			{!shure && (
 				<>
-					<b>{favoriteCards.length}</b>
+					<span
+						aria-label={`amount of favorite cards = ${favoriteCards.length}`}
+					>
+						{favoriteCards.length}
+					</span>
 					<span>
 						{favoriteCards.length > 1 ? 'cards are' : 'card is'} selected
 					</span>
-					<button onClick={() => setShure(true)}>Unselect all</button>{' '}
+					<button onClick={() => setShure(true)}>Unselect all</button>
 					<CSVLink
 						className={styles['download']}
 						data={favoriteCards}
@@ -33,9 +37,7 @@ const Downloader = () => {
 			{shure && (
 				<>
 					<span>Are you shure?</span>
-					<button onClick={() => dispatch(clearFavoriteCards())}>
-						yes
-					</button>{' '}
+					<button onClick={() => dispatch(clearFavoriteCards())}>yes</button>
 					<button onClick={() => setShure(false)}>no</button>
 				</>
 			)}

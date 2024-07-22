@@ -3,4 +3,5 @@
 * [X]  favorite items checkbox
 * [X]  Download csv button and popup
 * [X]  pagination test
-* [ ]  categories test
+* [X]  categories test
+* [ ]  downloader test
