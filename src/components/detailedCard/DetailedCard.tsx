@@ -17,7 +17,7 @@ const DetailedCard = () => {
 	});
 
 	if (isLoading || isFetching) return <Loader />;
-	if (isError) return <div>something go wrong</div>;
+	if (isError || !data) return <div>something go wrong</div>;
 
 	const renderData = (data: TDetailedCard) => {
 		const entries = Object.entries(data).filter(([, value]) => value);
@@ -32,15 +32,10 @@ const DetailedCard = () => {
 	return (
 		<article className={`${styles['box']} `}>
 			<h2 className={styles['header']}>
-				<b>
-					{data
-						? data.title
-							? data.title
-							: data.name
-								? data.name
-								: 'name'
-						: 'name'}
-				</b>
+				<span>
+					{data.title && data.title}
+					{data.name && data.name}
+				</span>
 				<button onClick={() => dispatch(setActiveCard(null))}>X</button>
 			</h2>
 			<h3>Description</h3>

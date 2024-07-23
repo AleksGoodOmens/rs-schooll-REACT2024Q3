@@ -18,8 +18,10 @@ const Cards = () => {
 	const dispatch = useAppDispatch();
 
 	const { activeCategory } = useAppSelector((state) => state.category);
+
 	const { cards, page, searchValue, activeCard, favoriteCards } =
 		useAppSelector((state) => state.cards);
+
 	const { data, isError, isLoading, isFetching } = useGetCardsQuery({
 		category: activeCategory,
 		page: page,
@@ -49,7 +51,7 @@ const Cards = () => {
 	return (
 		<div onClick={handleHideActiveCard}>
 			<Pagination />
-			{isLoading || (isFetching && <Loader />)}
+			{(isLoading || isFetching) && <Loader />}
 
 			{isError && <div>Something go wrong </div>}
 
@@ -62,7 +64,7 @@ const Cards = () => {
 							const favorite = !!favoriteCards.find((item) => item.url === url);
 
 							return (
-								<div
+								<article
 									key={url}
 									className={`fadeIn ${styles['item']} ${card.id === activeCard?.id ? styles['active'] : ''}`}
 								>
@@ -70,7 +72,7 @@ const Cards = () => {
 										onClick={() => dispatch(setActiveCard(card))}
 										key={url}
 									>
-										<b>{name || title}</b>
+										<span>{name || title}</span>
 										<span>
 											{!activeCard ? 'Open details' : 'close details'}
 										</span>
@@ -85,7 +87,7 @@ const Cards = () => {
 											/>
 										</label>
 									)}
-								</div>
+								</article>
 							);
 						})
 					) : (

@@ -1,21 +1,22 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
-import type { AppStore, RootState } from '../store/store';
+import type { AppStore } from '../store/store';
 import { setupStore } from '../store/store';
-// As a basic setup, import your same slice reducers
 
-// This type interface extends the default options for render from RTL, as well
-// as allows the user to specify other things such as initialState, store.
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-	preloadedState?: Partial<RootState>;
+	preloadedState?: InitialState;
 	store?: AppStore;
 }
 
+type InitialState = {
+	[key: string]: string | string[] | number | boolean | object;
+};
+
 export function renderWithProviders(
-	ui: React.ReactElement,
+	ui: ReactElement,
 	extendedRenderOptions: ExtendedRenderOptions = {},
 ) {
 	const {

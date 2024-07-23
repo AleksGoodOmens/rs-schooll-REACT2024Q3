@@ -4,4 +4,5 @@
 * [X]  Download csv button and popup
 * [X]  pagination test
 * [X]  categories test
-* [ ]  downloader test
+* [X]  downloader test
+* [ ]  DetailedCard test
