@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721910924000" clover="3.2.0">
-  <project timestamp="1721910924000" name="All files">
-    <metrics statements="578" coveredstatements="507" conditionals="87" coveredconditionals="74" methods="37" coveredmethods="26" elements="702" coveredelements="607" complexity="0" loc="578" ncloc="578" packages="18" files="20" classes="20"/>
+<coverage generated="1721912614712" clover="3.2.0">
+  <project timestamp="1721912614713" name="All files">
+    <metrics statements="590" coveredstatements="516" conditionals="89" coveredconditionals="76" methods="37" coveredmethods="26" elements="716" coveredelements="618" complexity="0" loc="590" ncloc="590" packages="18" files="20" classes="20"/>
     <package name="src">
       <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="main.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/main.tsx">
@@ -22,35 +22,39 @@
       </file>
     </package>
     <package name="src.components.app">
-      <metrics statements="26" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="30" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="App.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/app/App.tsx">
-        <metrics statements="26" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="30" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.card">
@@ -157,51 +161,59 @@
       </file>
     </package>
     <package name="src.components.categories">
-      <metrics statements="42" coveredstatements="42" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
+      <metrics statements="50" coveredstatements="50" conditionals="15" coveredconditionals="14" methods="3" coveredmethods="3"/>
       <file name="Categories.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/categories/Categories.tsx">
-        <metrics statements="42" coveredstatements="42" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
+        <metrics statements="50" coveredstatements="50" conditionals="15" coveredconditionals="14" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="17" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="17" type="stmt"/>
         <line num="17" count="17" type="stmt"/>
-        <line num="18" count="17" type="cond" truecount="1" falsecount="0"/>
         <line num="19" count="17" type="stmt"/>
-        <line num="20" count="17" type="stmt"/>
-        <line num="22" count="17" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
-        <line num="26" count="17" type="stmt"/>
-        <line num="28" count="17" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="20" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="17" type="stmt"/>
+        <line num="22" count="17" type="stmt"/>
+        <line num="24" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="17" type="stmt"/>
+        <line num="30" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
         <line num="34" count="17" type="stmt"/>
-        <line num="35" count="17" type="stmt"/>
         <line num="36" count="17" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="17" type="cond" truecount="0" falsecount="1"/>
-        <line num="40" count="17" type="cond" truecount="1" falsecount="0"/>
-        <line num="42" count="17" type="cond" truecount="1" falsecount="0"/>
-        <line num="43" count="4" type="stmt"/>
-        <line num="44" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="45" count="24" type="stmt"/>
-        <line num="46" count="24" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="24" type="cond" truecount="2" falsecount="0"/>
-        <line num="48" count="24" type="stmt"/>
-        <line num="50" count="24" type="stmt"/>
-        <line num="51" count="24" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="17" type="stmt"/>
+        <line num="44" count="17" type="stmt"/>
+        <line num="45" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="17" type="cond" truecount="0" falsecount="1"/>
+        <line num="49" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="51" count="17" type="cond" truecount="1" falsecount="0"/>
         <line num="52" count="4" type="stmt"/>
-        <line num="53" count="4" type="stmt"/>
-        <line num="55" count="17" type="stmt"/>
-        <line num="57" count="17" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="53" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="54" count="24" type="stmt"/>
+        <line num="55" count="24" type="cond" truecount="1" falsecount="0"/>
+        <line num="56" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="24" type="stmt"/>
+        <line num="59" count="24" type="stmt"/>
+        <line num="60" count="24" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="62" count="4" type="stmt"/>
+        <line num="64" count="17" type="stmt"/>
+        <line num="66" count="17" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.detailedCard">

@@ -8,10 +8,12 @@ import {
 } from '../../store/slices/categories.slice';
 import { useEffect } from 'react';
 import { resetPage, setActiveCard } from '../../store/slices/cards.slice';
+import useLocalStorage from '../../utils/hooks/useLocalStorage';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
 const Categories = () => {
+	const [storage, setStorage] = useLocalStorage();
 	const dispatch = useAppDispatch();
 
 	const { activeCategory, categories } = useAppSelector(
@@ -25,7 +27,14 @@ const Categories = () => {
 		}
 	}, [data, dispatch]);
 
+	useEffect(() => {
+		if (storage.category) {
+			dispatch(setActiveCategory(storage.category));
+		}
+	}, [dispatch, storage.category]);
+
 	const handleChangeCategory = (category: string) => {
+		setStorage({ ...storage, category: category });
 		dispatch(setActiveCategory(category));
 		dispatch(setActiveCard(null));
 		dispatch(resetPage());
