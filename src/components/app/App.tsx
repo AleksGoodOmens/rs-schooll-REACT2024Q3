@@ -1,9 +1,10 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { setupStore } from '../../store/store';
+import useLocalStorage from '../../utils/hooks/useLocalStorage';
 
-export type ThemeType = 'Dark' | 'Light' | '';
+export type ThemeType = 'Dark' | 'Light' | string;
 
 export const ThemeContext = createContext<{
 	value: string;
@@ -16,18 +17,21 @@ export const ThemeContext = createContext<{
 const store = setupStore();
 
 const App = () => {
-	const [theme, setTheme] = useState<ThemeType>('Dark');
+	const [storage, setStorageTheme] = useLocalStorage();
 
 	const handleChangeTheme = () => {
-		setTheme((prevTheme) => (prevTheme === 'Dark' ? 'Light' : 'Dark'));
+		setStorageTheme({
+			...storage,
+			theme: storage.theme === 'Dark' ? 'Light' : 'Dark',
+		});
 	};
 
 	return (
 		<Provider store={store}>
 			<ThemeContext.Provider
-				value={{ value: theme, change: handleChangeTheme }}
+				value={{ value: storage.theme, change: handleChangeTheme }}
 			>
-				<div className={theme}>
+				<div className={storage.theme}>
 					<Outlet />
 				</div>
 			</ThemeContext.Provider>

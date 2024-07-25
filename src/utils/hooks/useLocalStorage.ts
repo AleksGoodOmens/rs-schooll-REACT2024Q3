@@ -3,6 +3,7 @@ import { useState } from 'react';
 interface LocalStorageData {
 	category?: string;
 	searchValue: string;
+	theme: string;
 }
 
 // Определение типа для функции, устанавливающей данные
@@ -17,6 +18,7 @@ const useLocalStorage = (): [LocalStorageData, SetItemFunction] => {
 			return {
 				category: '',
 				searchValue: '',
+				theme: 'Dark',
 			};
 		}
 	};
