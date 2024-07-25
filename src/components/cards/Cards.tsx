@@ -2,25 +2,21 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import styles from './styles.module.css';
 
 import starWarsApi from '../../store/services/starWarsApi';
-import { ChangeEvent, useEffect } from 'react';
-import {
-	setCards,
-	setActiveCard,
-	addToFavorite,
-	delFromFavorite,
-	Card,
-} from '../../store/slices/cards.slice';
+import { useEffect } from 'react';
+import { setCards, setActiveCard } from '../../store/slices/cards.slice';
 import Loader from '../loader/loader';
 import Pagination from '../pagination/Pagination';
+import { cardSelector, categoriesSelector } from '../../store/slices/selectors';
+import Card from '../card/Card';
 
 const { useGetCardsQuery } = starWarsApi;
 const Cards = () => {
 	const dispatch = useAppDispatch();
 
-	const { activeCategory } = useAppSelector((state) => state.category);
+	const { activeCategory } = useAppSelector(categoriesSelector);
 
 	const { cards, page, searchValue, activeCard, favoriteCards } =
-		useAppSelector((state) => state.cards);
+		useAppSelector(cardSelector);
 
 	const { data, isError, isLoading, isFetching } = useGetCardsQuery({
 		category: activeCategory,
@@ -30,16 +26,6 @@ const Cards = () => {
 
 	const handleHideActiveCard = () => {
 		if (activeCard) dispatch(setActiveCard(null));
-	};
-
-	const handleAddOrDeleteFavorite = (
-		e: ChangeEvent<HTMLInputElement>,
-		card: Card,
-	) => {
-		if (e.target.checked) {
-			return dispatch(addToFavorite(card));
-		}
-		dispatch(delFromFavorite(card.url));
 	};
 
 	useEffect(() => {
@@ -57,42 +43,18 @@ const Cards = () => {
 
 			{!isLoading && !isError && !isFetching && (
 				<section className={`fadeIn ${styles['items']}`}>
-					{cards.length ? (
-						cards.map((card) => {
-							const { name, url, title } = card;
+					{cards.length === 0 && <div>Nothing found</div>}
 
-							const favorite = !!favoriteCards.find((item) => item.url === url);
-
-							return (
-								<article
-									key={url}
-									className={`fadeIn ${styles['item']} ${card.id === activeCard?.id ? styles['active'] : ''}`}
-								>
-									<button
-										onClick={() => dispatch(setActiveCard(card))}
-										key={url}
-									>
-										<span>{name || title}</span>
-										<span>
-											{!activeCard ? 'Open details' : 'close details'}
-										</span>
-									</button>
-									{!activeCard && (
-										<label>
-											{favorite ? 'remove from favorite' : 'add to favorite'}
-											<input
-												type="checkbox"
-												checked={favorite}
-												onChange={(e) => handleAddOrDeleteFavorite(e, card)}
-											/>
-										</label>
-									)}
-								</article>
-							);
-						})
-					) : (
-						<div>no items founded</div>
-					)}
+					{cards.map((card) => (
+						<Card
+							key={card.url}
+							card={card}
+							isInFavorite={
+								!!favoriteCards.find((item) => item.url === card.url)
+							}
+							isActive={card.id === activeCard?.id}
+						/>
+					))}
 				</section>
 			)}
 		</div>

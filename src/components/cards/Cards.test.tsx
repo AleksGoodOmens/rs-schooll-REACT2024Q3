@@ -21,6 +21,6 @@ describe('Cards', () => {
 	it('render no items founded if no data', async () => {
 		renderWithProviders(<Cards />);
 
-		expect(await screen.findByText(/no items founded/i)).toBeInTheDocument();
+		expect(await screen.findByText(/nothing/i)).toBeInTheDocument();
 	});
 });

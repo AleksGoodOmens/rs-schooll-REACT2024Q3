@@ -31,27 +31,28 @@ const Categories = () => {
 		dispatch(resetPage());
 	};
 
-	if (categories.length) {
-		return (
-			<nav className={styles['flex']}>
-				{categories.map((category) => (
-					<button
-						onClick={() => handleChangeCategory(category)}
-						className={`${styles['link']} ${category === activeCategory ? styles['active'] : ''}`}
-						key={category}
-					>
-						{category}
-					</button>
-				))}
-			</nav>
-		);
-	}
+	return (
+		<>
+			{isLoading && <div>tabs Loading...</div>}
 
-	if (isLoading) return <div>tabs Loading...</div>;
+			{isError && <div>something go wrong</div>}
 
-	if (isError) return <div>something go wrong</div>;
+			{!data && <div>Server have problem, please come back soon</div>}
 
-	if (!data) return <div>Server have problem, please come back soon</div>;
+			{categories.length && (
+				<nav className={styles['flex']}>
+					{categories.map((category) => (
+						<button
+							onClick={() => handleChangeCategory(category)}
+							className={`${styles['link']} ${category === activeCategory ? styles['active'] : ''}`}
+							key={category}
+						>
+							{category}
+						</button>
+					))}
+				</nav>
+			)}
+		</>
+	);
 };
-
 export default Categories;

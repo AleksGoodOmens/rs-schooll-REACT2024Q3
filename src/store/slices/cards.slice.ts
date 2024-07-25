@@ -1,28 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getCategoryAndIdFromUrl } from '../../utils/getCategoryAndIdFromUrl';
 import { CardsResponse } from '../services/starWarsApi';
-export type Card = {
-	url: string;
-	name?: string;
-	title?: string;
-	favorite: boolean;
-	id: string;
-	category: string;
-};
+import { CardState, ICard } from './interfaces';
 
-type categoriesState = {
-	cards: Card[];
-	favoriteCards: Card[];
-	activeCard: Card | null;
-	totalPages: number;
-	totalCards: number;
-	page: number;
-	next: boolean;
-	previous: boolean;
-	searchValue: string;
-};
-
-const initialState: categoriesState = {
+const initialState: CardState = {
 	cards: [],
 	favoriteCards: [],
 	activeCard: null,
@@ -71,11 +52,11 @@ const categoriesSlice = createSlice({
 		setSearchValue(state, action: PayloadAction<string>) {
 			state.searchValue = action.payload.trim();
 		},
-		setActiveCard(state, action: PayloadAction<Card | null>) {
+		setActiveCard(state, action: PayloadAction<ICard | null>) {
 			state.activeCard = action.payload;
 		},
 
-		addToFavorite(state, action: PayloadAction<Card>) {
+		addToFavorite(state, action: PayloadAction<ICard>) {
 			state.favoriteCards = [...state.favoriteCards, action.payload];
 		},
 		delFromFavorite(state, action: PayloadAction<string>) {

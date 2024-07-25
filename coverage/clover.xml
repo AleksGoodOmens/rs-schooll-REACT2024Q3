@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721737475641" clover="3.2.0">
-  <project timestamp="1721737475641" name="All files">
-    <metrics statements="422" coveredstatements="345" conditionals="71" coveredconditionals="64" methods="27" coveredmethods="20" elements="520" coveredelements="429" complexity="0" loc="422" ncloc="422" packages="13" files="13" classes="13"/>
-    <package name="app">
+<coverage generated="1721910924000" clover="3.2.0">
+  <project timestamp="1721910924000" name="All files">
+    <metrics statements="578" coveredstatements="507" conditionals="87" coveredconditionals="74" methods="37" coveredmethods="26" elements="702" coveredelements="607" complexity="0" loc="578" ncloc="578" packages="18" files="20" classes="20"/>
+    <package name="src">
+      <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="main.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/main.tsx">
+        <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.app">
       <metrics statements="26" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="App.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/app/App.tsx">
         <metrics statements="26" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -34,90 +53,113 @@
         <line num="38" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="cards">
-      <metrics statements="74" coveredstatements="38" conditionals="12" coveredconditionals="10" methods="3" coveredmethods="1"/>
+    <package name="src.components.card">
+      <metrics statements="42" coveredstatements="34" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="1"/>
+      <file name="Card.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/card/Card.tsx">
+        <metrics statements="42" coveredstatements="34" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="46" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="47" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.cards">
+      <metrics statements="49" coveredstatements="40" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="1"/>
       <file name="Cards.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/cards/Cards.tsx">
-        <metrics statements="74" coveredstatements="38" conditionals="12" coveredconditionals="10" methods="3" coveredmethods="1"/>
+        <metrics statements="49" coveredstatements="40" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
         <line num="18" count="8" type="stmt"/>
-        <line num="20" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="21" count="8" type="stmt"/>
         <line num="22" count="8" type="stmt"/>
-        <line num="23" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
         <line num="25" count="8" type="stmt"/>
-        <line num="26" count="8" type="stmt"/>
         <line num="27" count="8" type="stmt"/>
-        <line num="28" count="8" type="stmt"/>
-        <line num="29" count="8" type="stmt"/>
-        <line num="31" count="8" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="45" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="46" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="8" type="stmt"/>
-        <line num="51" count="8" type="stmt"/>
-        <line num="52" count="8" type="stmt"/>
-        <line num="53" count="8" type="stmt"/>
-        <line num="54" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="56" count="8" type="cond" truecount="0" falsecount="1"/>
-        <line num="58" count="8" type="cond" truecount="3" falsecount="0"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="60" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="94" count="2" type="stmt"/>
-        <line num="96" count="2" type="stmt"/>
-        <line num="98" count="8" type="stmt"/>
-        <line num="100" count="8" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="40" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="8" type="cond" truecount="0" falsecount="1"/>
+        <line num="44" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="60" count="8" type="stmt"/>
+        <line num="62" count="8" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="categories">
-      <metrics statements="41" coveredstatements="41" conditionals="16" coveredconditionals="14" methods="3" coveredmethods="3"/>
+    <package name="src.components.categories">
+      <metrics statements="42" coveredstatements="42" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
       <file name="Categories.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/categories/Categories.tsx">
-        <metrics statements="41" coveredstatements="41" conditionals="16" coveredconditionals="14" methods="3" coveredmethods="3"/>
+        <metrics statements="42" coveredstatements="42" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -126,42 +168,43 @@
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="15" type="stmt"/>
-        <line num="17" count="15" type="stmt"/>
-        <line num="18" count="15" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="15" type="stmt"/>
-        <line num="20" count="15" type="stmt"/>
-        <line num="22" count="15" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="17" type="stmt"/>
+        <line num="17" count="17" type="stmt"/>
+        <line num="18" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="17" type="stmt"/>
+        <line num="20" count="17" type="stmt"/>
+        <line num="22" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="8" type="cond" truecount="1" falsecount="0"/>
         <line num="24" count="3" type="stmt"/>
         <line num="25" count="3" type="stmt"/>
-        <line num="26" count="15" type="stmt"/>
-        <line num="28" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="17" type="stmt"/>
+        <line num="28" count="17" type="cond" truecount="1" falsecount="0"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
-        <line num="34" count="15" type="cond" truecount="1" falsecount="0"/>
-        <line num="35" count="4" type="stmt"/>
-        <line num="36" count="4" type="stmt"/>
-        <line num="37" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="24" type="stmt"/>
-        <line num="39" count="24" type="cond" truecount="1" falsecount="0"/>
-        <line num="40" count="24" type="cond" truecount="2" falsecount="0"/>
-        <line num="41" count="24" type="stmt"/>
-        <line num="43" count="24" type="stmt"/>
-        <line num="44" count="24" type="stmt"/>
-        <line num="45" count="4" type="stmt"/>
-        <line num="46" count="4" type="stmt"/>
-        <line num="48" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="50" count="15" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="15" type="cond" truecount="1" falsecount="1"/>
-        <line num="54" count="15" type="cond" truecount="0" falsecount="1"/>
-        <line num="55" count="15" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
+        <line num="34" count="17" type="stmt"/>
+        <line num="35" count="17" type="stmt"/>
+        <line num="36" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="17" type="cond" truecount="0" falsecount="1"/>
+        <line num="40" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="42" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="44" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="45" count="24" type="stmt"/>
+        <line num="46" count="24" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="24" type="stmt"/>
+        <line num="50" count="24" type="stmt"/>
+        <line num="51" count="24" type="stmt"/>
+        <line num="52" count="4" type="stmt"/>
+        <line num="53" count="4" type="stmt"/>
+        <line num="55" count="17" type="stmt"/>
+        <line num="57" count="17" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="detailedCard">
+    <package name="src.components.detailedCard">
       <metrics statements="37" coveredstatements="37" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="2"/>
       <file name="DetailedCard.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/detailedCard/DetailedCard.tsx">
         <metrics statements="37" coveredstatements="37" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="2"/>
@@ -204,51 +247,66 @@
         <line num="47" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="downloader">
-      <metrics statements="38" coveredstatements="38" conditionals="8" coveredconditionals="8" methods="4" coveredmethods="3"/>
+    <package name="src.components.downloader">
+      <metrics statements="47" coveredstatements="47" conditionals="10" coveredconditionals="10" methods="6" coveredmethods="5"/>
       <file name="Downloader.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/downloader/Downloader.tsx">
-        <metrics statements="38" coveredstatements="38" conditionals="8" coveredconditionals="8" methods="4" coveredmethods="3"/>
+        <metrics statements="12" coveredstatements="12" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="9" type="stmt"/>
+        <line num="9" count="9" type="stmt"/>
+        <line num="10" count="9" type="stmt"/>
+        <line num="11" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="9" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+      <file name="Sure.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/downloader/Sure.tsx">
+        <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="UnSure.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/downloader/UnSure.tsx">
+        <metrics statements="22" coveredstatements="22" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="9" type="stmt"/>
-        <line num="10" count="9" type="cond" truecount="1" falsecount="0"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="13" count="9" type="stmt"/>
-        <line num="15" count="9" type="stmt"/>
-        <line num="16" count="9" type="stmt"/>
-        <line num="17" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
         <line num="18" count="7" type="stmt"/>
         <line num="19" count="7" type="stmt"/>
         <line num="20" count="7" type="stmt"/>
-        <line num="22" count="7" type="stmt"/>
+        <line num="21" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="7" type="cond" truecount="1" falsecount="0"/>
         <line num="23" count="7" type="stmt"/>
         <line num="24" count="7" type="stmt"/>
-        <line num="25" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="7" type="stmt"/>
         <line num="26" count="7" type="stmt"/>
-        <line num="27" count="7" type="cond" truecount="1" falsecount="0"/>
-        <line num="28" count="7" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
         <line num="29" count="7" type="stmt"/>
         <line num="30" count="7" type="stmt"/>
-        <line num="31" count="7" type="stmt"/>
         <line num="32" count="7" type="stmt"/>
-        <line num="34" count="7" type="stmt"/>
-        <line num="35" count="7" type="stmt"/>
-        <line num="37" count="9" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="40" count="2" type="stmt"/>
-        <line num="41" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="42" count="2" type="stmt"/>
-        <line num="44" count="9" type="stmt"/>
-        <line num="46" count="9" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="error.errorFallBack">
+    <package name="src.components.error.errorFallBack">
       <metrics statements="21" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="ErrorFallBack.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/error/errorFallBack/ErrorFallBack.tsx">
         <metrics statements="21" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -275,27 +333,27 @@
         <line num="25" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="layout.footer">
+    <package name="src.components.layout.footer">
       <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="Footer.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/layout/footer/Footer.tsx">
         <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="layout.header">
+    <package name="src.components.layout.header">
       <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="Header.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/layout/header/Header.tsx">
         <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -304,19 +362,19 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="loader">
+    <package name="src.components.loader">
       <metrics statements="18" coveredstatements="18" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="loader.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/loader/loader.tsx">
         <metrics statements="18" coveredstatements="18" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -340,29 +398,29 @@
         <line num="21" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="logo">
+    <package name="src.components.logo">
       <metrics statements="16" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="Logo.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/logo/Logo.tsx">
         <metrics statements="16" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="pagination">
+    <package name="src.components.pagination">
       <metrics statements="48" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
       <file name="Pagination.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/pagination/Pagination.tsx">
         <metrics statements="48" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
@@ -416,7 +474,7 @@
         <line num="57" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="searchBar">
+    <package name="src.components.searchBar">
       <metrics statements="60" coveredstatements="54" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3"/>
       <file name="SearchBar.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/searchBar/SearchBar.tsx">
         <metrics statements="60" coveredstatements="54" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3"/>
@@ -482,15 +540,15 @@
         <line num="77" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="themeChanger">
-      <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="ThemeChanger.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/themeChanger/ThemeChanger.tsx">
-        <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+    <package name="src.components.socialLinks">
+      <metrics statements="35" coveredstatements="35" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="SocialLinks.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/socialLinks/SocialLinks.tsx">
+        <metrics statements="35" coveredstatements="35" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
         <line num="9" count="3" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
@@ -498,8 +556,142 @@
         <line num="12" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="9" type="stmt"/>
+        <line num="25" count="9" type="stmt"/>
+        <line num="26" count="9" type="stmt"/>
+        <line num="27" count="9" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="29" count="9" type="stmt"/>
+        <line num="31" count="9" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.themeChanger">
+      <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="ThemeChanger.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/components/themeChanger/ThemeChanger.tsx">
+        <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.pages.main">
+      <metrics statements="70" coveredstatements="70" conditionals="8" coveredconditionals="3" methods="1" coveredmethods="1"/>
+      <file name="MainPage.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/pages/main/MainPage.tsx">
+        <metrics statements="70" coveredstatements="70" conditionals="8" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="125" count="1" type="stmt"/>
+        <line num="127" count="1" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="133" count="1" type="stmt"/>
+        <line num="135" count="1" type="stmt"/>
+        <line num="136" count="1" type="stmt"/>
+        <line num="137" count="1" type="stmt"/>
+        <line num="138" count="1" type="stmt"/>
+        <line num="139" count="1" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
+        <line num="142" count="1" type="stmt"/>
+        <line num="144" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="145" count="1" type="stmt"/>
+        <line num="146" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="148" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="149" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="150" count="1" type="stmt"/>
+        <line num="151" count="1" type="stmt"/>
+        <line num="152" count="1" type="stmt"/>
+        <line num="153" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="154" count="1" type="stmt"/>
+        <line num="155" count="1" type="stmt"/>
+        <line num="157" count="1" type="stmt"/>
+        <line num="159" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.pages.notFound">
+      <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="NotFoundPage.tsx" path="/home/aleks/webdev/Documents/rsSchool/rs-schooll-REACT2024Q3/src/pages/notFound/NotFoundPage.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
     </package>
   </project>

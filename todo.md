@@ -5,4 +5,4 @@
 * [X]  pagination test
 * [X]  categories test
 * [X]  downloader test
-* [ ]  DetailedCard test
+* [X]  DetailedCard test

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { setupStore } from '../../store/store';
 
-type ThemeType = 'Dark' | 'Light' | '';
+export type ThemeType = 'Dark' | 'Light' | '';
 
 export const ThemeContext = createContext<{
 	value: string;

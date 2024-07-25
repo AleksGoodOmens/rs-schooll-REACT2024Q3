@@ -1,46 +1,14 @@
-import { CSVLink } from 'react-csv';
 import { useState } from 'react';
 
-import { clearFavoriteCards } from '../../store/slices/cards.slice';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-
 import styles from './styles.module.css';
+import Sure from './Sure';
+import UnSure from './UnSure';
 const Downloader = () => {
-	const dispatch = useAppDispatch();
-	const { favoriteCards } = useAppSelector((state) => state.cards);
-	const [shure, setShure] = useState(false);
-
-	const fileName = `${favoriteCards.length}-starWars_characters.csv`;
+	const [sure, setSure] = useState(false);
 
 	return (
 		<div className={styles['popup']}>
-			{!shure && (
-				<>
-					<span
-						aria-label={`amount of favorite cards = ${favoriteCards.length}`}
-					>
-						{favoriteCards.length}
-					</span>
-					<span>
-						{favoriteCards.length > 1 ? 'cards are' : 'card is'} selected
-					</span>
-					<button onClick={() => setShure(true)}>Unselect all</button>
-					<CSVLink
-						className={styles['download']}
-						data={favoriteCards}
-						filename={fileName}
-					>
-						Download favorite
-					</CSVLink>
-				</>
-			)}
-			{shure && (
-				<>
-					<span>Are you shure?</span>
-					<button onClick={() => dispatch(clearFavoriteCards())}>yes</button>
-					<button onClick={() => setShure(false)}>no</button>
-				</>
-			)}
+			{sure ? <Sure setSure={setSure} /> : <UnSure setSure={setSure} />}
 		</div>
 	);
 };
