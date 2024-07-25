@@ -23,18 +23,6 @@ describe('SearchBar', () => {
 		expect(searchInput).toHaveValue('! i am your father!');
 	});
 
-	it('Search input is cleared after submission', async () => {
-		const searchInput = screen.getByRole('searchbox', { name: /search/i });
-		const submitButton = screen.getByRole('button', { name: 'Search' });
-
-		await user.type(searchInput, 'test');
-		expect(searchInput).toHaveValue('test');
-
-		await user.click(submitButton);
-
-		expect(searchInput).toHaveValue('');
-	});
-
 	it('Checking if the search input is empty after an error message is shown', async () => {
 		const submitButton = screen.getByRole('button', { name: 'Search' });
 

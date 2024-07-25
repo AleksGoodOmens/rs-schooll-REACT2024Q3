@@ -8,17 +8,18 @@ import {
 } from '../../store/slices/categories.slice';
 import { useEffect } from 'react';
 import { resetPage, setActiveCard } from '../../store/slices/cards.slice';
-import useLocalStorage from '../../utils/hooks/useLocalStorage';
+import { categoriesSelector } from '../../store/slices/selectors';
+import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
 const Categories = () => {
-	const [storage, setStorage] = useLocalStorage();
 	const dispatch = useAppDispatch();
 
-	const { activeCategory, categories } = useAppSelector(
-		(state) => state.category,
-	);
+	const [storageCategory, setStorageCategory] = useLocalStorage_v2('category');
+
+	const { activeCategory, categories } = useAppSelector(categoriesSelector);
+
 	const { data, isError, isLoading } = useGetCategoriesQuery('');
 
 	useEffect(() => {
@@ -28,13 +29,13 @@ const Categories = () => {
 	}, [data, dispatch]);
 
 	useEffect(() => {
-		if (storage.category) {
-			dispatch(setActiveCategory(storage.category));
+		if (storageCategory) {
+			dispatch(setActiveCategory(storageCategory));
 		}
-	}, [dispatch, storage.category]);
+	}, [dispatch, storageCategory]);
 
 	const handleChangeCategory = (category: string) => {
-		setStorage({ ...storage, category: category });
+		setStorageCategory('category', category);
 		dispatch(setActiveCategory(category));
 		dispatch(setActiveCard(null));
 		dispatch(resetPage());

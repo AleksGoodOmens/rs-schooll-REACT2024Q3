@@ -3,13 +3,16 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { setActiveCard, setSearchValue } from '../../store/slices/cards.slice';
+import { cardSelector } from '../../store/slices/selectors';
+import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
 
 const SearchBar = () => {
+	const [storageSearch, setStorageSearch] = useLocalStorage_v2('searchValue');
 	const dispatch = useAppDispatch();
 
-	const { searchValue } = useAppSelector((state) => state.cards);
+	const { searchValue } = useAppSelector(cardSelector);
 
-	const [search, setSearch] = useState(searchValue);
+	const [search, setSearch] = useState(storageSearch || searchValue);
 	const [errorMessage, setErrorMessage] = useState(false);
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +26,8 @@ const SearchBar = () => {
 		dispatch(setActiveCard(null));
 
 		if (search) {
+			setStorageSearch('searchValue', search);
 			dispatch(setSearchValue(search));
-			setSearch('');
 			return;
 		}
 
@@ -43,14 +46,14 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		const autoFetchTimeOut = setTimeout(() => {
-			if (search) {
+			if (search !== searchValue) {
 				dispatch(setSearchValue(search));
-				setSearch('');
+				setStorageSearch('searchValue', search);
 			}
 		}, 3000);
 
 		return () => clearTimeout(autoFetchTimeOut);
-	}, [dispatch, search]);
+	}, [dispatch, search, setStorageSearch, searchValue]);
 
 	return (
 		<>
