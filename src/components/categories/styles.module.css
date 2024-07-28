@@ -1,0 +1,29 @@
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	border-bottom: 1px solid var(--accent-800);
+	padding: 1rem 2rem;
+	text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+	.flex {
+		justify-content: center;
+		align-items: center;
+	}
+}
+.link {
+	flex: 1;
+	border-radius: 8px;
+	background-color: var(--secondary-600);
+	padding: 1rem;
+	aspect-ratio: auto;
+	color: var(--primary-800);
+	text-transform: capitalize;
+}
+
+.active {
+	background-color: var(--accent-800);
+	color: var(--secondary-600);
+}

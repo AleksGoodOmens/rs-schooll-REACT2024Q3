@@ -1,0 +1,14 @@
+.header {
+	border-bottom: 1px solid var(--accent-800);
+	padding: 1rem 0;
+	text-align: center;
+}
+
+@media (min-width: 1280px) {
+	.header {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: center;
+		padding: 1rem;
+	}
+}

@@ -1,0 +1,12 @@
+.button {
+	border: none;
+	border-radius: 1rem;
+	background-color: var(--primary);
+	aspect-ratio: auto;
+	color: var(--secondary-600);
+	&:hover,
+	&:active {
+		background-color: var(--secondary-600);
+		color: var(--primary);
+	}
+}
