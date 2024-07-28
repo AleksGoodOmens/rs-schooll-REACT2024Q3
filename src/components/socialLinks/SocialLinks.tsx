@@ -9,11 +9,11 @@ const SocialLinks = () => {
 			title: 'Discord',
 		},
 		{
-			path: 'https://discordapp.com/users/300176264033992705',
+			path: 'https://www.linkedin.com/in/alexgdeveloper/',
 			title: 'LinkedIn',
 		},
 		{
-			path: 'https://discordapp.com/users/300176264033992705',
+			path: 'https://t.me/AleksGWeb',
 			title: 'Telegram',
 		},
 	]);
