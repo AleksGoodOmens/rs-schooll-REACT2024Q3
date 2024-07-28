@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Card } from '../slices/cards.slice';
+import { ICard } from '../slices/interfaces';
 
 export const BASE_URL = 'https://swapi.dev/api';
 
@@ -11,7 +11,7 @@ export interface CardsResponse {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	results: Card[];
+	results: ICard[];
 }
 
 export interface TDetailedCard {

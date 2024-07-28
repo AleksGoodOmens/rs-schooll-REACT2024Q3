@@ -5,11 +5,11 @@ const Loader = () => {
 			role="alert"
 			className={styles.box}
 		>
-			<p>Loading...</p>
+			<p className="banner">Loading...</p>
 			<div className={styles.img}>
 				<img
-					width="260px"
-					height="260px"
+					width="200px"
+					height="200px"
 					src="/demo.gif"
 					alt="loading Image"
 				/>

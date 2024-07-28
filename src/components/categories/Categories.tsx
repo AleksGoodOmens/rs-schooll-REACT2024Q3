@@ -10,11 +10,14 @@ import { useEffect } from 'react';
 import { resetPage, setActiveCard } from '../../store/slices/cards.slice';
 import { categoriesSelector } from '../../store/slices/selectors';
 import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
+import Banner from '../banner/banner';
+import { useNavigate } from 'react-router-dom';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
 const Categories = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const [storageCategory, setStorageCategory] = useLocalStorage_v2('category');
 
@@ -31,25 +34,35 @@ const Categories = () => {
 	useEffect(() => {
 		if (storageCategory) {
 			dispatch(setActiveCategory(storageCategory));
+			navigate(storageCategory);
 		}
-	}, [dispatch, storageCategory]);
+	}, [dispatch, storageCategory, navigate]);
 
 	const handleChangeCategory = (category: string) => {
+		if (activeCategory === category) {
+			setStorageCategory('category', '');
+			dispatch(setActiveCategory(''));
+			navigate('/');
+			return;
+		}
 		setStorageCategory('category', category);
 		dispatch(setActiveCategory(category));
 		dispatch(setActiveCard(null));
 		dispatch(resetPage());
+		navigate(category);
 	};
 
 	return (
 		<>
-			{isLoading && <div>tabs Loading...</div>}
+			{isLoading && <Banner>tabs Loading...</Banner>}
 
-			{isError && <div>something go wrong</div>}
+			{isError && <Banner>something go wrong</Banner>}
 
-			{!data && <div>Server have problem, please come back soon</div>}
+			{!data && !isLoading && (
+				<Banner>Server have problem, please come back soon</Banner>
+			)}
 
-			{categories.length && (
+			{categories.length !== 0 && (
 				<nav className={styles['flex']}>
 					{categories.map((category) => (
 						<button

@@ -3,12 +3,21 @@ import { changePage } from '../../store/slices/cards.slice';
 
 import classnames from 'classnames';
 import styles from './styles.module.css';
+import { cardSelector } from '../../store/slices/selectors';
 
 const Pagination = () => {
 	const dispatch = useAppDispatch();
-	const { next, previous, totalPages, page, totalCards } = useAppSelector(
-		(state) => state.cards,
-	);
+	const { totalPages, page, totalCards } = useAppSelector(cardSelector);
+
+	const handleChangePage = (v: number) => {
+		if (v === -1) {
+			if (page > 0) {
+				dispatch(changePage(v));
+			}
+		} else {
+			if (page < totalPages) dispatch(changePage(v));
+		}
+	};
 
 	return (
 		<nav
@@ -18,9 +27,9 @@ const Pagination = () => {
 			<ul className={styles['pagination__list']}>
 				<li className={styles['pagination__item']}>
 					<button
-						disabled={!previous}
+						disabled={page === 1}
 						onClick={() => {
-							if (page > 0) dispatch(changePage(-1));
+							handleChangePage(-1);
 						}}
 						aria-label="Previous page"
 					>
@@ -40,10 +49,8 @@ const Pagination = () => {
 				</li>
 				<li className={styles['pagination__item']}>
 					<button
-						disabled={!next}
-						onClick={() => {
-							if (page < totalPages) dispatch(changePage(1));
-						}}
+						disabled={totalPages <= page}
+						onClick={() => handleChangePage(1)}
 						aria-label="Next page"
 					>
 						Next

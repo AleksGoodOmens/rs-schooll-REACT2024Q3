@@ -13,7 +13,8 @@ const Logo = () => {
 				rel="noreferrer"
 				aria-label="link to AmensGood personal website"
 			>
-				AmensGood
+				<span className={styles['title']}>starWars - wiki by:</span>
+				<span>AmensGood</span>
 			</a>
 		</nav>
 	);

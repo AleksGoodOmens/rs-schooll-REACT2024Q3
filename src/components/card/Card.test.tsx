@@ -52,6 +52,6 @@ describe('Card', () => {
 		).toBeInTheDocument();
 		expect(
 			screen.queryByRole('checkbox', { checked: false }),
-		).not.toBeInTheDocument();
+		).toBeInTheDocument();
 	});
 });

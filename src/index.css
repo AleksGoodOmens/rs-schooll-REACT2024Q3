@@ -13,6 +13,12 @@
 	--accent-400: rgb(243, 57, 57);
 	--accent-800: rgb(172, 51, 51);
 
+	--mobile-portrait: 480px;
+	--mobile-landscape: 768px;
+	--tablet-portrait: 1024px;
+	--tablet-landscape: 1280px;
+	--desctop: 1440px;
+
 	background-color: var(--secondary-600);
 	color: var(--secondary-400);
 
@@ -119,8 +125,21 @@ body {
 button {
 	transition: all 0.5s;
 	cursor: pointer;
-	border-radius: 1rem;
+	border-radius: 50%;
 	padding: 1rem;
+	aspect-ratio: 1/1;
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+.banner {
+	margin: 0 auto;
+	border-radius: 1rem;
+	background-color: var(--secondary-600);
+	padding: 1rem;
+	max-width: fit-content;
+	color: var(--primary);
 }
 
 .fadeIn {

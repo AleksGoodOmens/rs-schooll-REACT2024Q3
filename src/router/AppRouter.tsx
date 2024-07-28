@@ -19,10 +19,12 @@ const AppRoutes = createBrowserRouter([
 					{
 						path: ':activeCategory',
 						element: <Cards />,
-					},
-					{
-						path: ':id',
-						element: <DetailedCard />,
+						children: [
+							{
+								path: ':id',
+								element: <DetailedCard />,
+							},
+						],
 					},
 				],
 			},

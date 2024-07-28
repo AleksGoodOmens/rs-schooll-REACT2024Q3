@@ -4,6 +4,7 @@
 	justify-content: center;
 	gap: 2rem;
 	z-index: 1;
-	background-color: var(--primary-800);
+	background-color: var(--secondary-600);
 	padding: 1rem;
+	color: var(--primary);
 }

@@ -14,7 +14,5 @@ export type CardState = {
 	totalPages: number;
 	totalCards: number;
 	page: number;
-	next: boolean;
-	previous: boolean;
 	searchValue: string;
 };

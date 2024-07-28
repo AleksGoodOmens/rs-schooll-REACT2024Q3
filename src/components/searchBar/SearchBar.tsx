@@ -2,13 +2,21 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { setActiveCard, setSearchValue } from '../../store/slices/cards.slice';
+import {
+	resetPage,
+	setActiveCard,
+	setSearchValue,
+} from '../../store/slices/cards.slice';
 import { cardSelector } from '../../store/slices/selectors';
 import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const SearchBar = () => {
 	const [storageSearch, setStorageSearch] = useLocalStorage_v2('searchValue');
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
+	const { activeCategory } = useParams();
 
 	const { searchValue } = useAppSelector(cardSelector);
 
@@ -24,16 +32,19 @@ const SearchBar = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(setActiveCard(null));
+		navigate(activeCategory || '/');
 
 		if (search) {
 			setStorageSearch('searchValue', search);
 			dispatch(setSearchValue(search));
+			dispatch(resetPage());
 			return;
 		}
 
-		if (!searchValue && !search) return setErrorMessage(true);
+		if (!searchValue && !search && !storageSearch) return setErrorMessage(true);
 
 		dispatch(setSearchValue(''));
+		setStorageSearch('searchValue', search);
 	};
 
 	useEffect(() => {

@@ -8,10 +8,14 @@ import Loader from '../loader/loader';
 import Pagination from '../pagination/Pagination';
 import { cardSelector, categoriesSelector } from '../../store/slices/selectors';
 import Card from '../card/Card';
+import Banner from '../banner/banner';
+import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
 
 const { useGetCardsQuery } = starWarsApi;
 const Cards = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const [, setSearchParams] = useSearchParams();
 
 	const { activeCategory } = useAppSelector(categoriesSelector);
 
@@ -25,39 +29,56 @@ const Cards = () => {
 	});
 
 	const handleHideActiveCard = () => {
-		if (activeCard) dispatch(setActiveCard(null));
+		if (activeCard) {
+			dispatch(setActiveCard(null));
+			navigate(`/${activeCategory}`);
+		}
 	};
 
 	useEffect(() => {
 		if (data) {
 			dispatch(setCards(data));
+			if (searchValue)
+				return setSearchParams({
+					search: searchValue,
+					page: page.toString(),
+				});
+			setSearchParams({
+				page: page.toString(),
+			});
 		}
-	}, [data, dispatch]);
+	}, [data, dispatch, searchValue, setSearchParams, page]);
 
 	return (
-		<div onClick={handleHideActiveCard}>
-			<Pagination />
+		<>
+			{!activeCard && <Pagination />}
 			{(isLoading || isFetching) && <Loader />}
 
-			{isError && <div>Something go wrong </div>}
+			{isError && <Banner>Something go wrong </Banner>}
 
-			{!isLoading && !isError && !isFetching && (
-				<section className={`fadeIn ${styles['items']}`}>
-					{cards.length === 0 && <div>Nothing found</div>}
+			{cards && !isLoading && !isFetching && (
+				<section className={styles['content']}>
+					<section
+						className={`fadeIn ${styles['items']}`}
+						onClick={handleHideActiveCard}
+					>
+						{cards.length === 0 && <Banner>Nothing found</Banner>}
 
-					{cards.map((card) => (
-						<Card
-							key={card.url}
-							card={card}
-							isInFavorite={
-								!!favoriteCards.find((item) => item.url === card.url)
-							}
-							isActive={card.id === activeCard?.id}
-						/>
-					))}
+						{cards.map((card) => (
+							<Card
+								key={card.url}
+								card={card}
+								isInFavorite={
+									!!favoriteCards.find((item) => item.url === card.url)
+								}
+								isActive={card.id === activeCard?.id}
+							/>
+						))}
+					</section>
+					<Outlet />
 				</section>
 			)}
-		</div>
+		</>
 	);
 };
 

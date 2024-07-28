@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import type { AppStore } from '../store/store';
 import { setupStore } from '../store/store';
 
+import { MemoryRouter } from 'react-router-dom';
+
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
 	preloadedState?: InitialState;
 	store?: AppStore;
@@ -27,7 +29,9 @@ export function renderWithProviders(
 	} = extendedRenderOptions;
 
 	const Wrapper = ({ children }: PropsWithChildren) => (
-		<Provider store={store}>{children}</Provider>
+		<MemoryRouter>
+			<Provider store={store}>{children}</Provider>
+		</MemoryRouter>
 	);
 
 	// Return an object with the store and all of RTL's query functions

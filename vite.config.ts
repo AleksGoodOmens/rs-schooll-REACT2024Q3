@@ -13,11 +13,9 @@ export default defineConfig({
 		setupFiles: './src/test/setupTests.ts',
 		coverage: {
 			exclude: [
-				// 'src/main.tsx',
+				'src/main.tsx',
+				'src/components/app/App.tsx',
 				'src/components/error/errorBoundary/ErrorBoundary.tsx',
-				// 'src/components/socialLinks/SocialLinks.tsx',
-				// 'src/pages/main/MainPage.tsx',
-				// 'src/pages/notFound/NotFoundPage.tsx',
 				'src/router/AppRouter.tsx',
 				'src/test/',
 				'.eslintrc.cjs',

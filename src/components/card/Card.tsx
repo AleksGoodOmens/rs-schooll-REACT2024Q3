@@ -8,6 +8,8 @@ import {
 } from '../../store/slices/cards.slice';
 
 import styles from './styles.module.css';
+import classNames from 'classnames';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface CardProps {
 	card: ICard;
@@ -21,10 +23,11 @@ const Card: FunctionComponent<CardProps> = ({
 	isActive,
 }) => {
 	const dispatch = useAppDispatch();
-
+	const navigate = useNavigate();
+	const { activeCategory } = useParams();
 	const { name, url, title } = card;
 
-	const handleAddOrDeleteFavorite = (
+	const handleToggleFavorite = (
 		e: ChangeEvent<HTMLInputElement>,
 		card: ICard,
 	) => {
@@ -34,28 +37,42 @@ const Card: FunctionComponent<CardProps> = ({
 		dispatch(delFromFavorite(card.url));
 	};
 
+	const handleToggleDetails = () => {
+		if (isActive) {
+			dispatch(setActiveCard(null));
+			navigate(`/${activeCategory}` || '/');
+			return;
+		}
+		dispatch(setActiveCard(card));
+		navigate(card.id);
+	};
+
 	return (
 		<article
 			key={url}
-			className={`fadeIn ${styles['item']} ${isActive ? styles['active'] : ''}`}
+			className={classNames('fadeIn', styles['item'])}
 		>
-			<button
-				onClick={() => dispatch(setActiveCard(card))}
-				key={url}
-			>
-				<span>{name || title}</span>
-				<span>{!isActive ? 'Open details' : 'close details'}</span>
-			</button>
-			{!isActive && (
-				<label>
-					{isInFavorite ? 'remove from favorite' : 'add to favorite'}
+			<span>{name || title}</span>
+			<div className={styles['controls']}>
+				<button
+					className={`fadeIn ${styles['button']} ${isActive ? styles['active'] : ''}`}
+					onClick={handleToggleDetails}
+					key={url}
+				>
+					<span>{!isActive ? 'Open details' : 'close details'}</span>
+				</button>
+
+				<label
+					className={`fadeIn ${styles['label']} ${isInFavorite ? styles['active'] : ''}`}
+				>
+					{isInFavorite ? 'del from favorite' : 'add to favorite'}
 					<input
 						type="checkbox"
 						checked={isInFavorite}
-						onChange={(e) => handleAddOrDeleteFavorite(e, card)}
+						onChange={(e) => handleToggleFavorite(e, card)}
 					/>
 				</label>
-			)}
+			</div>
 		</article>
 	);
 };

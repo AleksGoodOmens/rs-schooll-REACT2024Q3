@@ -1,7 +1,6 @@
 .grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
-	justify-content: end;
+	grid-auto-flow: column;
 
 	& a {
 		transition: 0.5s;
@@ -9,5 +8,13 @@
 		&:active {
 			color: var(--accent-800);
 		}
+	}
+}
+
+@media (min-width: 1280px) {
+	.grid {
+		grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+		justify-content: end;
+		text-align: end;
 	}
 }

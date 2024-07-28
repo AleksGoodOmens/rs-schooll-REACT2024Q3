@@ -10,8 +10,6 @@ const initialState: CardState = {
 	totalPages: 0,
 	totalCards: 0,
 	page: 1,
-	next: false,
-	previous: false,
 	searchValue: '',
 };
 
@@ -24,7 +22,7 @@ const categoriesSlice = createSlice({
 			state.totalPages = Math.ceil(action.payload / 10);
 		},
 		setCards(state, action: PayloadAction<CardsResponse>) {
-			const { results, count, next, previous } = action.payload;
+			const { results, count } = action.payload;
 
 			const transformCard = results.map((card) => {
 				const categoryAndId = getCategoryAndIdFromUrl(card.url);
@@ -32,17 +30,10 @@ const categoriesSlice = createSlice({
 				return { ...card, ...categoryAndId, favorite: false };
 			});
 			state.cards = transformCard;
-			state.next = !!next;
-			state.previous = !!previous;
 			state.totalCards = count;
 			state.totalPages = Math.ceil(count / 10);
 		},
-		setNext(state, action: PayloadAction<boolean>) {
-			state.next = action.payload;
-		},
-		setPrevious(state, action: PayloadAction<boolean>) {
-			state.previous = action.payload;
-		},
+
 		changePage(state, action: PayloadAction<number>) {
 			state.page = state.page + action.payload;
 		},
@@ -77,8 +68,6 @@ export const {
 	resetPage,
 	setCards,
 	setTotalPages,
-	setNext,
-	setPrevious,
 	setActiveCard,
 	setSearchValue,
 	clearFavoriteCards,

@@ -15,18 +15,33 @@ const UnSure: FunctionComponent<UnSureProps> = ({ setSure }) => {
 
 	return (
 		<>
-			<span aria-label={`amount of favorite cards = ${favoriteCards.length}`}>
-				{favoriteCards.length}
-			</span>
-			<span>{favoriteCards.length > 1 ? 'cards are' : 'card is'} selected</span>
-			<button onClick={() => setSure(true)}>Unselect all</button>
-			<CSVLink
-				className={styles['download']}
-				data={favoriteCards}
-				filename={fileName}
-			>
-				Download favorite
-			</CSVLink>
+			<div className={styles['center']}>
+				<span
+					aria-label={`amount of favorite cards = ${favoriteCards.length}`}
+					className={styles['value']}
+				>
+					{favoriteCards.length}
+				</span>
+				<div>
+					{favoriteCards.length > 1 ? 'Cards are' : 'Card is'}
+					<br /> selected
+				</div>
+			</div>
+			<div className={styles['box']}>
+				<button
+					className={styles['button']}
+					onClick={() => setSure(true)}
+				>
+					Unselect all
+				</button>
+				<CSVLink
+					className={styles['download']}
+					data={favoriteCards}
+					filename={fileName}
+				>
+					Download favorite
+				</CSVLink>
+			</div>
 		</>
 	);
 };

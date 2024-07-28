@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 
 const ErrorFallBack = () => {
+	const navigate = useNavigate();
 	const handleReload = () => {
-		window.location.reload();
+		// window.location.reload();
+		navigate('/');
 	};
 
 	return (
