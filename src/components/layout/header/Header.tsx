@@ -1,13 +1,13 @@
+import ThemeChanger from '@/components/themeChanger/ThemeChanger';
 import styles from './styles.module.css';
-import ThemeChanger from '../../themeChanger/ThemeChanger';
-import SocialLinks from '../../socialLinks/SocialLinks';
-import Logo from '../../logo/Logo';
+import Logo from '@/components/logo/Logo';
+import SocialLinks from '@/components/socialLinks/SocialLinks';
 
 const Header = () => {
 	return (
 		<header
 			className={styles['header']}
-			aria-label="AmensGood navigation header"
+			aria-label='AmensGood navigation header'
 		>
 			<Logo />
 			<ThemeChanger />

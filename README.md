@@ -1,96 +1,40 @@
-# Theory 📖
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Hooks
+## Getting Started
 
-### Introduction to Hooks:
+First, run the development server:
 
-* [X]  [Introducing Hooks](https://react.dev/reference/react/hooks)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### Basic Hooks:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-* [X]  [Using the State Hook](https://react.dev/reference/react/useState)
-* [X]  [Using the Effect Hook](https://react.dev/reference/react/useEffect)
-* [ ]  [Context in Hooks](https://react.dev/reference/react/useContext)
-* [ ]  [Ref in Hooks](https://react.dev/reference/react/useRef)
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-### Advanced Hooks:
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-* [ ]  [Using the Reducer Hook](https://react.dev/reference/react/useReducer)
-* [ ]  [Memoization in Hooks](https://react.dev/reference/react/useMemo)
-* [ ]  [Cache a function in Hooks](https://react.dev/reference/react/useCallback)
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-### Custom Hooks:
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-* [X]  [Building Your Own Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks#custom-hooks-sharing-logic-between-components)
-* [X]  [React Custom Hooks Examples](https://usehooks.com/)
+## Learn More
 
-## React Router
+To learn more about Next.js, take a look at the following resources:
 
-### Getting Started with React Router:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-* [X]  [React Router: Overview](https://reactrouter.com/en/main/start/overview)
-* [X]  [React Router: Tutorial](https://reactrouter.com/en/main/start/tutorial)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-### Basic Routing:
+## Deploy on Vercel
 
-* [X]  [Router Provider](https://reactrouter.com/en/main/routers/router-provider)
-* [X]  [Browser Router](https://reactrouter.com/en/main/router-components/browser-router)
-* [X]  [Route](https://reactrouter.com/en/main/route/route)
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Navigation and Parameters:
-
-* [X]  [Navigating with React Router](https://reactrouter.com/en/main/components/navigate)
-* [X]  [Link](https://reactrouter.com/en/main/components/link)
-* [X]  [NavLink](https://reactrouter.com/en/main/components/nav-link)
-* [ ]  [Using Parameters in Routes](https://reactrouter.com/web/example/url-params)
-
-### Protected Routes and Authentication:
-
-* [ ]  [Private Routes](https://www.robinwieruch.de/react-router-private-routes/)
-* [ ]  [Auth Example](https://github.com/remix-run/react-router/tree/dev/examples/auth)
-* [ ]  [Authentication](https://www.robinwieruch.de/react-router-authentication/)
-
-### Hooks in React Router v6:
-
-* [X]  [useNavigate](https://reactrouter.com/en/main/hooks/use-navigate)
-* [X]  [useParams](https://reactrouter.com/en/main/hooks/use-params)
-* [ ]  [useRoutes](https://reactrouter.com/en/main/hooks/use-routes)
-* [X]  [useLocation](https://reactrouter.com/en/main/hooks/use-location)
-* [X]  [useSearchParams](https://reactrouter.com/en/main/hooks/use-search-params)
-
-## Technical Requirements
-
-[](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/routing.md#technical-requirements)
-
-1. [X]  Create a separate branch for this task from the previous task's branch. Branch name: "hooks-and-routing".
-2. [X]  All components must be changed to **functional components**, except **Error Boundary** components, as error boundaries in React still need to be class components.[ ]  Implement custom hook to restore search query from the local storage  (LS) and put it to the LS on unmount. Use respective React lifecycle  hook as a basis.
-3. [X]  All logic should be split into components:
-   * [X]  If you need an access either to the component's lifecycle or the state **use hooks**.
-   * [X]  All data should be stored in the **component's state**.
-4. [X]  Add routing to your application using **React Router**.
-5. [X]  Add a 404 page when user navigates to non-existing route.
-6. [ ]  Add and configure a test runner: Jest or Vitest. Test runner should  show the test coverage. You should aim to reach at least 80% of the test  coverage.
-7. [ ]  Add a testing library: React Testing Library. You should add tests  for the several scenarios keeping in mind that mocked data should be  used instead of real API calls.
-8. [ ]  Tests for the Card List component:
-   * [ ]  Verify that the component renders the specified number of cards;
-   * [ ]  Check that an appropriate message is displayed if no cards are present.
-9. [ ]  Tests for the Card component:
-   * [ ]  Ensure that the card component renders the relevant card data;
-   * [ ]  Validate that clicking on a card opens a detailed card component;
-   * [ ]  Check that clicking triggers an additional API call to fetch detailed information.
-10. [ ]  Tests for the Detailed Card component:
-
-* Check that a loading indicator is displayed while fetching data;
-* Make sure the detailed card component correctly displays the detailed card data;
-* Ensure that clicking the close button hides the component.
-
-11. Tests for the Pagination component:
-
-* Make sure the component updates URL query parameter when page changes.
-
-12. Tests for the Search component:
-
-* Verify that clicking the Search button saves the entered value to the local storage;
-* Check that the component retrieves the value from the local storage upon mounting.
-
-13. Lastly, update Husky to run tests on the pre-push hook, ensuring  that tests are automatically executed before any code is pushed.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

@@ -1,23 +1,20 @@
-import starWarsApi from '../../store/services/starWarsApi';
-
 import styles from './styles.module.css';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { useEffect } from 'react';
+import Banner from '../banner/banner';
+import starWarsApi from '@/store/services/starWarsApi';
+import { useAppDispatch, useAppSelector } from '@/store/hooks/hooks';
+import useLocalStorage_v2 from '@/utils/hooks/UseLocalStorage_v2';
+import { categoriesSelector } from '@/store/slices/selectors';
 import {
 	setActiveCategory,
 	setCategories,
-} from '../../store/slices/categories.slice';
-import { useEffect } from 'react';
-import { resetPage, setActiveCard } from '../../store/slices/cards.slice';
-import { categoriesSelector } from '../../store/slices/selectors';
-import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
-import Banner from '../banner/banner';
-import { useNavigate } from 'react-router-dom';
+} from '@/store/slices/categories.slice';
+import { resetPage, setActiveCard } from '@/store/slices/cards.slice';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
 const Categories = () => {
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
 
 	const [storageCategory, setStorageCategory] = useLocalStorage_v2('category');
 
@@ -34,22 +31,19 @@ const Categories = () => {
 	useEffect(() => {
 		if (storageCategory) {
 			dispatch(setActiveCategory(storageCategory));
-			navigate(storageCategory);
 		}
-	}, [dispatch, storageCategory, navigate]);
+	}, [dispatch, storageCategory]);
 
 	const handleChangeCategory = (category: string) => {
 		if (activeCategory === category) {
 			setStorageCategory('category', '');
 			dispatch(setActiveCategory(''));
-			navigate('/');
 			return;
 		}
 		setStorageCategory('category', category);
 		dispatch(setActiveCategory(category));
 		dispatch(setActiveCard(null));
 		dispatch(resetPage());
-		navigate(category);
 	};
 
 	return (
@@ -67,7 +61,9 @@ const Categories = () => {
 					{categories.map((category) => (
 						<button
 							onClick={() => handleChangeCategory(category)}
-							className={`${styles['link']} ${category === activeCategory ? styles['active'] : ''}`}
+							className={`${styles['link']} ${
+								category === activeCategory ? styles['active'] : ''
+							}`}
 							key={category}
 						>
 							{category}
