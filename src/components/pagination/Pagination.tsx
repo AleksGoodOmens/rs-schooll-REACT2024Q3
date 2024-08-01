@@ -22,16 +22,17 @@ const Pagination = () => {
 	return (
 		<nav
 			className={styles['pagination']}
-			aria-label="Pagination Navigation"
+			aria-label='Pagination Navigation'
 		>
 			<ul className={styles['pagination__list']}>
 				<li className={styles['pagination__item']}>
 					<button
+						className='control__btn'
 						disabled={page === 1}
 						onClick={() => {
 							handleChangePage(-1);
 						}}
-						aria-label="Previous page"
+						aria-label='Previous page'
 					>
 						Prev
 					</button>
@@ -49,9 +50,10 @@ const Pagination = () => {
 				</li>
 				<li className={styles['pagination__item']}>
 					<button
+						className='control__btn'
 						disabled={totalPages <= page}
 						onClick={() => handleChangePage(1)}
-						aria-label="Next page"
+						aria-label='Next page'
 					>
 						Next
 					</button>

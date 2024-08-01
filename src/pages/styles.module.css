@@ -4,3 +4,14 @@
 	min-height: 100%;
 	text-align: center;
 }
+
+.wrapper {
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
+}
+
+.center {
+	display: grid;
+	place-content: center;
+}

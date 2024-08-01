@@ -21,9 +21,11 @@
 	aspect-ratio: auto;
 	color: var(--primary-800);
 	text-transform: capitalize;
-}
+	text-align: center;
+	transition: all 0.3s;
 
-.active {
-	background-color: var(--accent-800);
-	color: var(--secondary-600);
+	&:hover {
+		background-color: var(--accent-400);
+		color: var(--secondary-600);
+	}
 }

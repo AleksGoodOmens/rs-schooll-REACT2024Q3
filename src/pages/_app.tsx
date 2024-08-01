@@ -5,6 +5,7 @@ import useLocalStorage_v2 from '@/utils/hooks/UseLocalStorage_v2';
 import { createContext } from 'react';
 import { Provider } from 'react-redux';
 import Head from 'next/head';
+import AppLayout from '@/components/layout/AppLayout';
 
 export const ThemeContext = createContext<{
 	value: string;
@@ -34,16 +35,17 @@ export default function App({ Component, pageProps }: AppProps) {
 			<ThemeContext.Provider
 				value={{ value: storedTheme || 'Dark', change: handleChangeTheme }}
 			>
-				<div className={storedTheme || 'Dark'}>
-					<Head>
-						<title>Star wars - wiki by AmensGood next.js</title>
-						<link
-							rel='icon'
-							href='/favicon.ico'
-						/>
-					</Head>
+				<Head>
+					<title>Star wars - wiki by AmensGood next.js</title>
+					<link
+						rel='icon'
+						href='/favicon.ico'
+					/>
+				</Head>
+
+				<AppLayout>
 					<Component {...pageProps} />
-				</div>
+				</AppLayout>
 			</ThemeContext.Provider>
 		</Provider>
 	);

@@ -1,5 +1,6 @@
 .logo {
 	color: var(--accent-800);
+	text-align: start;
 }
 
 .title {

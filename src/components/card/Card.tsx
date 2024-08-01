@@ -9,7 +9,8 @@ import {
 
 import styles from './styles.module.css';
 import classNames from 'classnames';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 interface CardProps {
 	card: ICard;
@@ -23,13 +24,14 @@ const Card: FunctionComponent<CardProps> = ({
 	isActive,
 }) => {
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
-	const { activeCategory } = useParams();
-	const { name, url, title } = card;
+
+	const activeCategory = useParams();
+
+	const { name, url, title, id } = card;
 
 	const handleToggleFavorite = (
 		e: ChangeEvent<HTMLInputElement>,
-		card: ICard,
+		card: ICard
 	) => {
 		if (e.target.checked) {
 			return dispatch(addToFavorite(card));
@@ -40,11 +42,9 @@ const Card: FunctionComponent<CardProps> = ({
 	const handleToggleDetails = () => {
 		if (isActive) {
 			dispatch(setActiveCard(null));
-			navigate(`/${activeCategory}` || '/');
 			return;
 		}
 		dispatch(setActiveCard(card));
-		navigate(card.id);
 	};
 
 	return (
@@ -54,20 +54,25 @@ const Card: FunctionComponent<CardProps> = ({
 		>
 			<span>{name || title}</span>
 			<div className={styles['controls']}>
-				<button
-					className={`fadeIn ${styles['button']} ${isActive ? styles['active'] : ''}`}
+				<Link
+					href={`details/${id}`}
+					className={`fadeIn ${styles['button']} ${
+						isActive ? styles['active'] : ''
+					}`}
 					onClick={handleToggleDetails}
 					key={url}
 				>
 					<span>{!isActive ? 'Open details' : 'close details'}</span>
-				</button>
+				</Link>
 
 				<label
-					className={`fadeIn ${styles['label']} ${isInFavorite ? styles['active'] : ''}`}
+					className={`fadeIn ${styles['label']} ${
+						isInFavorite ? styles['active'] : ''
+					}`}
 				>
 					{isInFavorite ? 'del from favorite' : 'add to favorite'}
 					<input
-						type="checkbox"
+						type='checkbox'
 						checked={isInFavorite}
 						onChange={(e) => handleToggleFavorite(e, card)}
 					/>

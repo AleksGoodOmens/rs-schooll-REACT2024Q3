@@ -1,22 +1,19 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import useLocalStorage_v2 from '@/utils/hooks/UseLocalStorage_v2';
+import { useAppDispatch, useAppSelector } from '@/store/hooks/hooks';
+import { cardSelector } from '@/store/slices/selectors';
 import {
 	resetPage,
 	setActiveCard,
 	setSearchValue,
-} from '../../store/slices/cards.slice';
-import { cardSelector } from '../../store/slices/selectors';
-import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
-import { useNavigate, useParams } from 'react-router-dom';
+} from '@/store/slices/cards.slice';
+import { setActiveCategory } from '@/store/slices/categories.slice';
 
 const SearchBar = () => {
 	const [storageSearch, setStorageSearch] = useLocalStorage_v2('searchValue');
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
-
-	const { activeCategory } = useParams();
 
 	const { searchValue } = useAppSelector(cardSelector);
 
@@ -32,7 +29,6 @@ const SearchBar = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(setActiveCard(null));
-		navigate(activeCategory || '/');
 
 		if (search) {
 			setStorageSearch('searchValue', search);
@@ -72,16 +68,16 @@ const SearchBar = () => {
 				className={`${styles.form} `}
 				onSubmit={handleSubmit}
 			>
-				<label htmlFor="search"> Search by name:</label>
+				<label htmlFor='search'> Search by name:</label>
 				<input
 					onChange={handleChangeInputValue}
 					value={search}
-					type="search"
-					name="search"
-					id="search"
-					placeholder="Type any name"
+					type='search'
+					name='search'
+					id='search'
+					placeholder='Type any name'
 				/>
-				<button type="submit">Search</button>
+				<button type='submit'>Search</button>
 			</form>
 			{errorMessage && <span>Please enter a search term</span>}
 		</>

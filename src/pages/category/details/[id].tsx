@@ -1,24 +1,27 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import starWarsApi, { TDetailedCard } from '../../store/services/starWarsApi';
-import { setActiveCard } from '../../store/slices/cards.slice';
-import { cardSelector } from '../../store/slices/selectors';
-import Banner from '../banner/banner';
-import Loader from '../loader/loader';
-
+'useClient';
+import starWarsApi, { TDetailedCard } from '@/store/services/starWarsApi';
 import styles from './styles.module.css';
+import { usePathname } from 'next/navigation';
+import { useAppDispatch, useAppSelector } from '@/store/hooks/hooks';
+import { cardSelector, categoriesSelector } from '@/store/slices/selectors';
+import { setActiveCard } from '@/store/slices/cards.slice';
+import Loader from '@/components/loader/loader';
+import Banner from '@/components/banner/banner';
 
 const { useGetItemQuery } = starWarsApi;
 
 const DetailedCard = () => {
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
-	const { activeCategory } = useParams();
+	const { activeCategory } = useAppSelector(categoriesSelector);
 	const { activeCard } = useAppSelector(cardSelector);
 
+	const pathName = usePathname();
+
+	console.log(pathName, activeCategory);
+
 	const { isLoading, isError, data, isFetching } = useGetItemQuery({
-		category: activeCard?.category,
-		id: activeCard?.id,
+		category: activeCategory,
+		id: '2',
 	});
 
 	const renderData = (data: TDetailedCard) => {
@@ -32,7 +35,6 @@ const DetailedCard = () => {
 	};
 
 	const handleClose = () => {
-		navigate(`/${activeCategory}`);
 		dispatch(setActiveCard(null));
 	};
 

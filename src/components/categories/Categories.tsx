@@ -10,6 +10,8 @@ import {
 	setCategories,
 } from '@/store/slices/categories.slice';
 import { resetPage, setActiveCard } from '@/store/slices/cards.slice';
+import Link from 'next/link';
+import NavLink from '../navLink/NavLink';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
@@ -18,7 +20,7 @@ const Categories = () => {
 
 	const [storageCategory, setStorageCategory] = useLocalStorage_v2('category');
 
-	const { activeCategory, categories } = useAppSelector(categoriesSelector);
+	const { categories } = useAppSelector(categoriesSelector);
 
 	const { data, isError, isLoading } = useGetCategoriesQuery('');
 
@@ -35,13 +37,7 @@ const Categories = () => {
 	}, [dispatch, storageCategory]);
 
 	const handleChangeCategory = (category: string) => {
-		if (activeCategory === category) {
-			setStorageCategory('category', '');
-			dispatch(setActiveCategory(''));
-			return;
-		}
 		setStorageCategory('category', category);
-		dispatch(setActiveCategory(category));
 		dispatch(setActiveCard(null));
 		dispatch(resetPage());
 	};
@@ -59,15 +55,15 @@ const Categories = () => {
 			{categories.length !== 0 && (
 				<nav className={styles['flex']}>
 					{categories.map((category) => (
-						<button
+						<NavLink
+							exact
+							href={`/category/${category}`}
 							onClick={() => handleChangeCategory(category)}
-							className={`${styles['link']} ${
-								category === activeCategory ? styles['active'] : ''
-							}`}
+							className={styles['link']}
 							key={category}
 						>
 							{category}
-						</button>
+						</NavLink>
 					))}
 				</nav>
 			)}

@@ -4,6 +4,7 @@
 	background-color: var(--primary);
 	aspect-ratio: auto;
 	color: var(--secondary-600);
+	max-width: initial;
 	&:hover,
 	&:active {
 		background-color: var(--secondary-600);

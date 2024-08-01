@@ -6,7 +6,7 @@
 		align-items: center;
 		gap: 10px;
 	}
-	button {
+	& .control__btn {
 		background-color: var(--secondary-600);
 		color: var(--accent-400);
 		&:disabled {

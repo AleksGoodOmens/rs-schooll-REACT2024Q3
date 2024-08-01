@@ -101,6 +101,11 @@ body {
 	min-height: 100vh;
 }
 
+.text-center {
+	text-align: center;
+	margin: 0 auto;
+}
+
 .Dark,
 .Light {
 	background-color: var(--primary);
@@ -127,6 +132,7 @@ button {
 	cursor: pointer;
 	border-radius: 50%;
 	padding: 1rem;
+	max-width: fit-content;
 	aspect-ratio: 1/1;
 	&:disabled {
 		cursor: not-allowed;
