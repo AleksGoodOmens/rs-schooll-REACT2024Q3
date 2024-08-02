@@ -14,7 +14,7 @@ const AppLayout: FunctionComponent<AppLayoutProps> = ({ children }) => {
 	return (
 		<div className={classNames('wrapper', theme.value)}>
 			<Header />
-			<main className='main'>{children}</main>
+			<main className="main">{children}</main>
 			<Footer />
 		</div>
 	);

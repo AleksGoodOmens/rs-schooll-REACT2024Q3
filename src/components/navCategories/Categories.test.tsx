@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { cleanup, screen } from '@testing-library/react';
-import Categories from './Categories';
+import Categories from './NavCategories';
 import { renderWithProviders } from '../../test/test-utils';
 import userEvent from '@testing-library/user-event';
 

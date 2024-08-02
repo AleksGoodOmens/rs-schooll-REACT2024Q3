@@ -7,7 +7,7 @@ const Header = () => {
 	return (
 		<header
 			className={styles['header']}
-			aria-label='AmensGood navigation header'
+			aria-label="AmensGood navigation header"
 		>
 			<Logo />
 			<ThemeChanger />

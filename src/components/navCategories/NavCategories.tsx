@@ -10,25 +10,28 @@ import {
 	setCategories,
 } from '@/store/slices/categories.slice';
 import { resetPage, setActiveCard } from '@/store/slices/cards.slice';
-import Link from 'next/link';
-import NavLink from '../navLink/NavLink';
+import { useRouter } from 'next/router';
+import classNames from 'classnames';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
-const Categories = () => {
-	const dispatch = useAppDispatch();
-
-	const [storageCategory, setStorageCategory] = useLocalStorage_v2('category');
-
-	const { categories } = useAppSelector(categoriesSelector);
-
+const NavCategories = () => {
 	const { data, isError, isLoading } = useGetCategoriesQuery('');
+
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		if (data) {
 			dispatch(setCategories(data));
 		}
 	}, [data, dispatch]);
+
+	const router = useRouter();
+	const { category } = router.query;
+
+	const [storageCategory, setStorageCategory] = useLocalStorage_v2('category');
+
+	const { categories } = useAppSelector(categoriesSelector);
 
 	useEffect(() => {
 		if (storageCategory) {
@@ -40,6 +43,7 @@ const Categories = () => {
 		setStorageCategory('category', category);
 		dispatch(setActiveCard(null));
 		dispatch(resetPage());
+		router.push(`/${category}`);
 	};
 
 	return (
@@ -48,26 +52,27 @@ const Categories = () => {
 
 			{isError && <Banner>something go wrong</Banner>}
 
-			{!data && !isLoading && (
+			{categories.length === 0 && !isLoading && (
 				<Banner>Server have problem, please come back soon</Banner>
 			)}
 
 			{categories.length !== 0 && (
 				<nav className={styles['flex']}>
-					{categories.map((category) => (
-						<NavLink
-							exact
-							href={`/category/${category}`}
-							onClick={() => handleChangeCategory(category)}
-							className={styles['link']}
-							key={category}
+					{categories.map((cat) => (
+						<button
+							onClick={() => handleChangeCategory(cat)}
+							className={classNames(
+								styles['link'],
+								category === cat ? styles['active'] : '',
+							)}
+							key={cat}
 						>
-							{category}
-						</NavLink>
+							{cat}
+						</button>
 					))}
 				</nav>
 			)}
 		</>
 	);
 };
-export default Categories;
+export default NavCategories;

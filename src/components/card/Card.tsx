@@ -9,8 +9,8 @@ import {
 
 import styles from './styles.module.css';
 import classNames from 'classnames';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface CardProps {
 	card: ICard;
@@ -25,13 +25,15 @@ const Card: FunctionComponent<CardProps> = ({
 }) => {
 	const dispatch = useAppDispatch();
 
-	const activeCategory = useParams();
+	const router = useRouter();
+
+	const { category } = router.query;
 
 	const { name, url, title, id } = card;
 
 	const handleToggleFavorite = (
 		e: ChangeEvent<HTMLInputElement>,
-		card: ICard
+		card: ICard,
 	) => {
 		if (e.target.checked) {
 			return dispatch(addToFavorite(card));
@@ -55,7 +57,7 @@ const Card: FunctionComponent<CardProps> = ({
 			<span>{name || title}</span>
 			<div className={styles['controls']}>
 				<Link
-					href={`details/${id}`}
+					href={`/${category}/${id}`}
 					className={`fadeIn ${styles['button']} ${
 						isActive ? styles['active'] : ''
 					}`}
@@ -72,7 +74,7 @@ const Card: FunctionComponent<CardProps> = ({
 				>
 					{isInFavorite ? 'del from favorite' : 'add to favorite'}
 					<input
-						type='checkbox'
+						type="checkbox"
 						checked={isInFavorite}
 						onChange={(e) => handleToggleFavorite(e, card)}
 					/>

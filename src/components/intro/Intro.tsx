@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 const Intro = () => {
 	return (
-		<div className={styles['box']}>
+		<section className={styles['box']}>
 			<div className={styles['welcome']}>
 				<div className={styles['welcome__body']}>
 					<div className={styles['scroll']}>
@@ -108,7 +108,7 @@ const Intro = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

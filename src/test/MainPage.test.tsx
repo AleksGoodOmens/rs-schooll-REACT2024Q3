@@ -10,17 +10,17 @@ describe('MainPage', () => {
 
 	it('render banner with AmensGood', async () => {
 		expect(
-			screen.getByRole('banner', { name: /AmensGood/i })
+			screen.getByRole('banner', { name: /AmensGood/i }),
 		).toBeInTheDocument();
 	});
 
 	expect(
 		screen.getByText(
-			'Week 3 - React. Task #3 Redux. Redux Toolkit, RTK Query. Context api'
-		)
+			'Week 3 - React. Task #3 Redux. Redux Toolkit, RTK Query. Context api',
+		),
 	).toBeInTheDocument();
 	expect(
-		screen.getByText('To start your expedition please choose category below')
+		screen.getByText('To start your expedition please choose category below'),
 	).toBeInTheDocument();
 
 	expect(screen.getByRole('contentinfo')).toBeInTheDocument();

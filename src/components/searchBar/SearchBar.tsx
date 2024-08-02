@@ -9,7 +9,6 @@ import {
 	setActiveCard,
 	setSearchValue,
 } from '@/store/slices/cards.slice';
-import { setActiveCategory } from '@/store/slices/categories.slice';
 
 const SearchBar = () => {
 	const [storageSearch, setStorageSearch] = useLocalStorage_v2('searchValue');
@@ -68,16 +67,16 @@ const SearchBar = () => {
 				className={`${styles.form} `}
 				onSubmit={handleSubmit}
 			>
-				<label htmlFor='search'> Search by name:</label>
+				<label htmlFor="search"> Search by name:</label>
 				<input
 					onChange={handleChangeInputValue}
 					value={search}
-					type='search'
-					name='search'
-					id='search'
-					placeholder='Type any name'
+					type="search"
+					name="search"
+					id="search"
+					placeholder="Type any name"
 				/>
-				<button type='submit'>Search</button>
+				<button type="submit">Search</button>
 			</form>
 			{errorMessage && <span>Please enter a search term</span>}
 		</>

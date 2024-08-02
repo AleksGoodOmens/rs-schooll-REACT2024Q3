@@ -8,7 +8,7 @@ describe('404 NotFound', () => {
 		render(
 			<Router>
 				<NotFoundPage />
-			</Router>
+			</Router>,
 		);
 
 		const loadingText = screen.getByText('page not found');

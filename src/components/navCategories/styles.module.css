@@ -15,17 +15,22 @@
 }
 .link {
 	flex: 1;
+	transition: all 0.3s;
 	border-radius: 8px;
 	background-color: var(--secondary-600);
 	padding: 1rem;
 	aspect-ratio: auto;
 	color: var(--primary-800);
-	text-transform: capitalize;
 	text-align: center;
-	transition: all 0.3s;
+	text-transform: capitalize;
 
 	&:hover {
 		background-color: var(--accent-400);
 		color: var(--secondary-600);
 	}
+}
+
+.active {
+	background-color: var(--accent-800);
+	color: var(--secondary-600);
 }
