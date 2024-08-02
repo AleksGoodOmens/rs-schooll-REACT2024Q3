@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { renderWithProviders } from '../../test/test-utils';
-import MainPage from '../pages';
+import MainPage from '.';
 import { screen } from '@testing-library/dom';
 
 describe('MainPage', () => {
