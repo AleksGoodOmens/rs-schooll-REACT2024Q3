@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './styles.module.css';
 const Loader = () => {
 	return (
@@ -7,9 +8,9 @@ const Loader = () => {
 		>
 			<p className="banner">Loading...</p>
 			<div className={styles.img}>
-				<img
-					width="200px"
-					height="200px"
+				<Image
+					width={200}
+					height={200}
 					src="/demo.gif"
 					alt="loading Image"
 				/>

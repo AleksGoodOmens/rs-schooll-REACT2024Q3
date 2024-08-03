@@ -1,8 +1,8 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from '../../../test/test-utils';
-import DetailedCard from '.';
-import { AppRouterContextProviderMock } from '../../../test/AppRouterContextProviderMock';
+import { renderWithProviders } from '../test-utils';
+import { AppRouterContextProviderMock } from '../AppRouterContextProviderMock';
+import DetailedCard from '../../pages/[category]/[id]';
 
 vi.mock('next/router', () => ({
 	useRouter: () => ({

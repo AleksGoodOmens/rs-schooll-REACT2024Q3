@@ -2,8 +2,8 @@
 
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { AppRouterContextProviderMock } from '../test/AppRouterContextProviderMock';
-import Custom404 from './404';
+import { AppRouterContextProviderMock } from '../AppRouterContextProviderMock';
+import Custom404 from '../../pages/404';
 
 vi.mock('next/router', () => ({
 	useRouter: () => ({
