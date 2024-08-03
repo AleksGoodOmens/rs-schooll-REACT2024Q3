@@ -3,10 +3,21 @@ import { screen } from '@testing-library/react';
 import ErrorFallBack from './ErrorFallBack';
 import { renderWithProviders } from '../../../test/test-utils';
 import userEvent from '@testing-library/user-event';
+import { AppRouterContextProviderMock } from '../../../test/AppRouterContextProviderMock';
 
 describe('ErrorFallBack', () => {
+	vi.mock('next/router', () => ({
+		useRouter: () => ({
+			push: vi.fn(),
+			query: { category: 'people', id: '1' },
+		}),
+	}));
 	it('should render two heading with text', () => {
-		renderWithProviders(<ErrorFallBack />);
+		renderWithProviders(
+			<AppRouterContextProviderMock router={{}}>
+				<ErrorFallBack />
+			</AppRouterContextProviderMock>,
+		);
 
 		expect(
 			screen.getByRole('heading', { name: /you a great person/i }),

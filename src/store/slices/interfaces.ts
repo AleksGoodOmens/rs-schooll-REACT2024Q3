@@ -10,7 +10,6 @@ export type ICard = {
 export type CardState = {
 	cards: ICard[];
 	favoriteCards: ICard[];
-	activeCard: ICard | null;
 	totalPages: number;
 	totalCards: number;
 	page: number;

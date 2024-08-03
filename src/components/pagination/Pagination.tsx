@@ -27,7 +27,7 @@ const Pagination = () => {
 			<ul className={styles['pagination__list']}>
 				<li className={styles['pagination__item']}>
 					<button
-						className="control__btn"
+						className={styles['control__btn']}
 						disabled={page === 1}
 						onClick={() => {
 							handleChangePage(-1);
@@ -50,7 +50,7 @@ const Pagination = () => {
 				</li>
 				<li className={styles['pagination__item']}>
 					<button
-						className="control__btn"
+						className={styles['control__btn']}
 						disabled={totalPages <= page}
 						onClick={() => handleChangePage(1)}
 						aria-label="Next page"

@@ -3,12 +3,11 @@
 import { renderHook } from '@testing-library/react';
 import { act, useState } from 'react';
 import { describe, expect, it } from 'vitest';
-import { ThemeType } from './App';
 
 describe('App', () => {
 	// Theme changes from Dark to Light and vice versa when handleChangeTheme is called
 	it('should toggle theme from Dark to Light and vice versa when handleChangeTheme is called', () => {
-		const { result } = renderHook(() => useState<ThemeType>('Dark'));
+		const { result } = renderHook(() => useState('Dark'));
 		const [, setTheme] = result.current;
 
 		act(() => {
@@ -26,7 +25,7 @@ describe('App', () => {
 
 	// handleChangeTheme is called multiple times in quick succession
 	it('should handle multiple quick calls to handleChangeTheme correctly', () => {
-		const { result } = renderHook(() => useState<ThemeType>('Dark'));
+		const { result } = renderHook(() => useState('Dark'));
 		const [, setTheme] = result.current;
 
 		act(() => {

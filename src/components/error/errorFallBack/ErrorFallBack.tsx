@@ -1,11 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import styles from './styles.module.css';
+import Image from 'next/image';
 
 const ErrorFallBack = () => {
-	const navigate = useNavigate();
+	const router = useRouter();
 	const handleReload = () => {
 		// window.location.reload();
-		navigate('/');
+		router.push('/');
 	};
 
 	return (
@@ -13,7 +14,7 @@ const ErrorFallBack = () => {
 			<h1>If you see that message - you a great person!</h1>
 			<h2>But you know that you click wrong button and now you got an Error</h2>
 			<div className={styles.img}>
-				<img
+				<Image
 					width={100}
 					height={200}
 					src="/error.png"

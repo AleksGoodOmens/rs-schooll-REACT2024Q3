@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode, useContext } from 'react';
 import Footer from './footer/Footer';
 import Header from './header/Header';
-import { ThemeContext } from '@/pages/_app';
 import classNames from 'classnames';
+import { ThemeContext } from '../../pages/_app';
 
 interface AppLayoutProps {
 	children: ReactNode;

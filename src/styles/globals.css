@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 :root {
-	color-scheme: dark;
 	--primary: rgb(36, 36, 36);
 	--primary-a: rgba(36, 36, 36, 1);
 	--primary-800: black;
@@ -33,7 +32,6 @@
 }
 
 .Light {
-	color-scheme: light;
 	--primary: rgb(255, 235, 205);
 	--primary-a: rgba(255, 235, 205, 0);
 	--primary-800: white;
@@ -44,35 +42,9 @@
 
 	--accent-400: rgb(172, 51, 51);
 	--accent-800: rgb(243, 57, 57);
-}
 
-@media (prefers-color-scheme: light) {
-	:root {
-		--primary: blanchedalmond;
-		--primary-800: white;
-		--secondary-400: black;
-		--secondary-600: #242424;
-		--accent-400: rgb(172, 51, 51);
-		--accent-800: rgb(243, 57, 57);
-
-		background-color: var(--primary);
-		color: var(--secondary-400);
-	}
-}
-
-/* Стили для тёмной схемы */
-@media (prefers-color-scheme: dark) {
-	:root {
-		--primary: #242424;
-		--primary-800: black;
-		--secondary-400: white;
-		--secondary-600: blanchedalmond;
-		--accent-400: rgb(243, 57, 57);
-		--accent-800: rgb(172, 51, 51);
-
-		background-color: var(--secondary-600);
-		color: var(--secondary-400);
-	}
+	background-color: var(--primary);
+	color: var(--secondary-400);
 }
 
 * {

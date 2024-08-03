@@ -20,6 +20,7 @@
 	background-color: var(--secondary-600);
 	padding: 1rem;
 	aspect-ratio: auto;
+	max-width: none;
 	color: var(--primary-800);
 	text-align: center;
 	text-transform: capitalize;

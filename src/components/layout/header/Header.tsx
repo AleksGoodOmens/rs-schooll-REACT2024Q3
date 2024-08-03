@@ -1,7 +1,7 @@
-import ThemeChanger from '@/components/themeChanger/ThemeChanger';
+import Logo from '../../logo/Logo';
+import SocialLinks from '../../socialLinks/SocialLinks';
+import ThemeChanger from '../../themeChanger/ThemeChanger';
 import styles from './styles.module.css';
-import Logo from '@/components/logo/Logo';
-import SocialLinks from '@/components/socialLinks/SocialLinks';
 
 const Header = () => {
 	return (

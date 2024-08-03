@@ -1,19 +1,17 @@
 'useClient';
-import starWarsApi, { TDetailedCard } from '@/store/services/starWarsApi';
 import styles from './styles.module.css';
-import { useAppDispatch } from '@/store/hooks/hooks';
-import { setActiveCard } from '@/store/slices/cards.slice';
-import Loader from '@/components/loader/loader';
-import Banner from '@/components/banner/banner';
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Category from '..';
+import starWarsApi, {
+	TDetailedCard,
+} from '../../../store/services/starWarsApi';
+import Loader from '../../../components/loader/loader';
+import Banner from '../../../components/banner/banner';
 
 const { useGetItemQuery } = starWarsApi;
 
 const DetailedCard = () => {
-	const dispatch = useAppDispatch();
-
 	const router = useRouter();
 	const { category, id } = router.query;
 
@@ -33,14 +31,14 @@ const DetailedCard = () => {
 	};
 
 	const handleClose = () => {
-		dispatch(setActiveCard(null));
+		router.push(`/${category}`);
 	};
 
 	return (
 		<>
 			{(isLoading || isFetching) && <Loader />}
 			{isError && <Banner>something go wrong</Banner>}
-			{data && (
+			{data && !isLoading && !isFetching && (
 				<article className={`${styles['box']} `}>
 					<h2 className={styles['header']}>
 						<span>{data?.title || data?.name}</span>

@@ -6,7 +6,6 @@ import { CardState, ICard } from './interfaces';
 const initialState: CardState = {
 	cards: [],
 	favoriteCards: [],
-	activeCard: null,
 	totalPages: 0,
 	totalCards: 0,
 	page: 1,
@@ -43,9 +42,6 @@ const categoriesSlice = createSlice({
 		setSearchValue(state, action: PayloadAction<string>) {
 			state.searchValue = action.payload.trim();
 		},
-		setActiveCard(state, action: PayloadAction<ICard | null>) {
-			state.activeCard = action.payload;
-		},
 
 		addToFavorite(state, action: PayloadAction<ICard>) {
 			state.favoriteCards = [...state.favoriteCards, action.payload];
@@ -68,7 +64,6 @@ export const {
 	resetPage,
 	setCards,
 	setTotalPages,
-	setActiveCard,
 	setSearchValue,
 	clearFavoriteCards,
 } = categoriesSlice.actions;

@@ -3,8 +3,8 @@ import Downloader from '../components/downloader/Downloader';
 
 import styles from './styles.module.css';
 import Intro from '../components/intro/Intro';
-import { useAppSelector } from '@/store/hooks/hooks';
-import { cardSelector } from '@/store/slices/selectors';
+import { cardSelector } from '../store/slices/selectors';
+import { useAppSelector } from '../store/hooks/hooks';
 
 const MainPage = () => {
 	const { favoriteCards } = useAppSelector(cardSelector);

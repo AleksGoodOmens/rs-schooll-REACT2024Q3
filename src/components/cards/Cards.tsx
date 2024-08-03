@@ -1,25 +1,24 @@
-import starWarsApi from '@/store/services/starWarsApi';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '@/store/hooks/hooks';
-import { setActiveCard, setCards } from '@/store/slices/cards.slice';
-import { cardSelector } from '@/store/slices/selectors';
-import Pagination from '@/components/pagination/Pagination';
-import Loader from '@/components/loader/loader';
-import Banner from '@/components/banner/banner';
-import Card from '@/components/card/Card';
-
 import styles from './styles.module.css';
+import Downloader from '../downloader/Downloader';
+import starWarsApi from '../../store/services/starWarsApi';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { cardSelector } from '../../store/slices/selectors';
+import { setCards } from '../../store/slices/cards.slice';
+import Loader from '../loader/loader';
+import Banner from '../banner/banner';
+import Card from '../card/Card';
 const { useGetCardsQuery } = starWarsApi;
 const Cards = () => {
 	const dispatch = useAppDispatch();
 
 	const router = useRouter();
 
-	const { category } = router.query as { category: string };
+	const { category, id } = router.query as { category: string; id: string };
 
-	const { page, searchValue, cards, activeCard, favoriteCards } =
+	const { page, searchValue, cards, favoriteCards } =
 		useAppSelector(cardSelector);
 
 	const { data, isError, isLoading, isFetching } = useGetCardsQuery({
@@ -27,10 +26,6 @@ const Cards = () => {
 		page: page,
 		searchValue: searchValue,
 	});
-
-	const handleHideActiveCard = () => {
-		dispatch(setActiveCard(null));
-	};
 
 	useEffect(() => {
 		if (data) {
@@ -40,32 +35,27 @@ const Cards = () => {
 
 	return (
 		<>
-			<Pagination />
 			{(isLoading || isFetching) && <Loader />}
 
 			{isError && <Banner>Something go wrong </Banner>}
 
 			{cards && !isLoading && !isFetching && (
-				<section className={styles['content']}>
-					<section
-						className={`fadeIn ${styles['items']}`}
-						onClick={handleHideActiveCard}
-					>
-						{cards.length === 0 && <Banner>Nothing found</Banner>}
+				<section className={`fadeIn ${styles['items']}`}>
+					{cards.length === 0 && <Banner>Nothing found</Banner>}
 
-						{cards.map((card) => (
-							<Card
-								key={card.url}
-								card={card}
-								isInFavorite={
-									!!favoriteCards.find((item) => item.url === card.url)
-								}
-								isActive={card.id === activeCard?.id}
-							/>
-						))}
-					</section>
+					{cards.map((card) => (
+						<Card
+							key={card.url}
+							card={card}
+							isInFavorite={
+								!!favoriteCards.find((item) => item.url === card.url)
+							}
+							isActive={card.id === id}
+						/>
+					))}
 				</section>
 			)}
+			{favoriteCards.length !== 0 && <Downloader />}
 		</>
 	);
 };

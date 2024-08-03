@@ -1,17 +1,17 @@
 import styles from './styles.module.css';
 import { useEffect } from 'react';
 import Banner from '../banner/banner';
-import starWarsApi from '@/store/services/starWarsApi';
-import { useAppDispatch, useAppSelector } from '@/store/hooks/hooks';
-import useLocalStorage_v2 from '@/utils/hooks/UseLocalStorage_v2';
-import { categoriesSelector } from '@/store/slices/selectors';
+import { useRouter } from 'next/router';
+import classNames from 'classnames';
+import starWarsApi from '../../store/services/starWarsApi';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
+import { categoriesSelector } from '../../store/slices/selectors';
+import { resetPage } from '../../store/slices/cards.slice';
 import {
 	setActiveCategory,
 	setCategories,
-} from '@/store/slices/categories.slice';
-import { resetPage, setActiveCard } from '@/store/slices/cards.slice';
-import { useRouter } from 'next/router';
-import classNames from 'classnames';
+} from '../../store/slices/categories.slice';
 
 const { useGetCategoriesQuery } = starWarsApi;
 
@@ -41,7 +41,6 @@ const NavCategories = () => {
 
 	const handleChangeCategory = (category: string) => {
 		setStorageCategory('category', category);
-		dispatch(setActiveCard(null));
 		dispatch(resetPage());
 		router.push(`/${category}`);
 	};

@@ -1,14 +1,10 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
-import useLocalStorage_v2 from '@/utils/hooks/UseLocalStorage_v2';
-import { useAppDispatch, useAppSelector } from '@/store/hooks/hooks';
-import { cardSelector } from '@/store/slices/selectors';
-import {
-	resetPage,
-	setActiveCard,
-	setSearchValue,
-} from '@/store/slices/cards.slice';
+import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { cardSelector } from '../../store/slices/selectors';
+import { resetPage, setSearchValue } from '../../store/slices/cards.slice';
 
 const SearchBar = () => {
 	const [storageSearch, setStorageSearch] = useLocalStorage_v2('searchValue');
@@ -27,7 +23,6 @@ const SearchBar = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		dispatch(setActiveCard(null));
 
 		if (search) {
 			setStorageSearch('searchValue', search);
@@ -64,7 +59,7 @@ const SearchBar = () => {
 	return (
 		<>
 			<form
-				className={`${styles.form} `}
+				className={`${styles['form']} `}
 				onSubmit={handleSubmit}
 			>
 				<label htmlFor="search"> Search by name:</label>
@@ -77,8 +72,8 @@ const SearchBar = () => {
 					placeholder="Type any name"
 				/>
 				<button type="submit">Search</button>
+				{errorMessage && <span>Please enter a search term</span>}
 			</form>
-			{errorMessage && <span>Please enter a search term</span>}
 		</>
 	);
 };

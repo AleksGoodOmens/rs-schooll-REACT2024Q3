@@ -1,9 +1,15 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { renderWithProviders } from '../../test/test-utils';
 import Card from './Card';
 import { screen } from '@testing-library/dom';
 
 describe('Card', () => {
+	vi.mock('next/router', () => ({
+		useRouter: () => ({
+			push: vi.fn(),
+			query: { category: 'people' },
+		}),
+	}));
 	it('card rendered non active style and checkbox non active', async () => {
 		const mockProps = {
 			name: 'Luke mock',

@@ -6,12 +6,13 @@
 		align-items: center;
 		gap: 10px;
 	}
-	& .control__btn {
-		background-color: var(--secondary-600);
-		color: var(--accent-400);
-		&:disabled {
-			background-color: var(--primary);
-		}
+}
+
+.control__btn {
+	background-color: var(--secondary-600);
+	color: var(--accent-400);
+	&:disabled {
+		background-color: var(--primary);
 	}
 }
 

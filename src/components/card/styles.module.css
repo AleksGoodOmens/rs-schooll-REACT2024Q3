@@ -8,24 +8,30 @@
 	color: var(--primary);
 	text-transform: capitalize;
 
-	& .controls {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		background-color: var(--primary);
-		color: var(--secondary-600);
-	}
-
 	& input {
 		position: absolute;
 		opacity: 0;
 	}
 }
 
+.title {
+	display: block;
+	padding: 0.5rem 1rem;
+}
+
+.controls {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	background-color: var(--primary);
+	color: var(--secondary-600);
+}
+
 .label {
 	transition: all 0.5s;
 	cursor: pointer;
-	padding: 0 1rem;
+	padding: 0.5rem 0;
 	font-size: 0.8rem;
+	text-align: center;
 	text-transform: capitalize;
 	&:hover,
 	&:active {
@@ -33,16 +39,14 @@
 	}
 }
 .button {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 1rem;
+	display: block;
 	border: none;
 	border-radius: 0;
 	background-color: var(--primary);
-	padding: 0 1rem;
+	padding: 0.5rem 1rem;
 	aspect-ratio: auto;
-
+	max-width: none;
+	color: var(--secondary-600);
 	text-transform: capitalize;
 
 	&:hover,

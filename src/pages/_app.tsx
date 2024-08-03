@@ -1,12 +1,12 @@
-import '@/styles/globals.css';
+import '/src/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { setupStore } from '@/store/store';
-import useLocalStorage_v2 from '@/utils/hooks/UseLocalStorage_v2';
 import { createContext, ReactElement, ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import Head from 'next/head';
-import AppLayout from '@/components/layout/AppLayout';
 import { NextPage } from 'next';
+import { setupStore } from '../store/store';
+import useLocalStorage_v2 from '../utils/hooks/UseLocalStorage_v2';
+import AppLayout from '../components/layout/AppLayout';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode;

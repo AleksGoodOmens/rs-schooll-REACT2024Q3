@@ -1,15 +1,10 @@
 import { ChangeEvent, FunctionComponent } from 'react';
 import { ICard } from '../../store/slices/interfaces';
 import { useAppDispatch } from '../../store/hooks/hooks';
-import {
-	addToFavorite,
-	delFromFavorite,
-	setActiveCard,
-} from '../../store/slices/cards.slice';
+import { addToFavorite, delFromFavorite } from '../../store/slices/cards.slice';
 
 import styles from './styles.module.css';
 import classNames from 'classnames';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 interface CardProps {
@@ -42,30 +37,34 @@ const Card: FunctionComponent<CardProps> = ({
 	};
 
 	const handleToggleDetails = () => {
-		if (isActive) {
-			dispatch(setActiveCard(null));
+		if (!isActive) {
+			router.push(`/${category}/${id}`);
+
 			return;
 		}
-		dispatch(setActiveCard(card));
+		router.push(`/${category}`);
 	};
 
 	return (
 		<article
 			key={url}
-			className={classNames('fadeIn', styles['item'])}
+			className={classNames(
+				'fadeIn',
+				styles['item'],
+				isActive && styles['active'],
+			)}
 		>
-			<span>{name || title}</span>
+			<span className={styles['title']}>{name || title}</span>
 			<div className={styles['controls']}>
-				<Link
-					href={`/${category}/${id}`}
+				<button
 					className={`fadeIn ${styles['button']} ${
 						isActive ? styles['active'] : ''
 					}`}
 					onClick={handleToggleDetails}
 					key={url}
 				>
-					<span>{!isActive ? 'Open details' : 'close details'}</span>
-				</Link>
+					{!isActive ? 'Open details' : 'close details'}
+				</button>
 
 				<label
 					className={`fadeIn ${styles['label']} ${

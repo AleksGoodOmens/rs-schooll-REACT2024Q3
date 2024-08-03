@@ -1,4 +1,4 @@
-import { ThemeContext } from '@/pages/_app';
+import { ThemeContext } from '../../pages/_app';
 import styles from './styles.module.css';
 import { useContext } from 'react';
 
@@ -10,7 +10,7 @@ const ThemeChanger = () => {
 			className={styles['button']}
 			onClick={change}
 		>
-			Now you are on a {value}Side
+			Change your {value} Side
 		</button>
 	);
 };
