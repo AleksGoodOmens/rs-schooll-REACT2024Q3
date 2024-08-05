@@ -12,6 +12,7 @@ const Loader = () => {
 					width={200}
 					height={200}
 					src="/demo.gif"
+					unoptimized
 					alt="loading Image"
 				/>
 			</div>

@@ -10,8 +10,3 @@
 	place-content: center;
 	min-height: 100vh;
 }
-
-.center {
-	display: grid;
-	place-content: center;
-}
