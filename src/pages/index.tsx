@@ -7,31 +7,10 @@ import NavCategories from '../components/navCategories/NavCategories';
 import Downloader from '../components/downloader/Downloader';
 
 import { useAppSelector } from '../store/hooks/hooks';
-import {
-	getRunningQueriesThunk,
-	starWarsApi,
-	useGetCategoriesQuery,
-} from '../store/services/starWarsApi';
-import { wrapper } from '../store';
+import { useGetCategoriesQuery } from '../store/services/starWarsApi';
+import { fetchData } from '../utils/fetchSSR';
 
-export const getServerSideProps = wrapper.getServerSideProps(
-	(store) => async () => {
-		const { getCategories } = starWarsApi.endpoints;
-		const result = await store.dispatch(getCategories.initiate(''));
-
-		if (result.error) {
-			return {
-				notFound: true,
-			};
-		}
-
-		await Promise.all(store.dispatch(getRunningQueriesThunk()));
-
-		return {
-			props: {},
-		};
-	},
-);
+export const getServerSideProps = fetchData;
 
 const MainPage = () => {
 	const { favoriteCards } = useAppSelector(cardSelector);

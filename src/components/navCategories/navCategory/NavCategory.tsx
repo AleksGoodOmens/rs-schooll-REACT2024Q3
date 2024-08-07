@@ -15,7 +15,7 @@ const NavCategory: FunctionComponent<NavCategoryProps> = ({
 	const router = useRouter();
 
 	const handleChangeCategory = () => {
-		router.push(`/${children}?page=1`);
+		router.push(`/${children}?page=1&search=`);
 	};
 
 	return (

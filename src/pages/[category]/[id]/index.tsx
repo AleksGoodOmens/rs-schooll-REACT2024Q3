@@ -4,14 +4,10 @@ import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Category from '..';
 import { TDetailedCard } from '../../../store/services/interface';
-import {
-	getCards,
-	getCategories,
-	getItem,
-	getRunningQueriesThunk,
-	useGetItemQuery,
-} from '../../../store/services/starWarsApi';
-import { wrapper } from '../../../store';
+import { useGetItemQuery } from '../../../store/services/starWarsApi';
+import { fetchData } from '../../../utils/fetchSSR';
+
+export const getServerSideProps = fetchData;
 
 const DetailedCard = () => {
 	const router = useRouter();
@@ -58,30 +54,3 @@ DetailedCard.getLayout = function getLayout(DetailedCard: ReactNode) {
 };
 
 export default DetailedCard;
-
-export const getServerSideProps = wrapper.getServerSideProps(
-	(store) => async (ctx) => {
-		await store.dispatch(getCategories.initiate(''));
-
-		const activeCat = ctx.query?.category;
-		const page = ctx.query?.page || '1';
-		const search = ctx.query?.search || '';
-		const id = ctx.query.id;
-
-		await store.dispatch(
-			getCards.initiate({
-				category: activeCat as string,
-				page: page as string,
-				searchValue: search as string,
-			}),
-		);
-
-		await store.dispatch(
-			getItem.initiate({ category: activeCat as string, id: id as string }),
-		);
-
-		await Promise.all(store.dispatch(getRunningQueriesThunk()));
-
-		return { props: {} };
-	},
-);

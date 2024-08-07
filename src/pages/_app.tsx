@@ -49,7 +49,6 @@ export function App({ Component, pageProps }: AppPropsWithLayout) {
 					href="/favicon.ico"
 				/>
 			</Head>
-
 			<AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
 		</ThemeContext.Provider>
 	);
