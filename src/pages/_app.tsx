@@ -1,11 +1,19 @@
 import '/src/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { createContext, ReactElement, ReactNode } from 'react';
+import {
+	createContext,
+	ReactElement,
+	ReactNode,
+	useEffect,
+	useState,
+} from 'react';
 import Head from 'next/head';
 import { NextPage } from 'next';
 import useLocalStorage_v2 from '../utils/hooks/UseLocalStorage_v2';
 import AppLayout from '../components/layout/AppLayout';
 import { wrapper } from '../store';
+import { useRouter } from 'next/router';
+import Loader from '../components/loader/loader';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -25,6 +33,23 @@ export const ThemeContext = createContext<{
 
 export function App({ Component, pageProps }: AppPropsWithLayout) {
 	const [storedTheme, setStoredTheme] = useLocalStorage_v2('theme', 'Dark');
+	const [loading, setLoading] = useState(false);
+	const router = useRouter();
+
+	useEffect(() => {
+		const handleStart = () => setLoading(true);
+		const handleComplete = () => setLoading(false);
+
+		router.events.on('routeChangeStart', handleStart);
+		router.events.on('routeChangeComplete', handleComplete);
+		router.events.on('routeChangeError', handleComplete);
+
+		return () => {
+			router.events.off('routeChangeStart', handleStart);
+			router.events.off('routeChangeComplete', handleComplete);
+			router.events.off('routeChangeError', handleComplete);
+		};
+	}, []);
 
 	const handleChangeTheme = () => {
 		if (!storedTheme) {
@@ -49,7 +74,9 @@ export function App({ Component, pageProps }: AppPropsWithLayout) {
 					href="/favicon.ico"
 				/>
 			</Head>
-			<AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+			<AppLayout>
+				{loading ? <Loader /> : getLayout(<Component {...pageProps} />)}
+			</AppLayout>
 		</ThemeContext.Provider>
 	);
 }
