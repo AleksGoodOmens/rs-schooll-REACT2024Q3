@@ -17,6 +17,7 @@ import {
 	useGetCardsQuery,
 	useGetCategoriesQuery,
 } from '../../store/services/starWarsApi';
+import { skipToken } from '@reduxjs/toolkit/query';
 
 export const getServerSideProps = fetchData;
 
@@ -25,7 +26,6 @@ export default function Category({ children }: { children: ReactNode }) {
 	const { favoriteCards } = useAppSelector(cardSelector);
 
 	const { category, page, search } = router.query;
-	console.log(category, page, search);
 
 	const searchParametersControl = () => {
 		return {
@@ -37,9 +37,9 @@ export default function Category({ children }: { children: ReactNode }) {
 
 	const categoriesData = useGetCategoriesQuery('');
 
-	const cardsData = useGetCardsQuery(searchParametersControl());
+	const cardsData = useGetCardsQuery(searchParametersControl() ?? skipToken);
 
-	const { count, results } = cardsData?.data as CardsResponse;
+	const { count, results } = cardsData.data as CardsResponse;
 
 	const transformedCards = results.map((card) => {
 		const categoryAndId = getCategoryAndIdFromUrl(card.url);

@@ -18,7 +18,7 @@ export const fetchData = wrapper.getServerSideProps((store) => async (ctx) => {
 	const search = ctx.query.search || '';
 	const id = ctx.query.id;
 
-	if (activeCat) {
+	if (activeCat && page) {
 		const cardsResult = await store.dispatch(
 			getCards.initiate({
 				category: activeCat as string,
@@ -30,11 +30,13 @@ export const fetchData = wrapper.getServerSideProps((store) => async (ctx) => {
 			throw new Error('Failed to fetch cards');
 		}
 	}
+
 	if (id) {
 		const itemsResult = await store.dispatch(
 			getItem.initiate({ category: activeCat as string, id: id as string }),
 		);
 		if (itemsResult.error) {
+			console.log(itemsResult.error);
 			throw new Error('Failed to fetch items');
 		}
 	}

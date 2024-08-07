@@ -32,11 +32,7 @@ export const starWarsApi = createApi({
 			{ category: string; page: string; searchValue: string }
 		>({
 			query: ({ category = 'people', page = '1', searchValue = '' }) => {
-				if (page)
-					return { url: `/${category}/?search=${searchValue}&page=${page}` };
-				if (searchValue) return { url: `/${category}/?search=${searchValue}` };
-				if (category) return { url: `/${category}/?page=${page}` };
-				return { url: 'people/?page=1' };
+				return { url: `/${category}/?search=${searchValue}&page=${page}` };
 			},
 		}),
 		getItem: builder.query<

@@ -11,9 +11,11 @@ const SearchBar = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 
-	const urlSearch = router.query.search as string;
+	const urlSearch = router.query.search;
 
-	const [search, setSearch] = useState(urlSearch || '');
+	const category = router.query.category;
+
+	const [search, setSearch] = useState('');
 	const [errorMessage, setErrorMessage] = useState(false);
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,13 +30,7 @@ const SearchBar = () => {
 		if (search !== urlSearch) {
 			setStorageSearch('searchValue', search);
 
-			router.push({
-				query: {
-					category: router.query['category'],
-					page: '1',
-					search: search,
-				},
-			});
+			router.push(`/${category}?page=1&search=${search}`);
 			dispatch(setSearchValue(search));
 			dispatch(resetPage());
 			return;

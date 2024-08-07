@@ -39,11 +39,13 @@ const Card: FunctionComponent<CardProps> = ({ card }) => {
 
 	const handleToggleDetails = () => {
 		if (!isActive) {
-			router.push(`/${category}/${id}?page=${page}&search=${search}`);
+			router.push(
+				`/${category}/${id || ''}?page=${page}&search=${search || ''}`,
+			);
 
 			return;
 		}
-		router.push(`/${category}?page=${page}&search=${search}`);
+		router.push(`/${category}?page=${page}&search=${search || ''}`);
 	};
 
 	return (
