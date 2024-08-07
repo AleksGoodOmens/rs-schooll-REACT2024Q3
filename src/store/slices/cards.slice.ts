@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getCategoryAndIdFromUrl } from '../../utils/getCategoryAndIdFromUrl';
-import { CardsResponse } from '../services/starWarsApi';
 import { CardState, ICard } from './interfaces';
+import { CardsResponse } from '../services/interface';
 
 const initialState: CardState = {
 	cards: [],
 	favoriteCards: [],
 	totalPages: 0,
 	totalCards: 0,
-	page: 1,
+	page: '1',
 	searchValue: '',
 };
 

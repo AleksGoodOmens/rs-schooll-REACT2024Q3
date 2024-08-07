@@ -1,19 +1,25 @@
-import Categories from '../components/navCategories/NavCategories';
+import styles from './styles.module.css';
+
+import { cardSelector } from '../store/slices/selectors';
+
+import Intro from '../components/intro/Intro';
+import NavCategories from '../components/navCategories/NavCategories';
 import Downloader from '../components/downloader/Downloader';
 
-import styles from './styles.module.css';
-import Intro from '../components/intro/Intro';
-import { cardSelector } from '../store/slices/selectors';
+import { getServerSideProps } from './getServerSideProps';
 import { useAppSelector } from '../store/hooks/hooks';
+import { useGetCategoriesQuery } from '../store/services/starWarsApi';
 
 const MainPage = () => {
 	const { favoriteCards } = useAppSelector(cardSelector);
+
+	const { data } = useGetCategoriesQuery('');
 
 	return (
 		<>
 			<section className={styles['container']}>
 				<Intro />
-				<Categories />
+				<NavCategories categories={data} />
 			</section>
 			{favoriteCards.length > 0 ? <Downloader /> : ''}
 		</>
@@ -21,3 +27,5 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+export { getServerSideProps };

@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { starWarsApi } from './services/starWarsApi';
 import cardsSlice from './slices/cards.slice';
 import categoriesSlice from './slices/categories.slice';
+import { createWrapper } from 'next-redux-wrapper';
 
 const rootReducers = combineReducers({
 	category: categoriesSlice,
@@ -9,14 +10,15 @@ const rootReducers = combineReducers({
 	[starWarsApi.reducerPath]: starWarsApi.reducer,
 });
 
-export const setupStore = (preloadedState?: Partial<RootState>) =>
+export const setupStore = () =>
 	configureStore({
 		reducer: rootReducers,
-		preloadedState,
 		middleware: (getDefaultMiddleware) =>
 			getDefaultMiddleware().concat(starWarsApi.middleware),
 	});
-
 export type RootState = ReturnType<typeof rootReducers>;
 export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = ReturnType<typeof setupStore>['dispatch'];
+export type AppState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];
+
+export const wrapper = createWrapper<AppStore>(setupStore);

@@ -2,17 +2,18 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
 import useLocalStorage_v2 from '../../utils/hooks/UseLocalStorage_v2';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { cardSelector } from '../../store/slices/selectors';
+import { useAppDispatch } from '../../store/hooks/hooks';
 import { resetPage, setSearchValue } from '../../store/slices/cards.slice';
+import { useRouter } from 'next/router';
 
 const SearchBar = () => {
 	const [storageSearch, setStorageSearch] = useLocalStorage_v2('searchValue');
 	const dispatch = useAppDispatch();
+	const router = useRouter();
 
-	const { searchValue } = useAppSelector(cardSelector);
+	const urlSearch = router.query.search as string;
 
-	const [search, setSearch] = useState(storageSearch || searchValue);
+	const [search, setSearch] = useState(urlSearch || '');
 	const [errorMessage, setErrorMessage] = useState(false);
 
 	const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,14 +25,22 @@ const SearchBar = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (search) {
+		if (search !== urlSearch) {
 			setStorageSearch('searchValue', search);
+
+			router.push({
+				query: {
+					category: router.query['category'],
+					page: '1',
+					search: search,
+				},
+			});
 			dispatch(setSearchValue(search));
 			dispatch(resetPage());
 			return;
 		}
 
-		if (!searchValue && !search && !storageSearch) return setErrorMessage(true);
+		if (!search && !storageSearch) return setErrorMessage(true);
 
 		dispatch(setSearchValue(''));
 		setStorageSearch('searchValue', search);
@@ -47,14 +56,14 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		const autoFetchTimeOut = setTimeout(() => {
-			if (search !== searchValue) {
+			if (search !== urlSearch) {
 				dispatch(setSearchValue(search));
 				setStorageSearch('searchValue', search);
 			}
 		}, 3000);
 
 		return () => clearTimeout(autoFetchTimeOut);
-	}, [dispatch, search, setStorageSearch, searchValue]);
+	}, [dispatch, search, setStorageSearch, urlSearch]);
 
 	return (
 		<>

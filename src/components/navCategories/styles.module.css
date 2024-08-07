@@ -13,25 +13,3 @@
 		align-items: center;
 	}
 }
-.link {
-	flex: 1;
-	transition: all 0.3s;
-	border-radius: 8px;
-	background-color: var(--secondary-600);
-	padding: 1rem;
-	aspect-ratio: auto;
-	max-width: none;
-	color: var(--primary-800);
-	text-align: center;
-	text-transform: capitalize;
-
-	&:hover {
-		background-color: var(--accent-400);
-		color: var(--secondary-600);
-	}
-}
-
-.active {
-	background-color: var(--accent-800);
-	color: var(--secondary-600);
-}

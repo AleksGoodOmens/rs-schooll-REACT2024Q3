@@ -12,6 +12,6 @@ export type CardState = {
 	favoriteCards: ICard[];
 	totalPages: number;
 	totalCards: number;
-	page: number;
+	page: string;
 	searchValue: string;
 };

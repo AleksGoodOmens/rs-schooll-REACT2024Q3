@@ -1,21 +1,38 @@
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { changePage } from '../../store/slices/cards.slice';
-
 import classnames from 'classnames';
 import styles from './styles.module.css';
-import { cardSelector } from '../../store/slices/selectors';
+import {} from '../../store/services/starWarsApi';
+import { useRouter } from 'next/router';
 
-const Pagination = () => {
-	const dispatch = useAppDispatch();
-	const { totalPages, page, totalCards } = useAppSelector(cardSelector);
+const Pagination = ({
+	count,
+	page,
+}: {
+	count: number;
+	page: string | number;
+}) => {
+	const router = useRouter();
+	const totalPages = Math.ceil(count / 10);
 
 	const handleChangePage = (v: number) => {
 		if (v === -1) {
-			if (page > 0) {
-				dispatch(changePage(v));
+			if (+page > 0) {
+				router.push({
+					query: {
+						category: router.query['category'],
+						page: +page + v,
+						search: router.query['search'],
+					},
+				});
 			}
 		} else {
-			if (page < totalPages) dispatch(changePage(v));
+			if (+page < totalPages)
+				router.push({
+					query: {
+						category: router.query['category'],
+						page: +page + v,
+						search: router.query['search'],
+					},
+				});
 		}
 	};
 
@@ -28,7 +45,7 @@ const Pagination = () => {
 				<li className={styles['pagination__item']}>
 					<button
 						className={styles['control__btn']}
-						disabled={page === 1}
+						disabled={page === '1'}
 						onClick={() => {
 							handleChangePage(-1);
 						}}
@@ -39,7 +56,7 @@ const Pagination = () => {
 				</li>
 				<li className={classnames(styles['pagination__item'], styles['info'])}>
 					<div className={styles['info__item']}>
-						Total cards: <span>{totalCards}</span>
+						Total cards: <span>{count}</span>
 					</div>
 					<div className={styles['info__item']}>
 						Pages:
@@ -51,7 +68,7 @@ const Pagination = () => {
 				<li className={styles['pagination__item']}>
 					<button
 						className={styles['control__btn']}
-						disabled={totalPages <= page}
+						disabled={totalPages <= +page}
 						onClick={() => handleChangePage(1)}
 						aria-label="Next page"
 					>

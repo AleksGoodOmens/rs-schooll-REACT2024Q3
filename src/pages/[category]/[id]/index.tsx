@@ -3,19 +3,21 @@ import styles from './styles.module.css';
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Category from '..';
-import starWarsApi, {
-	TDetailedCard,
+import { TDetailedCard } from '../../../store/services/interface';
+import {
+	getCards,
+	getCategories,
+	getItem,
+	getRunningQueriesThunk,
+	useGetItemQuery,
 } from '../../../store/services/starWarsApi';
-import Loader from '../../../components/loader/loader';
-import Banner from '../../../components/banner/banner';
-
-const { useGetItemQuery } = starWarsApi;
+import { wrapper } from '../../../store';
 
 const DetailedCard = () => {
 	const router = useRouter();
 	const { category, id } = router.query;
 
-	const { isLoading, isError, data, isFetching } = useGetItemQuery({
+	const { data } = useGetItemQuery({
 		category: category as string,
 		id: id as string,
 	});
@@ -31,29 +33,23 @@ const DetailedCard = () => {
 	};
 
 	const handleClose = () => {
-		router.push(`/${category}`);
+		router.back();
 	};
 
 	return (
-		<>
-			{(isLoading || isFetching) && <Loader />}
-			{isError && <Banner>something go wrong</Banner>}
-			{data && !isLoading && !isFetching && (
-				<article className={`${styles['box']} `}>
-					<h2 className={styles['header']}>
-						<span>{data?.title || data?.name}</span>
-						<button
-							className={styles['close']}
-							onClick={handleClose}
-						>
-							X
-						</button>
-					</h2>
-					<h3 className={styles['heading']}>Description</h3>
-					<div className={styles['content']}>{data && renderData(data)}</div>
-				</article>
-			)}
-		</>
+		<article className={`${styles['box']} `}>
+			<h2 className={styles['header']}>
+				<span>{data?.title || data?.name}</span>
+				<button
+					className={styles['close']}
+					onClick={handleClose}
+				>
+					X
+				</button>
+			</h2>
+			<h3 className={styles['heading']}>Description</h3>
+			<div className={styles['content']}>{data && renderData(data)}</div>
+		</article>
 	);
 };
 
@@ -62,3 +58,30 @@ DetailedCard.getLayout = function getLayout(DetailedCard: ReactNode) {
 };
 
 export default DetailedCard;
+
+export const getServerSideProps = wrapper.getServerSideProps(
+	(store) => async (ctx) => {
+		await store.dispatch(getCategories.initiate(''));
+
+		const activeCat = ctx.query?.category;
+		const page = ctx.query?.page || '1';
+		const search = ctx.query?.search || '';
+		const id = ctx.query.id;
+
+		await store.dispatch(
+			getCards.initiate({
+				category: activeCat as string,
+				page: page as string,
+				searchValue: search as string,
+			}),
+		);
+
+		await store.dispatch(
+			getItem.initiate({ category: activeCat as string, id: id as string }),
+		);
+
+		await Promise.all(store.dispatch(getRunningQueriesThunk()));
+
+		return { props: {} };
+	},
+);

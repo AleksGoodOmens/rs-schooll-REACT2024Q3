@@ -1,67 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICard } from '../slices/interfaces';
+import { HYDRATE } from 'next-redux-wrapper';
+import {
+	CardsResponse,
+	CategoriesResponse,
+	ItemResponse,
+	TDetailedCard,
+} from './interface';
 
 export const BASE_URL = 'https://swapi.dev/api';
-
-export interface CategoriesResponse {
-	[key: string]: string;
-}
-
-export interface CardsResponse {
-	count: number;
-	next: string | null;
-	previous: string | null;
-	results: ICard[];
-}
-
-export interface TDetailedCard {
-	title?: string;
-	name?: string;
-	height?: string;
-	mass?: string;
-	hair_color?: string;
-	skin_color?: string;
-	eye_color?: string;
-	birth_year?: string;
-	gender?: string;
-	rotation_period?: string;
-	orbital_period?: string;
-	diameter?: string;
-	climate?: string;
-	gravity?: string;
-	terrain?: string;
-	surface_water?: string;
-	population?: string;
-	classification?: string;
-	designation?: string;
-	average_height?: string;
-	skin_colors?: string;
-	hair_colors?: string;
-	eye_colors?: string;
-	average_lifespan?: string;
-	language?: string;
-	vehicle_class?: string;
-	model?: string;
-	manufacturer?: string;
-	cost_in_credits?: string;
-	length?: string;
-	crew?: string;
-	passengers?: string;
-	cargo_capacity?: string;
-	consumables?: string;
-	starship_class?: string;
-	created?: string;
-	edited?: string;
-	url: string;
-}
-
-interface ItemResponse {
-	[key: string]: string | number | [];
-}
 
 export const starWarsApi = createApi({
 	reducerPath: 'starWarsApi',
 	baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+	extractRehydrationInfo(action, { reducerPath }) {
+		if (action.type === HYDRATE) {
+			return (action.payload as any)[reducerPath];
+		}
+	},
+	tagTypes: [],
 	endpoints: (builder) => ({
 		getCategories: builder.query<string[], string>({
 			query: () => ({
@@ -73,9 +29,11 @@ export const starWarsApi = createApi({
 		}),
 		getCards: builder.query<
 			CardsResponse,
-			{ category: string; page: number; searchValue: string }
+			{ category: string; page: string; searchValue: string }
 		>({
-			query: ({ category, page, searchValue }) => {
+			query: ({ category = 'people', page = '1', searchValue = '' }) => {
+				if (page)
+					return { url: `/${category}/?search=${searchValue}&page=${page}` };
 				if (searchValue) return { url: `/${category}/?search=${searchValue}` };
 				if (category) return { url: `/${category}/?page=${page}` };
 				return { url: 'people/?page=1' };
@@ -98,4 +56,11 @@ export const starWarsApi = createApi({
 	}),
 });
 
-export default starWarsApi;
+export const {
+	useGetCategoriesQuery,
+	useGetCardsQuery,
+	useGetItemQuery,
+	util: { getRunningQueriesThunk },
+} = starWarsApi;
+
+export const { getCards, getCategories, getItem } = starWarsApi.endpoints;
