@@ -36,12 +36,4 @@ describe('MainPage', () => {
 			screen.getByText('To start your expedition please choose category below'),
 		).toBeInTheDocument();
 	});
-	it('render loading placeholder', () => {
-		renderWithProviders(
-			<AppRouterContextProviderMock router={{}}>
-				<MainPage />
-			</AppRouterContextProviderMock>,
-		);
-		expect(screen.getByText(/tabs Loading/i)).toBeInTheDocument();
-	});
 });

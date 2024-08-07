@@ -8,7 +8,14 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: ['./src/test/setupTests.ts'],
 		coverage: {
-			exclude: ['.next/**', 'node_modules/**', 'public/**'],
+			exclude: [
+				'.next/**',
+				'node_modules/**',
+				'public/**',
+				'next-env.d.ts',
+				'next.config.mjs',
+				'vitest.config.ts',
+			],
 		},
 	},
 });

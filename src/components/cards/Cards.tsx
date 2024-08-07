@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import Banner from '../banner/banner';
+import Banner from '../banner/Banner';
 import Card from '../card/Card';
 import { ICard } from '../../store/slices/interfaces';
 const Cards = ({ cards }: { cards: ICard[] }) => {

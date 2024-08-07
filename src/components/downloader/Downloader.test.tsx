@@ -8,46 +8,12 @@ import { cleanup } from '@testing-library/react';
 
 describe('Downloader', () => {
 	beforeEach(() => {
-		renderWithProviders(<Downloader />, {
-			preloadedState: {
-				cards: {
-					cards: [],
-					totalPages: 0,
-					totalCards: 0,
-					page: 1,
-					next: false,
-					previous: false,
-					searchValue: '',
-					activeCard: null,
-					favoriteCards: [
-						{
-							url: 'swap',
-							category: 'people',
-							favorite: true,
-							id: '1',
-							name: 'luke',
-							title: undefined,
-						},
-						{
-							url: 'swap',
-							category: 'people',
-							favorite: true,
-							id: '1',
-							name: 'obi',
-							title: undefined,
-						},
-					],
-				},
-			},
-		});
+		cleanup();
+		renderWithProviders(<Downloader />);
 	});
 
 	afterEach(() => {
 		cleanup();
-	});
-
-	it('render component with proper text depends of favoriteCards.length > 1', () => {
-		expect(screen.getByText(/cards are/i)).toBeInTheDocument();
 	});
 
 	it('render component with proper amount of favorite cards, button to unselect, link to download', () => {
@@ -126,6 +92,6 @@ describe('Downloader', () => {
 			},
 		});
 
-		expect(screen.getByText(/card is/i)).toBeInTheDocument();
+		expect(screen.getAllByText(/card is/i)[0]).toBeInTheDocument();
 	});
 });

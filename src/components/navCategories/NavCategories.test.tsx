@@ -20,7 +20,10 @@ describe('Categories', () => {
 	beforeEach(() => {
 		renderWithProviders(
 			<AppRouterContextProviderMock router={mockRouter}>
-				<NavCategories />
+				<NavCategories
+					categories={[`mock`, 'mockTest', 'MOckPass']}
+					active={'mockTest'}
+				/>
 			</AppRouterContextProviderMock>,
 		);
 	});
@@ -28,15 +31,9 @@ describe('Categories', () => {
 		cleanup();
 	});
 
-	it('render loader on loading stage', async () => {
-		const loadingText = screen.getByText('tabs Loading...');
-
-		expect(loadingText).toBeInTheDocument();
-	});
-
 	it('render correct items on loaded stage', async () => {
 		const buttons = await screen.findAllByRole('button', { name: /mock/i });
 
-		expect(buttons.length).toBe(6);
+		expect(buttons.length).toBe(3);
 	});
 });

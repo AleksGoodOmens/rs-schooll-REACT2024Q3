@@ -6,7 +6,7 @@ import SearchBar from '../../components/searchBar/SearchBar';
 import Pagination from '../../components/pagination/Pagination';
 import Cards from '../../components/cards/Cards';
 import { useRouter } from 'next/router';
-import Banner from '../../components/banner/banner';
+import Banner from '../../components/banner/Banner';
 import { CardsResponse } from '../../store/services/interface';
 import { getCategoryAndIdFromUrl } from '../../utils/getCategoryAndIdFromUrl';
 import Downloader from '../../components/downloader/Downloader';

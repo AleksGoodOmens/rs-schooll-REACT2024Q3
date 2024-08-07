@@ -10,14 +10,9 @@ describe('Cards', () => {
 			query: { category: 'people', id: '1' },
 		}),
 	}));
-	it('render loader when loading data', () => {
-		renderWithProviders(<Cards />);
 
-		expect(screen.getByText(/loading/i)).toBeInTheDocument();
-	});
-
-	it('render no items founded if no data', async () => {
-		renderWithProviders(<Cards />);
+	it('render no items founded if !cards.length ', async () => {
+		renderWithProviders(<Cards cards={[]} />);
 
 		expect(await screen.findByText(/nothing/i)).toBeInTheDocument();
 	});

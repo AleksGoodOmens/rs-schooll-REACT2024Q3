@@ -49,7 +49,7 @@ export function App({ Component, pageProps }: AppPropsWithLayout) {
 			router.events.off('routeChangeComplete', handleComplete);
 			router.events.off('routeChangeError', handleComplete);
 		};
-	}, []);
+	}, [router.events]);
 
 	const handleChangeTheme = () => {
 		if (!storedTheme) {
