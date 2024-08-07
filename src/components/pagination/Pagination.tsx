@@ -3,37 +3,14 @@ import styles from './styles.module.css';
 import {} from '../../store/services/starWarsApi';
 import { useRouter } from 'next/router';
 
-const Pagination = ({
-	count,
-	page,
-}: {
-	count: number;
-	page: string | number;
-}) => {
+const Pagination = ({ count }: { count: number; page: string | number }) => {
 	const router = useRouter();
+	const { category, page = '1', search } = router.query;
+
 	const totalPages = Math.ceil(count / 10);
 
 	const handleChangePage = (v: number) => {
-		if (v === -1) {
-			if (+page > 0) {
-				router.push({
-					query: {
-						category: router.query['category'],
-						page: +page + v,
-						search: router.query['search'],
-					},
-				});
-			}
-		} else {
-			if (+page < totalPages)
-				router.push({
-					query: {
-						category: router.query['category'],
-						page: +page + v,
-						search: router.query['search'],
-					},
-				});
-		}
+		router.push(`/${category}?page=${+page + v}&search=${search}`);
 	};
 
 	return (

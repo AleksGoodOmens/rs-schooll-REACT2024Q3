@@ -17,6 +17,9 @@ import { useRouter } from 'next/router';
 import Banner from '../../components/banner/banner';
 import { CardsResponse } from '../../store/services/interface';
 import { getCategoryAndIdFromUrl } from '../../utils/getCategoryAndIdFromUrl';
+import Downloader from '../../components/downloader/Downloader';
+import { useAppSelector } from '../../store/hooks/hooks';
+import { cardSelector } from '../../store/slices/selectors';
 
 export const getServerSideProps = wrapper.getServerSideProps(
 	(store) => async (ctx) => {
@@ -43,6 +46,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 );
 export default function Category({ children }: { children: ReactNode }) {
 	const router = useRouter();
+	const { favoriteCards } = useAppSelector(cardSelector);
 
 	const { category, page, search } = router.query;
 
@@ -85,6 +89,8 @@ export default function Category({ children }: { children: ReactNode }) {
 				)}
 				{children}
 			</section>
+
+			{favoriteCards.length ? <Downloader /> : ''}
 		</>
 	);
 }

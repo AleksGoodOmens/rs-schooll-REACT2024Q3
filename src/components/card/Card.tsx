@@ -1,30 +1,31 @@
 import { ChangeEvent, FunctionComponent } from 'react';
 import { ICard } from '../../store/slices/interfaces';
-import { useAppDispatch } from '../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { addToFavorite, delFromFavorite } from '../../store/slices/cards.slice';
 
 import styles from './styles.module.css';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
+import { cardSelector } from '../../store/slices/selectors';
 
 interface CardProps {
 	card: ICard;
-	isInFavorite: boolean;
-	isActive: boolean;
 }
 
-const Card: FunctionComponent<CardProps> = ({
-	card,
-	isInFavorite,
-	isActive,
-}) => {
+const Card: FunctionComponent<CardProps> = ({ card }) => {
 	const dispatch = useAppDispatch();
+
+	const { favoriteCards } = useAppSelector(cardSelector);
 
 	const router = useRouter();
 
-	const { category } = router.query;
+	const { category, page, search } = router.query;
 
 	const { name, url, title, id } = card;
+
+	const isActive = id === router.query.id;
+
+	const isInFavorite = !favoriteCards.findIndex((item) => item.id === id);
 
 	const handleToggleFavorite = (
 		e: ChangeEvent<HTMLInputElement>,
@@ -38,11 +39,11 @@ const Card: FunctionComponent<CardProps> = ({
 
 	const handleToggleDetails = () => {
 		if (!isActive) {
-			router.push(`/${category}/${id}`);
+			router.push(`/${category}/${id}?page=${page}&search=${search}`);
 
 			return;
 		}
-		router.push(`/${category}`);
+		router.push(`/${category}?page=${page}&search=${search}`);
 	};
 
 	return (

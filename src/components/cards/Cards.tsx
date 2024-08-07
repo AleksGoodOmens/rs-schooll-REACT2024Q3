@@ -11,8 +11,6 @@ const Cards = ({ cards }: { cards: ICard[] }) => {
 				<Card
 					key={card.url}
 					card={card}
-					isInFavorite={false}
-					isActive={false}
 				/>
 			))}
 		</section>

@@ -12,7 +12,7 @@ const initialState: CardState = {
 	searchValue: '',
 };
 
-const categoriesSlice = createSlice({
+const cardsSlice = createSlice({
 	name: 'categories',
 	initialState,
 	reducers: {
@@ -37,7 +37,7 @@ const categoriesSlice = createSlice({
 			state.page = state.page + action.payload;
 		},
 		resetPage(state) {
-			state.page = 1;
+			state.page = '1';
 		},
 		setSearchValue(state, action: PayloadAction<string>) {
 			state.searchValue = action.payload.trim();
@@ -66,6 +66,6 @@ export const {
 	setTotalPages,
 	setSearchValue,
 	clearFavoriteCards,
-} = categoriesSlice.actions;
+} = cardsSlice.actions;
 
-export default categoriesSlice.reducer;
+export default cardsSlice.reducer;

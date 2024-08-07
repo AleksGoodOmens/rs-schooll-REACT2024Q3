@@ -19,11 +19,7 @@ export function renderWithProviders(
 	ui: ReactElement,
 	extendedRenderOptions: ExtendedRenderOptions = {},
 ) {
-	const {
-		preloadedState = {},
-		store = setupStore(preloadedState),
-		...renderOptions
-	} = extendedRenderOptions;
+	const { store = setupStore(), ...renderOptions } = extendedRenderOptions;
 
 	const Wrapper = ({ children }: PropsWithChildren) => (
 		<Provider store={store}>{children}</Provider>

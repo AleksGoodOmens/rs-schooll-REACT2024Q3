@@ -15,7 +15,7 @@ import { wrapper } from '../../../store';
 
 const DetailedCard = () => {
 	const router = useRouter();
-	const { category, id } = router.query;
+	const { category, id, page } = router.query;
 
 	const { data } = useGetItemQuery({
 		category: category as string,
@@ -33,7 +33,7 @@ const DetailedCard = () => {
 	};
 
 	const handleClose = () => {
-		router.back();
+		router.push(`/${category}?page=${page}`);
 	};
 
 	return (
