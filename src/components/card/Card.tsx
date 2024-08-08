@@ -25,7 +25,7 @@ const Card: FunctionComponent<CardProps> = ({ card }) => {
 
 	const isActive = id === router.query.id;
 
-	const isInFavorite = !favoriteCards.findIndex((item) => item.id === id);
+	const isInFavorite = favoriteCards.findIndex((item) => item.id === id) !== -1;
 
 	const handleToggleFavorite = (
 		e: ChangeEvent<HTMLInputElement>,
