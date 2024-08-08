@@ -17,7 +17,6 @@ export const starWarsApi = createApi({
 			return (action.payload as any)[reducerPath];
 		}
 	},
-	tagTypes: [],
 	endpoints: (builder) => ({
 		getCategories: builder.query<string[], string>({
 			query: () => ({
@@ -27,6 +26,7 @@ export const starWarsApi = createApi({
 				return Object.keys(response);
 			},
 		}),
+
 		getCards: builder.query<
 			CardsResponse,
 			{ category: string; page: string; searchValue: string }
@@ -35,6 +35,7 @@ export const starWarsApi = createApi({
 				return { url: `/${category}/?search=${searchValue}&page=${page}` };
 			},
 		}),
+
 		getItem: builder.query<
 			TDetailedCard,
 			{ category: string | undefined; id: string | undefined }
