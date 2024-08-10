@@ -1,4 +1,4 @@
-import { Cards, SearchBar } from '../../components';
+import { Cards, Pagination, SearchBar } from '../../components';
 import { fetchCards } from './actions';
 
 import styles from './styles.module.css';
@@ -22,6 +22,12 @@ export default async function CategoryPage({
 	return (
 		<>
 			<SearchBar />
+			<Pagination
+				category={category}
+				page={page}
+				search={search}
+				count={cardsData.count}
+			/>
 			<section className={styles['items']}>
 				<Cards cards={cardsData?.results} />
 			</section>
