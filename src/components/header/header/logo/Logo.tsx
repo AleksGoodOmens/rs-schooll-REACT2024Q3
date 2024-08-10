@@ -1,10 +1,8 @@
-import { useState } from 'react';
-
 import styles from './styles.module.css';
 import Link from 'next/link';
 
 const Logo = () => {
-	const [logoPath] = useState('http://www.webdeveloperaleks.com');
+	const logoPath = 'http://www.webdeveloperaleks.com';
 
 	return (
 		<nav className={styles['logo']}>

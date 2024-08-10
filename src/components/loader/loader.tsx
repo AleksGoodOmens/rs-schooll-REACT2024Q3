@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './styles.module.css';
-const Loader = () => {
+export const Loader = () => {
 	return (
 		<div
 			role="alert"
@@ -19,5 +19,3 @@ const Loader = () => {
 		</div>
 	);
 };
-
-export default Loader;

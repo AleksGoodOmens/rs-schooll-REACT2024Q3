@@ -1,33 +1,34 @@
+'use client';
 import classNames from 'classnames';
 import styles from './styles.module.css';
 import { FunctionComponent, ReactNode } from 'react';
-import { useRouter } from 'next/router';
+import { useParams, useRouter } from 'next/navigation';
 
 interface NavCategoryProps {
 	children: ReactNode;
-	isActive?: boolean;
 }
 
-const NavCategory: FunctionComponent<NavCategoryProps> = ({
+export const NavCategory: FunctionComponent<NavCategoryProps> = ({
 	children,
-	isActive,
 }) => {
 	const router = useRouter();
+	const { category } = useParams();
 
-	const { search } = router.query;
-
-	const handleChangeCategory = () => {
-		router.push(`/${children}?page=1&search=${search || ''}`);
+	const handleNavigate = () => {
+		router.push(`/${children}?page=1`);
 	};
 
 	return (
 		<button
-			onClick={handleChangeCategory}
-			className={classNames(styles['link'], { [styles['active']]: isActive })}
+			className={classNames(styles['link'], {
+				[styles['active']]: category === children,
+			})}
+			onClick={handleNavigate}
 		>
 			{children}
 		</button>
 	);
 };
 
-export default NavCategory;
+// todo routing
+// todo change category on click

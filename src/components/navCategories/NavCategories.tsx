@@ -1,26 +1,18 @@
-import NavCategory from './navCategory/NavCategory';
+import { fetchCategories } from '../../app/actions';
+import { NavCategory } from './navCategory/NavCategory';
 import styles from './styles.module.css';
 
-const NavCategories = ({
-	categories,
-	active,
-}: {
-	categories: string[] | undefined;
-	active?: string;
-}) => {
-	if (!categories) return null;
+export const NavCategories = async () => {
+	const categories = await fetchCategories();
+	if (!categories) return <div>no categories</div>;
 
-	return (
-		<nav className={styles['flex']}>
-			{categories.map((cat) => (
-				<NavCategory
-					isActive={cat === active}
-					key={cat}
-				>
-					{cat}
-				</NavCategory>
-			))}
-		</nav>
-	);
+	if (Array.isArray(categories))
+		return (
+			<nav className={styles['flex']}>
+				{categories.map((cat) => (
+					<NavCategory key={cat}>{cat}</NavCategory>
+				))}
+			</nav>
+		);
+	if (categories?.message) return <div>{categories.message}</div>;
 };
-export default NavCategories;

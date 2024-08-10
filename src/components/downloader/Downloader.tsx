@@ -1,9 +1,10 @@
+'use client';
 import { useState } from 'react';
 
 import styles from './styles.module.css';
 import Sure from './Sure';
 import UnSure from './UnSure';
-const Downloader = () => {
+export const Downloader = () => {
 	const [sure, setSure] = useState(false);
 
 	return (
@@ -12,5 +13,3 @@ const Downloader = () => {
 		</div>
 	);
 };
-
-export default Downloader;

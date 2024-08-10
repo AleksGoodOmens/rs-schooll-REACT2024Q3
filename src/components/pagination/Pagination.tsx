@@ -1,16 +1,27 @@
+'use client';
 import classnames from 'classnames';
 import styles from './styles.module.css';
-import {} from '../../store/services/starWarsApi';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
-const Pagination = ({ count }: { count: number; page: string | number }) => {
+interface IPaginationProps {
+	count: number;
+	page: string | number;
+	category: string;
+	search: string;
+}
+export const Pagination = ({
+	count,
+	page,
+	category,
+	search,
+}: IPaginationProps) => {
 	const router = useRouter();
-	const { category, page = '1', search } = router.query;
 
 	const totalPages = Math.ceil(count / 10);
 
 	const handleChangePage = (v: number) => {
 		router.push(`/${category}?page=${+page + v}&search=${search}`);
+		// todo correct category
 	};
 
 	return (
@@ -56,5 +67,3 @@ const Pagination = ({ count }: { count: number; page: string | number }) => {
 		</nav>
 	);
 };
-
-export default Pagination;

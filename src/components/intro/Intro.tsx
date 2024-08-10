@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-const Intro = () => {
+export const Intro = () => {
 	return (
 		<section className={styles['box']}>
 			<div className={styles['welcome']}>
@@ -111,5 +111,3 @@ const Intro = () => {
 		</section>
 	);
 };
-
-export default Intro;
