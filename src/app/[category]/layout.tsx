@@ -1,8 +1,8 @@
-import { NavCategories } from '../../components';
+import { NavCategories, SearchBar } from '../../components';
 
 export const generateMetaData = () => {};
 
-export default function RootLayout({
+export default function CategoriesLayout({
 	children,
 }: {
 	children: React.ReactNode;
@@ -10,6 +10,8 @@ export default function RootLayout({
 	return (
 		<>
 			<NavCategories />
+			<SearchBar />
+
 			{children}
 		</>
 	);

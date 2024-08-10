@@ -1,20 +1,24 @@
+'use client';
 import { FunctionComponent } from 'react';
-
-import styles from './styles.module.css';
 import classNames from 'classnames';
-import { IDetailedCard } from '../../types';
-// import { useRouter } from 'next/navigation';
 
+import Link from 'next/link';
+import { useParams, useSearchParams } from 'next/navigation';
+
+import { ICard } from '../../types';
+import styles from './styles.module.css';
 interface ICardProps {
-	card: IDetailedCard;
+	card: ICard;
 }
 
 export const Card: FunctionComponent<ICardProps> = ({ card }) => {
-	// const router = useRouter();
+	const page = useSearchParams().get('page');
+	const params = useParams();
+	const search = useSearchParams().get('search');
 
-	// const { category, page, search } = router.query; //todo
+	// const { category, page, search } =  //todo
 
-	const { name, url, title } = card;
+	const { name, url, title, id } = card;
 
 	// const isActive = id === router.query.id; // todo
 
@@ -40,9 +44,10 @@ export const Card: FunctionComponent<ICardProps> = ({ card }) => {
 	// 	}
 	// 	router.push(`/${category}?page=${page}&search=${search || ''}`);
 	// }; //todo
-
-	const isActive = false;
+	const isActive = id === params.id;
 	const isInFavorite = false;
+
+	const correctPath = `/${params.category}/${params.id ? '' : id}?page=${page}${search ? `&search=${search}` : ''}`;
 
 	return (
 		<article
@@ -55,15 +60,15 @@ export const Card: FunctionComponent<ICardProps> = ({ card }) => {
 		>
 			<span className={styles['title']}>{name || title}</span>
 			<div className={styles['controls']}>
-				<button
+				<Link
+					href={correctPath}
 					className={`fadeIn ${styles['button']} ${
 						isActive ? styles['active'] : ''
 					}`}
-					// onClick={handleToggleDetails}
 					key={url}
 				>
 					{!isActive ? 'Open details' : 'close details'}
-				</button>
+				</Link>
 
 				<label
 					className={`fadeIn ${styles['label']} ${

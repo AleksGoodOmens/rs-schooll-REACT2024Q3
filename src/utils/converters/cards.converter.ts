@@ -3,7 +3,13 @@ import { getCategoryAndIdFromUrl } from '../helpers/getCategoryAndIdFromUrl';
 
 export const cardsConverter = (cards: IDetailedCard[]) => {
 	return cards.map((card) => {
-		const categoryAndId = getCategoryAndIdFromUrl(card.url);
-		return { ...card, ...categoryAndId };
+		const { category, id } = getCategoryAndIdFromUrl(card.url);
+		return {
+			name: card.name || '',
+			title: card.title || '',
+			url: card.url || '',
+			category: category || '',
+			id: id || '',
+		};
 	});
 };

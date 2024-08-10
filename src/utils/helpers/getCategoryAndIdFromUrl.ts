@@ -11,5 +11,5 @@ export const getCategoryAndIdFromUrl = (url: string) => {
 
 		return { category, id };
 	}
-	return null;
+	return { category: '', id: '' };
 };

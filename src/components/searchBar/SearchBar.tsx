@@ -25,22 +25,20 @@ export const SearchBar = () => {
 	};
 
 	return (
-		<>
-			<form
-				className={`${styles['form']} `}
-				onSubmit={handleSubmit}
-			>
-				<label htmlFor="search"> Search by name:</label>
-				<input
-					onChange={handleChangeInputValue}
-					value={inputSearch}
-					type="search"
-					name="search"
-					id="search"
-					placeholder="Type any name"
-				/>
-				<button type="submit">Search</button>
-			</form>
-		</>
+		<form
+			className={`${styles['form']} `}
+			onSubmit={handleSubmit}
+		>
+			<label htmlFor="search"> Search by name:</label>
+			<input
+				onChange={handleChangeInputValue}
+				value={inputSearch}
+				type="search"
+				name="search"
+				id="search"
+				placeholder="Type any name"
+			/>
+			<button type="submit">Search</button>
+		</form>
 	);
 };

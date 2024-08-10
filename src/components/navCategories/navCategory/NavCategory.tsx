@@ -2,7 +2,8 @@
 import classNames from 'classnames';
 import styles from './styles.module.css';
 import { FunctionComponent, ReactNode } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 interface NavCategoryProps {
 	children: ReactNode;
@@ -11,24 +12,16 @@ interface NavCategoryProps {
 export const NavCategory: FunctionComponent<NavCategoryProps> = ({
 	children,
 }) => {
-	const router = useRouter();
 	const { category } = useParams();
 
-	const handleNavigate = () => {
-		router.push(`/${children}?page=1`);
-	};
-
 	return (
-		<button
+		<Link
+			href={`/${children}?page=1`}
 			className={classNames(styles['link'], {
 				[styles['active']]: category === children,
 			})}
-			onClick={handleNavigate}
 		>
 			{children}
-		</button>
+		</Link>
 	);
 };
-
-// todo routing
-// todo change category on click

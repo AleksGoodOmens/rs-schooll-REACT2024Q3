@@ -4,7 +4,7 @@
 	justify-content: center;
 	gap: 1rem;
 	border-bottom: 1px solid var(--accent-800);
-	padding: 1rem 2rem;
+	padding: 1rem 0;
 
 	& label {
 		display: grid;
@@ -21,8 +21,9 @@
 		flex-grow: 1;
 		border-radius: 8px;
 		background-color: var(--secondary-600);
-		padding: 1rem 1rem;
+		padding: 0.5rem 1rem;
 		color: var(--primary);
+		font-size: large;
 	}
 
 	& button {

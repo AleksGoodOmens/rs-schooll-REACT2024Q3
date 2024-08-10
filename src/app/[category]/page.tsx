@@ -1,7 +1,6 @@
-import { Cards, Pagination, SearchBar } from '../../components';
+import { Cards, Pagination } from '../../components';
+import { cardsConverter } from '../../utils';
 import { fetchCards } from './actions';
-
-import styles from './styles.module.css';
 
 interface CategoryPageProps {
 	params: { category: string };
@@ -13,24 +12,23 @@ export default async function CategoryPage({
 	searchParams,
 }: CategoryPageProps) {
 	const category = params.category || 'people';
-	const page = searchParams.page || '1';
-	const search = searchParams.search || '';
+	const page = searchParams?.page || '1';
+	const search = searchParams?.search || '';
 	const cardsData = await fetchCards({ category, page, search });
 
 	if (!cardsData) return <div>error</div>;
 
+	const cardsWithIdAndCategory = cardsConverter(cardsData.results);
+
 	return (
 		<>
-			<SearchBar />
 			<Pagination
 				category={category}
 				page={page}
 				search={search}
 				count={cardsData.count}
 			/>
-			<section className={styles['items']}>
-				<Cards cards={cardsData?.results} />
-			</section>
+			<Cards cards={cardsWithIdAndCategory} />
 		</>
 	);
 }

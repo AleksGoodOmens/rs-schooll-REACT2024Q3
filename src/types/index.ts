@@ -2,12 +2,11 @@ export interface CategoriesResponse {
 	[key: string]: string;
 }
 export interface ICard {
-	url: string;
 	name?: string;
 	title?: string;
-	favorite: boolean;
 	id: string;
 	category: string;
+	url: string;
 }
 export interface CardsResponse {
 	count: number;
