@@ -1,7 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, screen } from '@testing-library/react';
-import { renderWithProviders } from '../../test/test-utils';
-import { AppRouterContextProviderMock } from '../../test/AppRouterContextProviderMock';
+import { describe, expect, it, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import { NavCategories } from '../../components';
 
 describe.todo('Categories', () => {
@@ -12,28 +10,9 @@ describe.todo('Categories', () => {
 		}),
 	}));
 
-	const mockRouter = {
-		query: {},
-		push: vi.fn(),
-	};
-
-	beforeEach(() => {
-		renderWithProviders(
-			<AppRouterContextProviderMock router={mockRouter}>
-				<NavCategories
-					categories={[`mock`, 'mockTest', 'MOckPass']}
-					active={'mockTest'}
-				/>
-			</AppRouterContextProviderMock>,
-		);
-	});
-	afterEach(() => {
-		cleanup();
-	});
-
 	it('render correct items on loaded stage', async () => {
-		const buttons = await screen.findAllByRole('button', { name: /mock/i });
+		render(<NavCategories />);
 
-		expect(buttons.length).toBe(3);
+		expect(screen.findAllByRole('link')).toBeInTheDocument();
 	});
 });

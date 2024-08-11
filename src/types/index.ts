@@ -64,4 +64,5 @@ export interface IDetailedCard {
 	created?: string;
 	edited?: string;
 	url: string;
+	array?: string[];
 }

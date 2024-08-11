@@ -1,6 +1,7 @@
 // export * from './HTag/HTag';
 export * from './banner/Banner';
 export * from './navCategories/NavCategories';
+export * from './navCategory/NavCategory';
 export * from './searchBar/SearchBar';
 export * from './pagination/Pagination';
 export * from './cards/Cards';

@@ -1,6 +1,5 @@
-// Импортируем функцию, которую будем тестировать
 import { describe, expect, it } from 'vitest';
-import categoriesConverter from './categories.converter';
+import { categoriesConverter } from '../../../utils';
 
 describe('categoriesConverter', () => {
 	it('should return an array of keys for a given object', () => {

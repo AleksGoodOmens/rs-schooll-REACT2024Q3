@@ -5,7 +5,7 @@ export interface ILocalStorage {
 	[key: string]: string;
 }
 
-const useLocalStorage_v2 = (key: string, initialValue?: string) => {
+export const useLocalStorage = (key: string, initialValue?: string) => {
 	const localStoreName = 'starWarsWiki';
 	const [currentValue, setCurrentValue] = useState(initialValue);
 
@@ -31,5 +31,3 @@ const useLocalStorage_v2 = (key: string, initialValue?: string) => {
 
 	return [currentValue, setToLocalStorage] as const;
 };
-
-export default useLocalStorage_v2;

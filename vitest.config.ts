@@ -9,12 +9,12 @@ export default defineConfig({
 		setupFiles: ['./src/test/setupTests.ts'],
 		coverage: {
 			exclude: [
+				'next.config.mjs',
 				'.next/**',
+				'vitest.config.ts',
 				'node_modules/**',
 				'public/**',
 				'next-env.d.ts',
-				'next.config.mjs',
-				'vitest.config.ts',
 			],
 		},
 	},
