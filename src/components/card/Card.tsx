@@ -1,22 +1,28 @@
 'use client';
 import { ChangeEvent, FunctionComponent } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+
 import classNames from 'classnames';
 
-import Link from 'next/link';
-import { useParams, useSearchParams } from 'next/navigation';
-
 import { ICard } from '../../types';
+
+import {
+	addToFavorite,
+	cardSelector,
+	delFromFavorite,
+	useAppDispatch,
+	useAppSelector,
+} from '../../store';
+
 import styles from './styles.module.css';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { cardSelector } from '../../store/slices/selectors';
-import { addToFavorite, delFromFavorite } from '../../store/slices/cards.slice';
 interface ICardProps {
 	card: ICard;
 }
 
 export const Card: FunctionComponent<ICardProps> = ({ card }) => {
-	const page = useSearchParams().get('page');
 	const params = useParams();
+	const page = useSearchParams().get('page');
 	const search = useSearchParams().get('search');
 
 	const dispatch = useAppDispatch();

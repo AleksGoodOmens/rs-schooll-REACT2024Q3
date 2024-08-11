@@ -1,9 +1,9 @@
 'use client';
 import { useContext } from 'react';
 import styles from './styles.module.css';
-import ThemeContext from '../../../../context/ThemeContext';
+import { ThemeContext } from '../../context';
 
-const ThemeChanger = () => {
+export const ThemeChanger = () => {
 	const { theme, themeChanger } = useContext(ThemeContext);
 	return (
 		<button
@@ -14,7 +14,3 @@ const ThemeChanger = () => {
 		</button>
 	);
 };
-
-export default ThemeChanger;
-
-// Todo  => const { value, change } = useContext(ThemeContext);

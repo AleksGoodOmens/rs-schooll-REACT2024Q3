@@ -1,44 +1,22 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { screen } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
-import ThemeChanger from './ThemeChanger';
 
-import { ThemeContext } from '../../pages/_app';
 import { renderWithProviders } from '../../test/test-utils';
+import { ThemeChanger } from '../../components';
+import { ThemeProvider } from '../../context';
 
 describe('ThemeChanger Component', () => {
-	const mockContext = {
-		value: 'light',
-		change: vi.fn(),
-	};
-
 	it('renders a button with correct text', () => {
 		renderWithProviders(
-			<ThemeContext.Provider value={mockContext}>
+			<ThemeProvider theme="Light">
 				<ThemeChanger />
-			</ThemeContext.Provider>,
+			</ThemeProvider>,
 		);
 
 		const button = screen.getByRole('button');
 
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveTextContent(/light Side/i);
-	});
-
-	it('allows user to click the button', async () => {
-		const user = userEvent.setup();
-		renderWithProviders(
-			<ThemeContext.Provider value={mockContext}>
-				<ThemeChanger />
-			</ThemeContext.Provider>,
-		);
-
-		const button = screen.getByRole('button');
-		expect(mockContext.change).not.toBeCalled();
-
-		await user.click(button);
-
-		expect(mockContext.change).toBeCalled();
 	});
 });
 

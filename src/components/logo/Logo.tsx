@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import Link from 'next/link';
 
-const Logo = () => {
+export const Logo = () => {
 	const logoPath = 'http://www.webdeveloperaleks.com';
 
 	return (
@@ -23,5 +23,3 @@ const Logo = () => {
 		</nav>
 	);
 };
-
-export default Logo;

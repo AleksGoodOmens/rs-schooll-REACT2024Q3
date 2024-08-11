@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Loader from './loader';
+import { Loader } from '../../components';
 
 describe('loader', () => {
 	it('Should render loader component with next text - "Loading..."', () => {

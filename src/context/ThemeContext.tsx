@@ -1,13 +1,11 @@
 import { createContext } from 'react';
 
 export interface IThemeContext {
-	theme: 'Dark' | 'Light';
+	theme: 'Dark' | 'Light' | 'string';
 	themeChanger?: () => void;
 }
 
-const ThemeContext = createContext<IThemeContext>({
+export const ThemeContext = createContext<IThemeContext>({
 	theme: 'Dark',
 	themeChanger: () => {},
 });
-
-export default ThemeContext;

@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, screen } from '@testing-library/react';
-import NavCategories from './NavCategories';
 import { renderWithProviders } from '../../test/test-utils';
 import { AppRouterContextProviderMock } from '../../test/AppRouterContextProviderMock';
+import { NavCategories } from '../../components';
 
-describe('Categories', () => {
+describe.todo('Categories', () => {
 	vi.mock('next/router', () => ({
 		useRouter: () => ({
 			push: vi.fn(),

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Header from './Header';
+import { Header } from '../../components';
 
 describe('Header', () => {
 	it('header is rendered at the page with proper aria-label', () => {

@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
 import { screen } from '@testing-library/react';
-import ErrorFallBack from './ErrorFallBack';
-import { renderWithProviders } from '../../../test/test-utils';
 import userEvent from '@testing-library/user-event';
-import { AppRouterContextProviderMock } from '../../../test/AppRouterContextProviderMock';
+import { renderWithProviders } from '../test-utils';
+import { AppRouterContextProviderMock } from '../AppRouterContextProviderMock';
+import ErrorFallBack from '../../components/error/errorFallBack/ErrorFallBack';
 
 describe('ErrorFallBack', () => {
 	vi.mock('next/router', () => ({

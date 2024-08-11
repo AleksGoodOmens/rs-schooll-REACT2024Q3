@@ -1,11 +1,11 @@
 'use client';
 import './global.css';
 
-import ThemeProvider from '../context/ThemeProvider';
 import { setupStore } from '../store';
 
 import { Provider } from 'react-redux';
 import { Footer, Header } from '../components';
+import { ThemeProvider } from '../context';
 
 export const generateMetaData = () => {
 	return {

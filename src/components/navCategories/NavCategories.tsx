@@ -1,5 +1,5 @@
 import { fetchCategories } from '../../app/actions';
-import { NavCategory } from './navCategory/NavCategory';
+import { NavCategory } from '../navCategory/NavCategory';
 import styles from './styles.module.css';
 
 export const NavCategories = async () => {

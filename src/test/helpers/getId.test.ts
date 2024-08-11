@@ -1,6 +1,6 @@
 // Импортируем функцию, которую будем тестировать
 import { describe, expect, it } from 'vitest';
-import getId from './getId';
+import getId from '../../utils/helpers/getId';
 
 describe('getId', () => {
 	it('should return a string of numbers joined by a comma from a given string', () => {

@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
-import ThemeContext, { IThemeContext } from './ThemeContext';
 import cn from 'classnames';
+import { IThemeContext, ThemeContext } from './ThemeContext';
 
-const ThemeProvider = ({
+export const ThemeProvider = ({
 	theme,
 	children,
 }: IThemeContext & { children: ReactNode }) => {
@@ -16,5 +16,3 @@ const ThemeProvider = ({
 		</ThemeContext.Provider>
 	);
 };
-
-export default ThemeProvider;

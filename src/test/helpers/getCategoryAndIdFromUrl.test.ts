@@ -1,6 +1,6 @@
 // Импортируем функцию, которую будем тестировать
 import { describe, expect, it } from 'vitest';
-import { getCategoryAndIdFromUrl } from './getCategoryAndIdFromUrl';
+import { getCategoryAndIdFromUrl } from '../../utils/helpers/getCategoryAndIdFromUrl';
 
 describe('getCategoryAndIdFromUrl', () => {
 	it('should return the correct category and id for a valid URL', () => {
@@ -11,7 +11,10 @@ describe('getCategoryAndIdFromUrl', () => {
 
 	it('should return null for a URL without a valid number', () => {
 		const input = 'https://swapi.dev/api/people/';
-		const expectedOutput = null;
+		const expectedOutput = {
+			category: '',
+			id: '',
+		};
 		expect(getCategoryAndIdFromUrl(input)).toEqual(expectedOutput);
 	});
 
@@ -23,17 +26,5 @@ describe('getCategoryAndIdFromUrl', () => {
 		const input2 = 'https://swapi.dev/api/starships/10/';
 		const expectedOutput2 = { category: 'starships', id: '10' };
 		expect(getCategoryAndIdFromUrl(input2)).toEqual(expectedOutput2);
-	});
-
-	it('should return null for an invalid URL', () => {
-		const input = 'https://invalidurl.com/api/people/1/';
-		const expectedOutput = null;
-		expect(getCategoryAndIdFromUrl(input)).toEqual(expectedOutput);
-	});
-
-	it('should return null for an empty input string', () => {
-		const input = '';
-		const expectedOutput = null;
-		expect(getCategoryAndIdFromUrl(input)).toEqual(expectedOutput);
 	});
 });

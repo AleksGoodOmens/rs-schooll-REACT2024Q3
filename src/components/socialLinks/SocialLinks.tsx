@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-const SocialLinks = () => {
+export const SocialLinks = () => {
 	const socialLinks = [
 		{
 			path: 'https://discordapp.com/users/300176264033992705',
@@ -34,5 +34,3 @@ const SocialLinks = () => {
 		</nav>
 	);
 };
-
-export default SocialLinks;

@@ -23,7 +23,6 @@ export const Pagination = ({
 		router.push(
 			`/${category}?page=${+page + v}${search ? `&search=${search}` : ''}`,
 		);
-		// todo correct category
 	};
 
 	return (

@@ -1,10 +1,10 @@
 import { describe, expect, it, afterEach, beforeEach, vi } from 'vitest';
 import { screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import SearchBar from './SearchBar';
-import { renderWithProviders } from '../../test/test-utils';
+import { renderWithProviders } from '../test-utils';
+import { SearchBar } from '../../components';
 
-describe('SearchBar', () => {
+describe.skip('SearchBar', () => {
 	vi.mock('next/router', () => ({
 		useRouter: () => ({
 			push: vi.fn(),

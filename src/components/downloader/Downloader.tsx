@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
+import { cardSelector, useAppSelector } from '../../store';
 
-import styles from './styles.module.css';
 import Sure from './Sure';
 import UnSure from './UnSure';
-import { cardSelector, useAppSelector } from '../../store';
+
+import styles from './styles.module.css';
 export const Downloader = () => {
 	const [sure, setSure] = useState(false);
 

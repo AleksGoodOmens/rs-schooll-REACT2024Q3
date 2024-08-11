@@ -7,8 +7,8 @@ export const Intro = () => {
 					<div className={styles['scroll']}>
 						<div className={styles['scroll__content']}>
 							<h1>
-								Week 3 - React. Task #3 Redux. Redux Toolkit, RTK Query. Context
-								api
+								Week 4-5 - React. Task #4 SSr rendering, Next JS pages,
+								app-router api
 							</h1>
 
 							<h2>An Epic Saga of the Path to Mastery in Web Development</h2>

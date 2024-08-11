@@ -1,7 +1,7 @@
-import styles from './styles.module.css';
+import { ICard } from '../../types';
 import { Banner } from '../banner/Banner';
 import { Card } from '../card/Card';
-import { ICard } from '../../types';
+import styles from './styles.module.css';
 
 interface CardsProps {
 	cards: ICard[];

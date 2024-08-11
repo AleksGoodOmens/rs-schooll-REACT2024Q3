@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import SocialLinks from './SocialLinks';
+import { SocialLinks } from '../../components';
 
 describe('SocialLinks', () => {
 	it('Component render 3 links', () => {

@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { fetchDetails } from './actions';
 import styles from './styles.module.css';
-import { Banner } from '../../../components';
 import CategoryPage from '../page';
-import { detailsDataConverter } from '../../../utils/converters/details.converter';
+import { Banner } from '../../../components';
+import { detailsDataConverter } from '../../../utils';
 
 interface DetailedCardPageProps {
 	params: {

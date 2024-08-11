@@ -3,7 +3,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { AppRouterContextProviderMock } from '../AppRouterContextProviderMock';
-import Custom404 from '../../pages/404';
+import Custom404 from '../../app/404';
 
 vi.mock('next/router', () => ({
 	useRouter: () => ({

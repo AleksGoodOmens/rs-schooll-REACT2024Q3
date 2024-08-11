@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Logo from './Logo';
+import { Logo } from '../../components';
 
 describe('Logo', () => {
 	it('Logo should have link with proper aria label', () => {

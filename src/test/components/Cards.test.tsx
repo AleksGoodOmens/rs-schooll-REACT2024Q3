@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
-import { renderWithProviders } from '../../test/test-utils';
-import Cards from './Cards';
+import { renderWithProviders } from '../test-utils';
 import { screen } from '@testing-library/dom';
+import { Cards } from '../../components';
 
 describe('Cards', () => {
 	vi.mock('next/router', () => ({
