@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useAppDispatch } from '../../store/hooks/hooks';
-import { clearFavoriteCards } from '../../store/slices/cards.slice';
+import { clearFavoriteCards, useAppDispatch } from '../../store';
 
 interface SureProps {
 	setSure: (b: boolean) => void;

@@ -3,7 +3,7 @@ import SocialLinks from './socialLinks/SocialLinks';
 import styles from './styles.module.css';
 import ThemeChanger from './themeChanger/ThemeChanger';
 
-const Header = () => {
+export const Header = () => {
 	return (
 		<header
 			className={styles['header']}
@@ -15,5 +15,3 @@ const Header = () => {
 		</header>
 	);
 };
-
-export default Header;

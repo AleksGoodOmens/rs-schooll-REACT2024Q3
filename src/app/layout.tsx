@@ -1,9 +1,11 @@
 'use client';
 import './global.css';
 
-import Footer from '../components/header/footer/Footer';
-import Header from '../components/header/header/Header';
 import ThemeProvider from '../context/ThemeProvider';
+import { setupStore } from '../store';
+
+import { Provider } from 'react-redux';
+import { Footer, Header } from '../components';
 
 export const generateMetaData = () => {
 	return {
@@ -19,11 +21,13 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<ThemeProvider theme="Dark">
-					<Header />
-					<main className="main">{children}</main>
-					<Footer />
-				</ThemeProvider>
+				<Provider store={setupStore()}>
+					<ThemeProvider theme="Dark">
+						<Header />
+						<main className="main">{children}</main>
+						<Footer />
+					</ThemeProvider>
+				</Provider>
 			</body>
 		</html>
 	);

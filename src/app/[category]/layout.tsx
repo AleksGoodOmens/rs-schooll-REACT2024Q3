@@ -1,4 +1,4 @@
-import { NavCategories, SearchBar } from '../../components';
+import { Downloader, NavCategories, SearchBar } from '../../components';
 
 export const generateMetaData = () => {};
 
@@ -11,6 +11,7 @@ export default function CategoriesLayout({
 		<>
 			<NavCategories />
 			<SearchBar />
+			<Downloader />
 
 			{children}
 		</>

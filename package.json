@@ -59,6 +59,7 @@
 		"node-fetch": "^3.3.2",
 		"prettier": "^3.3.3",
 		"prettier-plugin-css-order": "^2.1.2",
+		"react-router-dom": "^6.26.0",
 		"redux-persist": "^6.0.0",
 		"typescript": "^5",
 		"vitest": "^2.0.5"

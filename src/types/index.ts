@@ -1,3 +1,7 @@
+export type CardState = {
+	favoriteCards: ICard[];
+};
+
 export interface CategoriesResponse {
 	[key: string]: string;
 }

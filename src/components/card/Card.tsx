@@ -1,5 +1,5 @@
 'use client';
-import { FunctionComponent } from 'react';
+import { ChangeEvent, FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import Link from 'next/link';
@@ -7,6 +7,9 @@ import { useParams, useSearchParams } from 'next/navigation';
 
 import { ICard } from '../../types';
 import styles from './styles.module.css';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { cardSelector } from '../../store/slices/selectors';
+import { addToFavorite, delFromFavorite } from '../../store/slices/cards.slice';
 interface ICardProps {
 	card: ICard;
 }
@@ -16,36 +19,25 @@ export const Card: FunctionComponent<ICardProps> = ({ card }) => {
 	const params = useParams();
 	const search = useSearchParams().get('search');
 
-	// const { category, page, search } =  //todo
+	const dispatch = useAppDispatch();
+
+	const { favoriteCards } = useAppSelector(cardSelector);
 
 	const { name, url, title, id } = card;
 
-	// const isActive = id === router.query.id; // todo
+	const isInFavorite = favoriteCards.findIndex((item) => item.id === id) !== -1;
 
-	// const isInFavorite = favoriteCards.findIndex((item) => item.id === id) !== -1; //todo
+	const handleToggleFavorite = (
+		e: ChangeEvent<HTMLInputElement>,
+		card: ICard,
+	) => {
+		if (e.target.checked) {
+			return dispatch(addToFavorite(card));
+		}
+		dispatch(delFromFavorite(card.url));
+	}; //todo
 
-	// const handleToggleFavorite = (
-	// 	e: ChangeEvent<HTMLInputElement>,
-	// 	card: ICard,
-	// ) => {
-	// 	if (e.target.checked) {
-	// 		return dispatch(addToFavorite(card));
-	// 	}
-	// 	dispatch(delFromFavorite(card.url));
-	// }; //todo
-
-	// const handleToggleDetails = () => {
-	// 	if (!isActive) {
-	// 		router.push(
-	// 			`/${category}/${id || ''}?page=${page}&search=${search || ''}`,
-	// 		);
-
-	// 		return;
-	// 	}
-	// 	router.push(`/${category}?page=${page}&search=${search || ''}`);
-	// }; //todo
 	const isActive = id === params.id;
-	const isInFavorite = false;
 
 	const correctPath = `/${params.category}/${params.id ? '' : id}?page=${page}${search ? `&search=${search}` : ''}`;
 
@@ -78,8 +70,8 @@ export const Card: FunctionComponent<ICardProps> = ({ card }) => {
 					{isInFavorite ? 'del from favorite' : 'add to favorite'}
 					<input
 						type="checkbox"
-						// checked={isInFavorite}
-						// onChange={(e) => handleToggleFavorite(e, card)}
+						checked={isInFavorite}
+						onChange={(e) => handleToggleFavorite(e, card)}
 					/>
 				</label>
 			</div>

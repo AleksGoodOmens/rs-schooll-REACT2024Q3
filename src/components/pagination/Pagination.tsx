@@ -20,7 +20,9 @@ export const Pagination = ({
 	const totalPages = Math.ceil(count / 10);
 
 	const handleChangePage = (v: number) => {
-		router.push(`/${category}?page=${+page + v}&search=${search}`);
+		router.push(
+			`/${category}?page=${+page + v}${search ? `&search=${search}` : ''}`,
+		);
 		// todo correct category
 	};
 
