@@ -1,0 +1,15 @@
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	border-bottom: 1px solid var(--accent-800);
+	padding: 1rem 0;
+	text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+	.flex {
+		justify-content: center;
+		align-items: center;
+	}
+}
