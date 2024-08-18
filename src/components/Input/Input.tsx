@@ -11,15 +11,30 @@ export const Input = ({ className, name = 'name', type = 'text' }: IInput) => {
 	} = useFormContext();
 
 	return (
-		<fieldset>
-			<label htmlFor={name}>{name}</label>
+		<>
+			<label
+				className={inputStyles['label']}
+				htmlFor={name}
+			>
+				{name}
+			</label>
 			<input
-				className={cn(className, inputStyles['input'])}
+				className={cn(inputStyles['input'], {
+					[inputStyles[className || 'class']]: className,
+					[inputStyles['input-error']]: errors[name],
+				})}
 				type={type}
 				id={name}
 				{...register(name)}
 			/>
-			<p>{errors[name]?.message ? '' + errors[name]?.message : ''}</p>
-		</fieldset>
+
+			<p
+				className={cn(inputStyles['error'], {
+					[inputStyles['error-active']]: errors[name],
+				})}
+			>
+				{errors[name]?.message ? String(errors[name].message) : ''}
+			</p>
+		</>
 	);
 };

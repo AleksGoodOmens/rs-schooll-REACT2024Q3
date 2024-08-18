@@ -23,6 +23,24 @@ export const HTag = ({ className, value, children, ...props }: IHTag) => {
 					{children}
 				</h2>
 			);
+		case 3:
+			return (
+				<h3
+					className={cn(className, HStyles['h'], HStyles['h3'])}
+					{...props}
+				>
+					{children}
+				</h3>
+			);
+		case 4:
+			return (
+				<h4
+					className={cn(className, HStyles['h'], HStyles['h4'])}
+					{...props}
+				>
+					{children}
+				</h4>
+			);
 
 		default:
 			return <></>;

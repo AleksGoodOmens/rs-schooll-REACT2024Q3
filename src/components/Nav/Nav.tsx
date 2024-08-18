@@ -10,12 +10,19 @@ export const Nav = ({ className }: INav) => {
 		<nav className={cn(className, navStyles['nav'])}>
 			{links.map((l) => (
 				<NavLink
+					className={cn(navStyles['link'])}
 					key={l}
 					to={l}
 				>
 					{l} form
 				</NavLink>
 			))}
+			<NavLink
+				className={cn(navStyles['link'])}
+				to="/main"
+			>
+				Home
+			</NavLink>
 		</nav>
 	);
 };

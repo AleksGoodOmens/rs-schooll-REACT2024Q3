@@ -1,9 +1,8 @@
-import { HTag } from '../../components';
+import { Form, HTag } from '../../components';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../../utils';
-import Form from '../../components/Form/Form';
 
 export const Controlled = () => {
 	const methods = useForm({
@@ -12,11 +11,11 @@ export const Controlled = () => {
 	});
 
 	return (
-		<>
-			<HTag value={1}>Controlled form</HTag>
+		<section className="section">
+			<HTag value={2}>Controlled form</HTag>
 			<FormProvider {...methods}>
-				<Form />
+				<Form isControlledForm />
 			</FormProvider>
-		</>
+		</section>
 	);
 };

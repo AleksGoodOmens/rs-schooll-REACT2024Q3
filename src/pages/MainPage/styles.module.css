@@ -1,0 +1,16 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.article {
+	display: grid;
+	justify-items: center;
+	gap: 2rem;
+}
+
+.active {
+	border: 5px solid var(--color-acent-600);
+	border-radius: 1rem;
+	padding: 1rem;
+}

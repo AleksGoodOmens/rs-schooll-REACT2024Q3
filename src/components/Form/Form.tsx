@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import {
 	setControlledValues,
 	setShowPassword,
+	setUnControlledValues,
 	showPasswordSelector,
 	useAppDispatch,
 	useAppSelector,
@@ -12,10 +13,19 @@ import { Input } from '../Input/Input';
 import { IValues } from '../../store/slices/inputs.types.interface';
 import { convertBase64 } from '../../utils';
 
-interface FormProps {}
+import formStyles from './formStyles.module.css';
+import { FileInput } from '../FileInput/FileInput';
+import { useNavigate } from 'react-router';
+import { RadioInput } from '../radioInput/radioInput';
+import { TermsInput } from '../TermsInput/TermsInput';
 
-const Form: FunctionComponent<FormProps> = () => {
+interface FormProps {
+	isControlledForm?: boolean;
+}
+
+export const Form: FunctionComponent<FormProps> = ({ isControlledForm }) => {
 	const { handleSubmit } = useFormContext<IValues>();
+	const navigate = useNavigate();
 
 	const showPassword = useAppSelector(showPasswordSelector);
 	const dispatch = useAppDispatch();
@@ -24,7 +34,24 @@ const Form: FunctionComponent<FormProps> = () => {
 		if (!data.picture) return;
 
 		const pic64 = (await convertBase64(data.picture[0])) as string;
-		dispatch(setControlledValues({ ...data, picture64: pic64 }));
+
+		if (isControlledForm) {
+			dispatch(
+				setControlledValues({ ...data, picture: undefined, picture64: pic64 }),
+			);
+
+			navigate('/main?active=controlled');
+		}
+		if (!isControlledForm) {
+			dispatch(
+				setUnControlledValues({
+					...data,
+					picture: undefined,
+					picture64: pic64,
+				}),
+			);
+			navigate('/main?active=unControlled');
+		}
 	};
 
 	const passwordShow = () => {
@@ -32,17 +59,19 @@ const Form: FunctionComponent<FormProps> = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<Input name="name" />
-			<Input
-				name="age"
-				type="number"
-			/>
-			<Input
-				name="email"
-				type="email"
-			/>
-			<div>
+		<form
+			onSubmit={handleSubmit(onSubmit)}
+			className={formStyles['form']}
+		>
+			<fieldset className={formStyles['fieldset']}>
+				<Input name="name" />
+				<Input name="age" />
+				<Input
+					name="email"
+					type="email"
+				/>
+			</fieldset>
+			<fieldset className={formStyles['fieldset']}>
 				<Input
 					name="password"
 					type={showPassword ? 'text' : 'password'}
@@ -52,42 +81,34 @@ const Form: FunctionComponent<FormProps> = () => {
 					name="confirm_password"
 					type={showPassword ? 'text' : 'password'}
 				/>
-			</div>
-			<div>
-				<Input
-					name="gender"
-					type="radio"
-					value={'male'}
-					id="male"
-				/>
-				<Input
-					name="gender"
-					type="radio"
-					value={'female'}
-					id="female"
-				/>
-			</div>
-			<Input
-				name="terms"
-				type="checkbox"
-				id="terms"
-			/>
+				<button
+					type="button"
+					onClick={passwordShow}
+					className={formStyles['showButton']}
+				>
+					show password
+				</button>
+			</fieldset>
+			<fieldset className={formStyles['fieldset']}>
+				<RadioInput />
+			</fieldset>
+			<fieldset className={formStyles['fieldset']}>
+				<TermsInput />
+			</fieldset>
 
-			<Input
-				name="picture"
-				type="file"
-			/>
-			<CountryAutoComplete />
+			<fieldset className={formStyles['fieldset']}>
+				<FileInput />
+			</fieldset>
+			<fieldset className={formStyles['fieldset']}>
+				<CountryAutoComplete />
+			</fieldset>
+
 			<button
-				type="button"
-				onClick={passwordShow}
+				className={formStyles['submitButton']}
+				type="submit"
 			>
-				show password
+				submit
 			</button>
-
-			<button type="submit">submit</button>
 		</form>
 	);
 };
-
-export default Form;

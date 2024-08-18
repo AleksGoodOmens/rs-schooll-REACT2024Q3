@@ -10,6 +10,7 @@ export const schema = yup.object({
 		.min(4, 'At least 4 letters in the name'),
 	age: yup
 		.number()
+		.typeError('Amount must be a number')
 		.required('You should type your age')
 		.integer('Type your name in integer')
 		.positive('Your age can`t be negative value')

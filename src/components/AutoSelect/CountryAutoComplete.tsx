@@ -4,6 +4,9 @@ import { countriesSelector, useAppDispatch, useAppSelector } from '../../store';
 import { fetchCountries } from '../../store/slices/countries.slice';
 import { ICountry } from '../../store/slices/inputs.types.interface';
 
+import styles from './autoComplete.module.css';
+import classNames from 'classnames';
+
 export const CountryAutoComplete = () => {
 	const dispatch = useAppDispatch();
 
@@ -41,35 +44,44 @@ export const CountryAutoComplete = () => {
 	};
 
 	return (
-		<div>
+		<>
 			<label htmlFor="country">Select Country:</label>
 			<input
+				className={styles['input']}
 				{...register}
 				ref={inputRef}
 				id="country"
 				onChange={(e) => handleInputChange(e.target.value)}
 				autoComplete="off"
 			/>
-			<p>{errors['country']?.message ? '' + errors['country']?.message : ''}</p>
+			<p
+				className={classNames(styles['error'], {
+					[styles['error-active']]: errors['country'],
+				})}
+			>
+				{errors['country']?.message ? String(errors['country'].message) : ''}
+			</p>
 			{filteredCountries.length > 0 && (
-				<ul>
+				<ul className={styles['list']}>
 					{filteredCountries.slice(0, 5).map((country) => {
 						return (
 							<li
+								className={styles['item']}
 								key={country.name.official}
 								onClick={() => handleSelectCountry(country.name.official)}
-								style={{ cursor: 'pointer' }}
 							>
 								{country.name.official}
 								<img
 									src={country.flags.png}
 									alt={country.flags.alt}
+									width={30}
+									height={20}
 								/>
 							</li>
 						);
 					})}
 				</ul>
 			)}
-		</div>
+		</>
 	);
 };
