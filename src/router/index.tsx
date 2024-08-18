@@ -8,6 +8,7 @@ export const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <App />,
+		loader: () => <div>Loading</div>,
 		children: [
 			{
 				path: 'uncontrolled',

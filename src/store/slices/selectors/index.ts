@@ -1,5 +1,13 @@
 import { RootState } from '../..';
 
-const cardSelector = (state: RootState) => state.cards;
+const controlledSelector = (state: RootState) => state.forms.controlledForm;
+const unControlledSelector = (state: RootState) => state.forms.uncontrolledForm;
+const showPasswordSelector = (state: RootState) => state.forms.showPassword;
+const countriesSelector = (state: RootState) => state.countries;
 
-export { cardSelector };
+export {
+	controlledSelector,
+	unControlledSelector,
+	showPasswordSelector,
+	countriesSelector,
+};

@@ -1,25 +1,19 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import { Input } from './components';
+import { Nav } from './components';
 import { HTag } from './components/HTag/HTag';
+import { Provider } from 'react-redux';
+import { setupStore } from './store';
 
 function App() {
 	return (
-		<>
-			<nav>
-				<NavLink to={'uncontrolled'}>Uncontrolled form</NavLink>
-				<NavLink to={'controlled'}>Controlled form</NavLink>
-			</nav>
-			<Input placeholder="test input" />
-
-			<HTag value={1}>this is h1</HTag>
-			<HTag value={2}>this is h2</HTag>
-			<br />
-
+		<Provider store={setupStore()}>
+			<Nav />
+			<HTag value={1}>Welcome to week 7 - forms task</HTag>
 			<main>
 				<Outlet />
 			</main>
-		</>
+		</Provider>
 	);
 }
 

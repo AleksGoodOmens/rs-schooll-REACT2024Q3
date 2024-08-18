@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import cardsSlice from './slices/cards.slice';
+import countriesSlice from './slices/countries.slice';
+import formsSlice from './slices/forms.slice';
 
 const rootReducers = combineReducers({
-	cards: cardsSlice,
+	forms: formsSlice,
+	countries: countriesSlice,
 });
 
 export const setupStore = () =>
@@ -15,5 +17,5 @@ export type AppState = ReturnType<AppStore['getState']>;
 export type AppDispatch = AppStore['dispatch'];
 
 export * from './hooks/hooks';
-export * from './slices/cards.slice';
+export * from './slices/forms.slice';
 export * from './slices/selectors/index';
