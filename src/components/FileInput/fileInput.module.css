@@ -1,0 +1,35 @@
+.input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	outline: none;
+	color: transparent;
+}
+.label {
+	position: relative;
+	margin: 0 auto;
+	border-radius: 0.5rem;
+	background-color: var(--color-acent-400);
+	padding: 1rem 2rem;
+	text-align: center;
+	&:focus-within {
+		outline: 4px solid var(--color-acent);
+	}
+}
+
+.error {
+	transition:
+		height 0.5s,
+		color 0.2s;
+	margin: 0;
+	padding: 0;
+	height: 0;
+	color: transparent;
+}
+
+.error-active {
+	height: 1rem;
+
+	color: var(--color-acent);
+}

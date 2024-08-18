@@ -1,0 +1,44 @@
+.wrapper {
+	display: flex;
+	gap: 1rem;
+}
+.input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	color: transparent;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.label {
+	flex: 1;
+	border-radius: 8px;
+	background-color: var(--color-secondary);
+	padding: 1rem 2rem;
+	color: var(--color-primary);
+	font-weight: bold;
+	text-align: center;
+	text-transform: capitalize;
+	&:focus-within {
+		color: var(--color-acent-600);
+	}
+}
+
+.error {
+	transition:
+		height 0.5s,
+		color 0.2s;
+	margin: 0;
+	padding: 0;
+	height: 0;
+	color: transparent;
+}
+
+.error-active {
+	height: 1rem;
+
+	color: var(--color-acent);
+}

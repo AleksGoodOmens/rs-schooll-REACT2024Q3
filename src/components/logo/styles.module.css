@@ -1,0 +1,10 @@
+.logo {
+	color: var(--color-acent-600);
+	text-align: start;
+}
+
+.title {
+	margin-right: 1rem;
+	color: var(--color-secondary);
+	text-transform: uppercase;
+}

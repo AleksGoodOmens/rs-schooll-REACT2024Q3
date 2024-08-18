@@ -1,0 +1,16 @@
+.nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	padding: 1rem 0;
+}
+
+.link {
+	transition: all 0.5s;
+	font-size: 1rem;
+	text-transform: uppercase;
+	&:hover {
+		color: var(--color-acent-600);
+	}
+}
